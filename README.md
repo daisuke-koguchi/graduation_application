@@ -26,7 +26,7 @@ https://docs.google.com/spreadsheets/d/1E4ScgbXNM1YYXmu8P1FYFfJ0YoqzJa_mrLY0KA9N
 https://docs.google.com/spreadsheets/d/1E4ScgbXNM1YYXmu8P1FYFfJ0YoqzJa_mrLY0KA9NrXo/edit#gid=950377125
 
 # ER図
-
+<img width="899" alt="ER図 2022-01-26 10 09 17" src="https://user-images.githubusercontent.com/91811989/151162153-399fed1c-2de5-443f-9789-ac49f81e2177.png">
 # 画面遷移図
 
 # ワイヤーフレーム
