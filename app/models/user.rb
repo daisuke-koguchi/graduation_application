@@ -11,4 +11,5 @@ class User < ApplicationRecord
       user.admin = true 
     end
   end
+  mount_uploader :avatar_image, AvaterImageUploader
 end
