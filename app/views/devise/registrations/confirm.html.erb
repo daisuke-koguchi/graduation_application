@@ -1,0 +1,42 @@
+
+<h2>Confirm</h2>
+<%= form_with(model: @user, url: users_sign_up_complete_path(@user), local: true) do |f| %>
+<div class="field">
+    <%= f.label :first_name %>
+    <%= f.hidden_field :first_name%>
+    <%= @user.first_name%>
+</div>
+
+<div class="field">
+    <%= f.label :last_name %>
+    <%= f.hidden_field :last_name%>
+    <%= @user.last_name%>
+</div>
+
+<div class="field">
+    <%= f.label :avatar_image %>
+    <%= image_tag(@user.avatar_image.url) if @user.avatar_image && @user.avatar_image.url %>
+    <%= f.hidden_field :image_cache %>
+</div>
+
+<div class="field">
+    <%= f.label :introduction %>
+    <%= f.hidden_field :introduction %>
+    <%= @user.introduction%>
+</div>
+
+<div class="field">
+    <%= f.label :email %>
+    <%= f.hidden_field :email%>
+    <%= @user.email %>
+</div>
+
+<div class="field">
+    <%= f.label :password %>
+    <%= f.hidden_field :password%>
+    <%= @user.password %>
+</div>
+
+
+<%= f.submit "登録する" %>
+<% end %>
