@@ -1,16 +1,26 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-    before_action :ensure_normal_user, only: %i[update destroy] 
+  before_action :ensure_normal_user, only: %i[update destroy] 
+
+  def create 
+    @user = User.new(sign_up_params)
+    if @user.save 
+      redirect_to users_sign_up_complete_path
+    else 
+      render :new 
+    end
+    super
+  end
     
     def confirm
       @user = User.new(sign_up_params)
-      if @user.save 
-        render :confirm
-      else
-        render :new
-      end
+      render :new if @user.invalid?
     end
     
     def complete 
+    end
+
+    def after_sign_out_path_for(resource)
+      users_sign_up_complete_path(@user)
     end
     
     def destroy

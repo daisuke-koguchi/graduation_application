@@ -1,7 +1,6 @@
 
 <h2>Confirm</h2>
-<%= form_with(url: users_sign_up_complete_path(@user), local: true) do |f| %>
-
+<%= form_with(model: @user, url: users_sign_up_complete_path(@user), local: true) do |f| %>
 <div class="field">
     <%= f.label :first_name %>
     <%= f.hidden_field :first_name%>
@@ -38,6 +37,6 @@
     <%= @user.password %>
 </div>
 
-<%# f.submit "修正する", name: :back %>
+
 <%= f.submit "登録する" %>
 <% end %>
