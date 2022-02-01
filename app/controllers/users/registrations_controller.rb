@@ -1,6 +1,18 @@
 class Users::RegistrationsController < Devise::RegistrationsController
     before_action :ensure_normal_user, only: %i[update destroy] 
     
+    def confirm
+      @user = User.new(sign_up_params)
+      if @user.save 
+        render :confirm
+      else
+        render :new
+      end
+    end
+    
+    def complete 
+    end
+    
     def destroy
         resource.soft_delete
         Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
