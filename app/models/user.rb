@@ -9,6 +9,10 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.confirmed_at = Time.now
       user.admin = true 
+      user.first_name = "ゲスト"
+      user.last_name = "太郎"
+      user.avatar_image = nil 
+      user.introduction = "ゲストでログインします"
     end
   end
   mount_uploader :avatar_image, AvaterImageUploader
