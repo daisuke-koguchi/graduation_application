@@ -14,10 +14,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def complete 
   end
 
-  def after_sign_up_path_for(resource)
+  def after_inactive_sign_up_path_for(resource)
     users_sign_up_complete_path(resource)
   end
-  
+
   def destroy
       resource.soft_delete
       Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
