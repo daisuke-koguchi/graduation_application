@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   }
   devise_scope :user do 
     post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
+    post 'users/admin_guest_sign_in' => 'users/sessions#admin_guest_sign_in'
     post 'users/sign_up/confirm' => 'users/registrations#confirm'
     post 'users/sign_up/complete' => 'users/registrations#complete'
   end
