@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     post 'users/sign_up/confirm' => 'users/registrations#confirm'
     post 'users/sign_up/complete' => 'users/registrations#complete'
   end
+
+  resources :users, only: %i{ show }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
