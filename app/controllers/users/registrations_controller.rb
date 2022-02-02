@@ -3,17 +3,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create 
     @user = User.new(sign_up_params)
-    if @user.save 
-      redirect_to users_sign_up_complete_path
-    else 
-      render :new 
-    end
+    render :new and return if params[:back]
     super
   end
     
   def confirm
     @user = User.new(sign_up_params)
-    render :new if @user.invalid?
   end
     
   def complete 

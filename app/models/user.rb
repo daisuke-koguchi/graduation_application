@@ -24,6 +24,7 @@ class User < ApplicationRecord
       user.last_name = "太郎"
       user.avatar_image = nil 
       user.introduction = "ゲストでログインします"
+      user.admin = false 
     end
   end
 
