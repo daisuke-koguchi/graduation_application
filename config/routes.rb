@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root to: 'users#mypage'
+  root to: 'users#top'
+  get 'users/top' => 'users#top'
   get 'users/mypage' => 'users#mypage'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     passwords: 'users/passwords'

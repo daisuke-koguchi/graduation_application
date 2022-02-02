@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
-  def mypage
+
+  def top
   end
+
+  def mypage
+    @user = User.find(params[:id])
+  end
+  
 end
