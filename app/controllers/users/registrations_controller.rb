@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :ensure_normal_user, only: %i[update destroy] 
 
-  def create 
+  def create
     @user = User.new(sign_up_params)
     render :new and return if params[:back]
     super
