@@ -31,4 +31,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
           redirect_to root_path, alert: ゲストユーザーは編集・削除できません
       end
   end
+
+  protected
+
+  def update_resource(resource, params)
+    resource.update_without_current_password(params)
+  end
+
 end
