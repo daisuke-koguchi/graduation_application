@@ -14,8 +14,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def complete 
   end
 
-  def after_sign_out_path_for(resource)
-    users_sign_up_complete_path(@user)
+  def after_sign_up_path_for(resource)
+    users_sign_up_complete_path(resource)
   end
   
   def destroy
