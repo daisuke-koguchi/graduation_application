@@ -1,0 +1,23 @@
+<h1>コミュニティ</h1>
+
+
+  <h1><%= current_user.first_name %><%= current_user.last_name %>さんのコミュニティページ</h1>
+
+<table>
+  <head>
+    <tr>
+      <th>プロフィール画像</th>
+      <th>姓名</th>
+      <th>メッセージを確認</th>
+    </tr>
+  </head>
+  <body>
+    <% @users.each do |user| %>
+    <tr>
+      <td>プロフィール画像表示</td>
+      <td><%= user.first_name %><br><%= user.last_name %></td>q
+      <td>メッセージを送信リンク</td>
+    </tr>
+    <% end %>
+  </body>
+</table>
