@@ -14,9 +14,11 @@
   <body>
     <% @users.each do |user| %>
     <tr>
-      <td>プロフィール画像表示</td>
-      <td><%= user.first_name %><br><%= user.last_name %></td>q
-      <td>メッセージを送信リンク</td>
+      <% if user.avatar_image?%>
+        <td><%= image_tag(user.avatar_image.thumb.url) %></td>
+      <% end %>
+        <td><%= user.first_name %><br><%= user.last_name %></td>
+        <td>メッセージを送信リンク</td>
     </tr>
     <% end %>
   </body>
