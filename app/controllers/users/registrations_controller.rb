@@ -14,10 +14,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def complete 
   end
 
-  def after_sign_out_path_for(resource)
-    users_sign_up_complete_path(@user)
+  def after_inactive_sign_up_path_for(resource)
+    users_sign_up_complete_path(resource)
   end
-  
+
   def destroy
       resource.soft_delete
       Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
@@ -31,4 +31,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
           redirect_to root_path, alert: ゲストユーザーは編集・削除できません
       end
   end
+
+  protected
+
+  def update_resource(resource, params)
+    resource.update_without_current_password(params)
+  end
+
 end
