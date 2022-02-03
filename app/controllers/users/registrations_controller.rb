@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :ensure_normal_user, only: %i[update destroy] 
+  before_action :ensure_normal_or_admin_user, only: %i[update destroy] 
+
 
   def create
     @user = User.new(sign_up_params)
@@ -26,9 +27,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
   end
 
-  def ensure_normal_user 
-      if resource.email == 'guest@example.com'
-          redirect_to root_path, alert: ゲストユーザーは編集・削除できません
+  def ensure_normal_or_admin_user 
+      if resource.email == 'guest@example.com' || resource.email == 'admin_guest@example.com'
+          redirect_to root_path, alert: "ゲストユーザーは編集・削除できません"
       end
   end
 
