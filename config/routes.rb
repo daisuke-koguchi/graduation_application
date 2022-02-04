@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i{ index show }
+  resources :conversations do 
+    resources :messages 
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
