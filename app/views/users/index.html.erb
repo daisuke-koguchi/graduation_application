@@ -1,38 +1,29 @@
-<h1>コミュニティ</h1>
-
-
-  <h1><%= current_user.first_name %><%= current_user.last_name %>さんのコミュニティページ</h1>
-
-<table>
-  <head>
-    <tr>
-      <th>プロフィール画像</th>
-      <th>姓名</th>
-      <th>メッセージを確認</th>
-    </tr>
-  </head>
-  <body>
-    <% @users.each do |user| %>
-    <tr>
-      <% if user.avatar_image?%>
-        <td><%= image_tag(user.avatar_image.thumb.url) %></td>
+<div class="container">
+  <h1><%= current_user.first_name %><%= current_user.last_name %>さんのコミュニティ</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>プロフィール画像</th>
+        <th>姓名</th>
+        <th>プロフィールを確認する</th>
+        <th>メッセージを確認</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <% if user.avatar_image?%>
+          <td><%= image_tag(user.avatar_image.thumb.url) %></td>
+        <% else %>
+          <td><%= image_tag('noimage.png',width:'40%',height: '40%')%></td>
+        <% end %>
+          <td><%= user.first_name %><br><%= user.last_name %>さん</td>
+        <% if user.id != current_user.id %>
+          <td><%= link_to user.first_name, user %></td>
+          <td><%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %></td>
+        <% end%>
+      </tr>
       <% end %>
-        <td><%= user.first_name %><br><%= user.last_name %></td>
-        <td>メッセージを送信リンク</td>
-    </tr>
-    <% end %>
-  </body>
-</table>
-
-
-<h2>ユーザー</h2>
-<% @users.each do |user| %>
-  <% if user.id != current_user.id %>
-    <li>
-      <div class="item">
-        <%= link_to user.first_name, user %>
-        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
-      </div>
-    </li>
-  <% end %>
-<% end %>
+    </tbody>
+  </table>
+</div>
