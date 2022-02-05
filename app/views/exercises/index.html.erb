@@ -1,2 +1,31 @@
-<h1>Exercises#index</h1>
-<p>Find me in app/views/exercises/index.html.erb</p>
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>写真</th>
+        <th>運動項目</th>
+        <th>運動負荷</th>
+        <th>運動内容/動画を確認する</th>
+        <th>編集する</th>
+        <th>削除する</th>
+        <th>運動内容/動画を確認する</th>
+        <th>実施/未実施</th>           
+      </tr>
+    </thead
+    ><tbody>
+    <% @exercises.each do |exercise|%>
+      <tr>
+        <th></th>
+        <th><%= exercise.name%></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><%= link_to "動画内容/動画を確認する", exercise_path(exercise.id) %></th>          
+        <th></th>
+      </tr>
+    <% end %>    
+    </tbody>
+  </table>
+  <%= link_to "運動内容を登録する",new_exercise_path %>
+</div>
+

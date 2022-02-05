@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'exercises/index'
-  get 'exercises/show'
-  get 'exercises/new'
-  get 'exercises/edit'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'users#top'
   get 'users/top' => 'users#top'
