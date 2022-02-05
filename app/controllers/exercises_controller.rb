@@ -18,6 +18,16 @@ class ExercisesController < ApplicationController
   end
 
   def edit
+    @exercise = Exercise.find(params[:id])
+  end
+
+  def update
+    @exercise = Exercise.find(params[:id])
+    if @exercise.update(exercise_params)
+      redirect_to exercises_path, notine: "編集しました"
+    else
+      render edit 
+    end
   end
 
   def exercise_params

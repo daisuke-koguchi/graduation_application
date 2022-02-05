@@ -1,4 +1,5 @@
 <div class="container">
+  <%= notice %>
   <table>
     <thead>
       <tr>
@@ -18,7 +19,7 @@
         <th></th>
         <th><%= exercise.name%></th>
         <th></th>
-        <th></th>
+        <th><%= link_to "編集する", edit_exercise_path(exercise.id)%></th>
         <th></th>
         <th><%= link_to "動画内容/動画を確認する", exercise_path(exercise.id) %></th>          
         <th></th>
