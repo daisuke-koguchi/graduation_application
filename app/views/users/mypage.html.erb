@@ -2,6 +2,8 @@
   <h1><%= @user.first_name%><% @user.last_name %>さんのマイページ</h1>
 
 <%# 運動項目のリンク作成%>
+<%= link_to "運動を記録する", exercises_path %>
+<br>
 <%# コミュニティーへのリンク作成%>
 <%= link_to "仲間と交流する" , users_path %>
 <br>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_03_131542) do
+ActiveRecord::Schema.define(version: 2022_02_04_141634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,21 @@ ActiveRecord::Schema.define(version: 2022_02_03_131542) do
     t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
     t.index ["sender_id", "recipient_id"], name: "index_conversations_on_sender_id_and_recipient_id", unique: true
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.string "image", null: false
+    t.string "video", null: false
+    t.string "minute", limit: 2, default: "0", null: false
+    t.string "second", limit: 2, default: "0", null: false
+    t.string "count", limit: 3, default: "0", null: false
+    t.string "set_count", limit: 3, default: "0", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_exercises_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -64,6 +79,7 @@ ActiveRecord::Schema.define(version: 2022_02_03_131542) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "exercises", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
 end

@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  image: MyString
+  video: MyString
+  minute: 
+  second: 
+  count: 
+  set_count: 
+  user: one
+
+two:
+  name: MyString
+  description: MyText
+  image: MyString
+  video: MyString
+  minute: 
+  second: 
+  count: 
+  set_count: 
+  user: two
