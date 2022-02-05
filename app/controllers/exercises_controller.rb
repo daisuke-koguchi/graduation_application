@@ -1,5 +1,5 @@
 class ExercisesController < ApplicationController
-  before_action :set_exercise, only: %i{show edit update }
+  before_action :set_exercise, only: %i{show edit update destroy}
   def index
     @exercises = Exercise.where(user_id: current_user.id)
   end
@@ -29,6 +29,11 @@ class ExercisesController < ApplicationController
     else
       render :edit 
     end
+  end
+
+  def destroy
+    @exercise.destroy 
+    redirect_to exercises_path, notice: "運動内容を削除しました"
   end
 
   private 
