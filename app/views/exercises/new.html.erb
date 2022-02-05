@@ -24,7 +24,7 @@
 
         <tr>
           <th><%= f.label :video %></th>
-          <td><%= f.file_field :video %></td>
+          <td><%= f.file_field :video, :accept => 'video/*'%></td>
         </tr>
 
         <tr>
@@ -33,6 +33,7 @@
         </tr>
       </tbody>
     </table>
+    
     <%= f.submit "登録する"%>
   <% end %>
 </div>

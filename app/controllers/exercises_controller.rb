@@ -13,7 +13,6 @@ class ExercisesController < ApplicationController
 
   def create 
     @exercise = current_user.exercises.build(exercise_params)
-    @exercise.video = "0"
     @exercise.save!
     redirect_to exercises_path 
   end
