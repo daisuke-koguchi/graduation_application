@@ -1,2 +1,35 @@
-<h1>Exercises#show</h1>
-<p>Find me in app/views/exercises/show.html.erb</p>
+<div class="container">
+  <h1>運動内容/動画</h1>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>運動の名前</th>
+        <td><%= @exercise.name %></td>
+      </tr>
+      <tr>
+        <th>運動の写真</th>
+        <% if @exercise.image? %>
+          <td><%= image_tag(@exercise.image.url) %></td>
+        <% else %>
+          <td><%= image_tag('noimage.png',width:'40%',height:'40%')%></td>
+        <% end %>
+      </tr>
+      <tr>
+        <th>運動の動画確認する</th>
+        <% if @exercise.video? %>
+          <td><%= video_tag(@exercise.video.url,autobuffer: true, controls: true, height: "50%", width:"50%") %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <th>運動の方法</th>
+        <td><%= @exercise.description %></td>
+      </tr>
+      <tr>
+        <th>運動する日付</th>
+        <td>運動する日を表示</td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to "戻る", :back %>
+</div>
+
