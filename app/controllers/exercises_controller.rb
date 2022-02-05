@@ -11,6 +11,17 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new
   end
 
+  def create 
+    @exercise = current_user.exercises.build(exercise_params)
+    @exercise.save!
+    redirect_to exercises_path 
+  end
+
   def edit
+  end
+
+  def exercise_params
+    params.require(:exercise).permit(:name, :description, :image,:video,
+                                    :minute, :second, :count, :set_count)
   end
 end

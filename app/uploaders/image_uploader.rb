@@ -1,4 +1,4 @@
-class AvaterImageUploader < CarrierWave::Uploader::Base
+class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -7,6 +7,7 @@ class AvaterImageUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
   process resize_to_fit: [300, 300]
+
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
@@ -20,10 +21,11 @@ class AvaterImageUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
+
   # Process files as they are uploaded:
-  
+  # process scale: [200, 300]
   version :thumb do 
-    process resize_to_fit: [50,50]
+    process resize_to_fit: [100,100]
   end
   # def scale(width, height)
   #   # do something
