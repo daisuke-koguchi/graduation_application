@@ -9,7 +9,7 @@ class ExercisesController < ApplicationController
 
   def new
     @exercise = Exercise.new
-    5.times{@exercise.schedules.build}
+    @exercise.schedules.build
 
   end
 
@@ -23,6 +23,7 @@ class ExercisesController < ApplicationController
   end
 
   def edit
+    @exercise.schedules.build
   end
 
   def update

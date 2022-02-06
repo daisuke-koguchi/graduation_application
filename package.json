@@ -2,10 +2,12 @@
   "name": "graduation_application",
   "private": true,
   "dependencies": {
+    "@nathanvda/cocoon": "^1.2.14",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "jquery": "^3.6.0",
     "rails_admin": "3.0.0-beta",
     "turbolinks": "^5.2.0"
   },
