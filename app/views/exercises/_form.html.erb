@@ -11,7 +11,12 @@
       </tr>
       <tr>
         <th>運動負荷</th>
-        <td>回数/時間/セット回数</td>
+        <td>
+          運動回数: <%= f.number_field :count %>
+          セット数: <%= f.number_field :set_count %>
+          分: <%= f.number_field :minute %>
+          秒: <%= f.number_field :second %>        
+        </td>
       </tr>
       <tr>
         <th><%= f.label :image %></th>
@@ -23,7 +28,10 @@
       </tr>
       <tr>
         <th>日付</th>
-        <td>日付選択<td>
+        <td><%= f.fields_for :schedules do |s| %>
+              <%= s.date_field :fixed_day %>
+            <% end %> 
+        <td>
       </tr>
     </tbody>
   </table>
