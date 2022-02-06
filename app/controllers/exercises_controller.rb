@@ -2,9 +2,10 @@ class ExercisesController < ApplicationController
   before_action :set_exercise, only: %i{show edit update destroy}
   def index
     @exercises = Exercise.where(user_id: current_user.id)
+    @schedules = Schedule.where(fixed_day: Date.today)
   end
 
-  def show
+  def show 
   end
 
   def new

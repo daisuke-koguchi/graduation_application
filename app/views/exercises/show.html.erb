@@ -45,8 +45,8 @@
       </tr>
       <tr>
         <th>運動する日付</th>
-        <td ><% @exercise.schedules.each do |s|%>
-            <%= s.fixed_day.strftime("%Y年%-m月%-d日") %>
+        <td ><% @exercise.schedules.each do |schedule|%>
+            <%= schedule.fixed_day.strftime("%Y年%m月%d日") %>
             <% end%>
         </td>
       </tr>
