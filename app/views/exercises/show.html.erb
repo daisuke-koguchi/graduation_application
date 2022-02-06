@@ -21,15 +21,38 @@
         <% end %>
       </tr>
       <tr>
+        <th>運動の負荷量</th>
+        <td>
+          <% if @exercise.count != "0" %>
+            運動回数:<%= @exercise.count %>回
+          <% end %>
+          <% if @exercise.set_count != "0" %>
+            セット数:<%= @exercise.set_count %>セット
+          <% end %>
+          <% if @exercise.minute != "0" %>
+            時間:<%= @exercise.minute %>分
+          <% end %>
+          <% if @exercise.second != "0" %>
+            <%= @exercise.second %>秒
+          <% end %>
+          <br>
+            を目安に頑張って実施してください！
+        </td>
+      </tr>
+      <tr>
         <th>運動の方法</th>
         <td><%= @exercise.description %></td>
       </tr>
       <tr>
         <th>運動する日付</th>
-        <td>運動する日を表示</td>
+        <td ><% @exercise.schedules.each do |s|%>
+            <%= s.fixed_day.strftime("%Y年%-m月%-d日") %>
+            <% end%>
+        </td>
       </tr>
     </tbody>
   </table>
-  <%= link_to "戻る", :back %>
+  <%= link_to "戻る", :back ,class:'btn btn-info'%>
+  <%= link_to "マイページへ移動する",users_mypage_path(id: current_user.id),class:'btn btn-primary'%> 
 </div>
 
