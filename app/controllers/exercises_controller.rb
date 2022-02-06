@@ -23,6 +23,7 @@ class ExercisesController < ApplicationController
   end
 
   def edit
+    @exercise.schedules.build
   end
 
   def update
