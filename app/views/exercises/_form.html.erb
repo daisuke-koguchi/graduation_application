@@ -23,7 +23,10 @@
       </tr>
       <tr>
         <th>日付</th>
-        <td>日付選択<td>
+        <td><%= f.fields_for :schedules do |s| %>
+              <%= s.date_field :fixed_day %>
+            <% end %> 
+        <td>
       </tr>
     </tbody>
   </table>

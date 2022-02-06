@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2022_02_05_162200) do
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.date "scheduled_day", null: false
+    t.date "fixed_day"
     t.boolean "is_done", default: false, null: false
     t.bigint "exercise_id", null: false
     t.datetime "created_at", precision: 6, null: false

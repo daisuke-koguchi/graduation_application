@@ -9,7 +9,8 @@ class ExercisesController < ApplicationController
 
   def new
     @exercise = Exercise.new
-    
+    5.times{@exercise.schedules.build}
+
   end
 
   def create 
@@ -40,7 +41,9 @@ class ExercisesController < ApplicationController
   private 
   def exercise_params
     params.require(:exercise).permit(:name, :description, :image,:video,
-                                    :minute, :second, :count, :set_count)
+                                    :minute, :second, :count, :set_count,
+                                    schedules_attributes: [
+                                      :fixed_day, :is_done, :id])
   end
 
   def set_exercise 
