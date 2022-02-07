@@ -2,9 +2,10 @@ class ExercisesController < ApplicationController
   before_action :set_exercise, only: %i{show edit update destroy}
   def index
     @exercises = Exercise.where(user_id: current_user.id)
+    @schedules = Schedule.where(fixed_day: Date.today)
   end
 
-  def show
+  def show 
   end
 
   def new
@@ -27,7 +28,7 @@ class ExercisesController < ApplicationController
   end
 
   def update
-    if @exercise.update(exercise_params)
+    if @exercise.update(update_exercise_params)
       redirect_to exercises_path, notice: "運動内容を更新しました"
     else
       render :edit 
@@ -39,12 +40,23 @@ class ExercisesController < ApplicationController
     redirect_to exercises_path, notice: "運動内容を削除しました"
   end
 
+  def toggle
+    
+  end
+
   private 
   def exercise_params
     params.require(:exercise).permit(:name, :description, :image,:video,
                                     :minute, :second, :count, :set_count,
                                     schedules_attributes: [
                                       :fixed_day, :is_done, :id])
+  end
+
+  def update_exercise_params
+    params.require(:exercise).permit(:name, :description, :image,:video,
+                                    :minute, :second, :count, :set_count,
+                                    schedules_attributes: [
+                                      :fixed_day, :is_done, :_destroy, :id])
   end
 
   def set_exercise 

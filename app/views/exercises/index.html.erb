@@ -1,5 +1,9 @@
 <div class="container">
-  <table>
+
+  <%= render 'schedules/index', schedules: @schedules %>
+
+  <h1>今週実施するメニュー一覧</h1>
+  <table class="table">
     <thead>
       <tr>
         <th>写真</th>
@@ -7,21 +11,35 @@
         <th>運動負荷</th>
         <th>運動内容/動画を確認する</th>
         <th>編集する</th>
-        <th>削除する</th>
-        <th>運動内容/動画を確認する</th>
-        <th>実施/未実施</th>           
+        <th>削除する</th>          
       </tr>
-    </thead
-    ><tbody>
+    </thead>
+    <tbody>
     <% @exercises.each do |exercise|%>
       <tr>
-        <th></th>
+        <% if exercise.image? %>
+          <th><%= image_tag(exercise.image.thumb.url)%></th>
+        <% else %>
+          <th><%= image_tag('noimage.png',width:'40%',height: '40%')%></th>
+        <% end%>
         <th><%= exercise.name%></th>
-        <th></th>
+        <th>
+          <% if exercise.count != "0" %>
+            運動回数:<%= exercise.count %>回
+          <% end %>
+          <% if exercise.set_count != "0" %>
+            セット数:<%= exercise.set_count %>セット
+          <% end %>
+          <% if exercise.minute != "0" %>
+            時間:<%= exercise.minute %>分
+          <% end %>
+          <% if exercise.second != "0" %>
+            <%= exercise.second %>秒
+          <% end %>
+        </th>
+        <th><%= link_to "動画内容/動画を確認する", exercise_path(exercise.id) %></th> 
         <th><%= link_to "編集する", edit_exercise_path(exercise.id)%></th>
         <th><%= link_to "削除する", exercise_path(exercise.id), method: :delete, data: {confirm: "運動内容を削除しますか？"}%></th>
-        <th><%= link_to "動画内容/動画を確認する", exercise_path(exercise.id) %></th>          
-        <th></th>
       </tr>
     <% end %>    
     </tbody>
@@ -29,4 +47,3 @@
   <%= link_to "運動内容を登録する",new_exercise_path %>
   <%= link_to "戻る",users_mypage_path(id: current_user.id) %>
 </div>
-
