@@ -1,0 +1,6 @@
+<% if schedule.is_done == false %>
+  <%= button_to "未実施" ,{controller: :schedules, action: :create, id: schedule.id}, method: :post, remote: true %>
+<% else %>
+  <%= button_to "実施" ,{controller: :schedules, action: :destroy, id: schedule.id}, method: :delete, remote: true %>
+<% end %>
+

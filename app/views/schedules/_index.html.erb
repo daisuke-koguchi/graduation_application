@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <% @schedules.each do |schedule|%>
-      <% if current_user.id == schedule.exercise.user.id%>
+    <% if current_user.id == schedule.exercise.user.id%>
       <tr>
       <% if schedule.exercise.image? %>
         <th><%= image_tag(schedule.exercise.image.thumb.url)%></th>
@@ -33,7 +33,9 @@
           <% end %>
         </th>
         <th>
-        <%= link_to "未実施", {controller: :schedules, action: :toggle, id: schedule.id}, method: :post %>
+          <div id="button_<%= schedule.id %>">
+            <%= render 'schedules/both', {schedule: schedule} %>
+          </div>
         </th>
       </tr>
       <% end %>
