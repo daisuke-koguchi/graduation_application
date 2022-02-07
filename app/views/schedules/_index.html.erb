@@ -33,9 +33,7 @@
           <% end %>
         </th>
         <th>
-        <%= link_to("URL") do%>
-          <button>未実施<button>
-        <% end %>
+        <%= link_to "未実施", {controller: :schedules, action: :toggle, id: schedule.id}, method: :post %>
         </th>
       </tr>
       <% end %>
