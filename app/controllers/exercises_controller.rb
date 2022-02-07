@@ -28,7 +28,7 @@ class ExercisesController < ApplicationController
   end
 
   def update
-    if @exercise.update(exercise_params)
+    if @exercise.update(update_exercise_params)
       redirect_to exercises_path, notice: "運動内容を更新しました"
     else
       render :edit 
@@ -46,6 +46,13 @@ class ExercisesController < ApplicationController
                                     :minute, :second, :count, :set_count,
                                     schedules_attributes: [
                                       :fixed_day, :is_done, :id])
+  end
+
+  def update_exercise_params
+    params.require(:exercise).permit(:name, :description, :image,:video,
+                                    :minute, :second, :count, :set_count,
+                                    schedules_attributes: [
+                                      :fixed_day, :is_done, :_destroy, :id])
   end
 
   def set_exercise 
