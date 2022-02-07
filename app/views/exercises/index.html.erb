@@ -1,4 +1,7 @@
 <div class="container">
+
+  <%= render 'schedules/index', schedules: @schedules %>
+
   <h1>今週実施するメニュー一覧</h1>
   <table class="table">
     <thead>
@@ -44,45 +47,4 @@
   </table>
   <%= link_to "運動内容を登録する",new_exercise_path %>
   <%= link_to "戻る",users_mypage_path(id: current_user.id) %>
-
-<h1>本日<%= DateTime.now.strftime("%Y年%m月%d日")%>の運動内容</h1>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>写真</th>
-        <th>運動項目</th>
-        <th>運動負荷</th>
-        <th>実施/未実施</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @schedules.each do |schedule|%>
-        <% if current_user.id == schedule.exercise.user.id%>
-        <tr>
-        <% if schedule.exercise.image? %>
-          <th><%= image_tag(schedule.exercise.image.thumb.url)%></th>
-        <% else %>
-          <th><%= image_tag('noimage.png',width:'40%',height: '40%')%></th>
-        <% end%>
-          <th><%= schedule.exercise.name %></th>
-          <th>
-            <% if schedule.exercise.count != "0" %>
-              運動回数:<%= schedule.exercise.count %>回
-            <% end %>
-            <% if schedule.exercise.set_count != "0" %>
-              セット数:<%= schedule.exercise.set_count %>セット
-            <% end %>
-            <% if schedule.exercise.minute != "0" %>
-              時間:<%= schedule.exercise.minute %>分
-            <% end %>
-            <% if schedule.exercise.second != "0" %>
-              <%= schedule.exercise.second %>秒
-            <% end %>
-          </th>
-          <th>実施/未実施</th>
-        </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
 </div>

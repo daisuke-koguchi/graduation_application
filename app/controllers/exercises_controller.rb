@@ -40,6 +40,10 @@ class ExercisesController < ApplicationController
     redirect_to exercises_path, notice: "運動内容を削除しました"
   end
 
+  def toggle
+    
+  end
+
   private 
   def exercise_params
     params.require(:exercise).permit(:name, :description, :image,:video,
