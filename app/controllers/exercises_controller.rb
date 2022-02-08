@@ -40,7 +40,6 @@ class ExercisesController < ApplicationController
   end
 
   def graph
-
   end
 
   private 
