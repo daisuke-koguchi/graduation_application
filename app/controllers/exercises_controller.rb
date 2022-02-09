@@ -2,7 +2,7 @@ class ExercisesController < ApplicationController
   before_action :set_exercise, only: %i{show edit update destroy}
   def index
     @exercises = Exercise.where(user_id: current_user.id)
-    @schedules = Schedule.where(fixed_day: Date.today)
+    @schedules = Schedule.where(fixed_day: Date.today)    
   end
 
   def show 
@@ -11,7 +11,6 @@ class ExercisesController < ApplicationController
   def new
     @exercise = Exercise.new
     @exercise.schedules.build
-
   end
 
   def create 
@@ -38,10 +37,14 @@ class ExercisesController < ApplicationController
   def destroy
     @exercise.destroy 
     redirect_to exercises_path, notice: "運動内容を削除しました"
+    
+
   end
 
-  def toggle
-    
+  def graph
+    @this_week_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: Date.today.beginning_of_week..Time.now.end_of_week})
+    @last_week_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: (Date.today - 1.week).beginning_of_week..(Time.now - 1.week).end_of_week})
+    @this_month_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: Time.now.all_month})
   end
 
   private 

@@ -28,13 +28,13 @@
       </tr>
       <tr>
         <th>日付</th>
-        <td><%= f.fields_for :schedules do |s| %>
-              <%= render 'schedule_fields', f: s %>
-            <% end %> 
-            <div class="links">
-              <%= link_to_add_association "日付を追加", f, :schedules %>
-            </div>  
-            
+        <td>
+          <%= f.fields_for :schedules do |s| %>
+            <%= render 'schedule_fields', f: s %>
+          <% end %> 
+          <div class="links">
+            <%= link_to_add_association "日付を追加", f, :schedules %>
+          </div>  
         <td>
       </tr>
     </tbody>
