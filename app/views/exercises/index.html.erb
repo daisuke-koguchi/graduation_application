@@ -1,7 +1,6 @@
 <div class="container">
 
   <%= render 'schedules/index', schedules: @schedules %>
-
   <h1>今週実施するメニュー一覧</h1>
   <table class="table">
     <thead>
@@ -47,4 +46,5 @@
   <%= link_to "運動記録を見る", graph_exercises_path %>
   <%= link_to "運動内容を登録する",new_exercise_path %>
   <%= link_to "戻る",users_mypage_path(id: current_user.id) %>
+  <%= paginate @exercises %>
 </div>
