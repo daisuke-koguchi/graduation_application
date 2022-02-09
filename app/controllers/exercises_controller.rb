@@ -3,6 +3,7 @@ class ExercisesController < ApplicationController
   def index
     @exercises = Exercise.where(user_id: current_user.id)
     @schedules = Schedule.where(fixed_day: Date.today)
+    
   end
 
   def show 
@@ -40,6 +41,17 @@ class ExercisesController < ApplicationController
   end
 
   def graph
+    @data = current_user.exercises.includes(:schedules).pluck(:fixed_day, :is_done)
+    @result = []
+    @data.sort {|a, b| a[0] <=> b[0] }.each do |data|
+      if data[1] == true 
+        data[1] = 1
+      else
+        data[1] = 0
+      end
+      @result.push(data[0].strftime("%m月%d日"),data[1])
+    end
+    @graph = @result.each_slice(2).to_a
   end
 
   private 
