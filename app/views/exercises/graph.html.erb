@@ -1,4 +1,7 @@
 <div class="container">
-  <%=  @graph %>
+<h1>今週の運動</h1>
+<%= column_chart @data.group_by_day(:fixed_day).count %>
+<h1>先週の運動</h1>
+
 </div>
 
