@@ -1,4 +1,9 @@
 <h1>全ての運動内容</h1>
+ <%= search_form_for @q do |f| %>
+  <%= f.date_field :fixed_day_gteq, class: 'form-control' %>
+  <%= f.date_field :fixed_day_lteq_end_of_day, class: 'form-control' %>
+  <%= f.submit "検索"%>
+<% end %>
 <table class="table">
   <thead>
     <tr>
@@ -33,7 +38,7 @@
             <%= schedule.exercise.second %>秒
           <% end %>
         </th>
-        <th><%= schedules.fixed_day%></th>
+        <th><%= schedule.fixed_day%></th>
         <th>
           <div id="button_<%= schedule.id %>">
             <%= render 'schedules/both', {schedule: schedule} %>
