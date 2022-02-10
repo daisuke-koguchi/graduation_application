@@ -1,10 +1,11 @@
-<h1>本日<%= DateTime.now.strftime("%Y年%m月%d日")%>の運動内容</h1>
+<h1>全ての運動内容</h1>
 <table class="table">
   <thead>
     <tr>
       <th>写真</th>
       <th>運動項目</th>
       <th>運動負荷</th>
+      <th>運動実施日</th>
       <th>実施/未実施</th>
     </tr>
   </thead>
@@ -32,6 +33,7 @@
             <%= schedule.exercise.second %>秒
           <% end %>
         </th>
+        <th><%= schedules.fixed_day%></th>
         <th>
           <div id="button_<%= schedule.id %>">
             <%= render 'schedules/both', {schedule: schedule} %>
