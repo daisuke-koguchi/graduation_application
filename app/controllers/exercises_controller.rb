@@ -4,8 +4,7 @@ class ExercisesController < ApplicationController
     @q = Exercise.ransack(params[:q])
     @exercises = @q.result(distinct: true).page(params[:page]).per(5)
 
-    @schedules = Schedule.where(fixed_day: Date.today).page(params[:schedule_page]).per(5)
-  end
+   
 
   def show 
   end
