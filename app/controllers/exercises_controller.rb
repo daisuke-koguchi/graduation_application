@@ -1,7 +1,11 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: %i{show edit update destroy}
   def index
-    @exercises = Exercise.where(user_id: current_user.id).page(params[:page]).per(5)
+    #@exercises = Exercise.where(user_id: current_user.id).page(params[:page]).per(5)
+
+    @q = Exercise.ransack(params[:q])
+    @exercises = @q.result(distinct: true).page(params[:page]).per(5)
+
     @schedules = Schedule.where(fixed_day: Date.today).page(params[:schedule_page]).per(5)
   end
 
