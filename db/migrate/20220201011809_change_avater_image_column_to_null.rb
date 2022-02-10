@@ -4,6 +4,6 @@ class ChangeAvaterImageColumnToNull < ActiveRecord::Migration[6.0]
   end
 
   def down 
-    change_column_null :users, avatar_image, false 
+    change_column_null :users, :avatar_image, false 
   end
 end
