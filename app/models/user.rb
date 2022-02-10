@@ -4,7 +4,7 @@ class User < ApplicationRecord
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable 
-         
+
   def update_without_current_password(params, *options)
     params.delete(:current_password)
     
@@ -53,6 +53,13 @@ class User < ApplicationRecord
       user.admin = true 
     end
   end
-
   mount_uploader :avatar_image, AvaterImageUploader
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w(first_name last_name)
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
 end

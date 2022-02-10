@@ -1,10 +1,15 @@
 <div class="container">
   <h1><%= current_user.first_name %><%= current_user.last_name %>さんのコミュニティ</h1>
+  <%= search_form_for @q do |f|%>
+    <%= f.label :first_name_or_last_name %>
+    <%= f.search_field :first_name_or_last_name_cont %>
+    <%= f.submit "検索"%>
+  <% end %>
   <table>
     <thead>
       <tr>
         <th>プロフィール画像</th>
-        <th>姓名</th>
+        <th><%= sort_link(@q, :first_name,"姓名")%></th>
         <th>プロフィールを確認する</th>
         <th>メッセージを確認</th>
       </tr>

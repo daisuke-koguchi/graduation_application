@@ -1,12 +1,19 @@
 <div class="container">
-
-  <%= render 'schedules/index', schedules: @schedules %>
+  <%= render 'schedules/index',local:{ schedules: @schedules} %>
+  <%= link_to "その他の日の運動内容を確認する",schedules_path%>
   <h1>今週実施するメニュー一覧</h1>
+
+  <%= search_form_for @q do |f| %>
+    <%= f.label :name_cont %>
+    <%= f.search_field :name_cont %>
+    <%= f.submit "検索"%>
+  <% end %>
+
   <table class="table">
     <thead>
       <tr>
         <th>写真</th>
-        <th>運動項目</th>
+        <th><%= sort_link(@q, :name ,"運動項目")%></th>
         <th>運動負荷</th>
         <th>運動内容/動画を確認する</th>
         <th>編集する</th>

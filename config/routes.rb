@@ -19,8 +19,9 @@ Rails.application.routes.draw do
   resources :conversations do 
     resources :messages 
   end
-  post 'schedules/create/:id' => 'schedules#create'
-  delete 'schedules/destroy/:id' => 'schedules#destroy'
+  resources :schedules ,only: %i{ index create destroy}
+  #post 'schedules/create/:id' => 'schedules#create'
+  #delete 'schedules/destroy/:id' => 'schedules#destroy'
   resources :exercises do
     collection do 
       get 'graph'
