@@ -18,15 +18,21 @@ RSpec.describe 'dvevise機能', type: :system do
       expect(page).to have_content('Confirm') #レイアウト変更時修正必要
       end
     end
-    context '新規会員会員登録画面で登録画面を押した場合'do 
-
+    context '新規会員登録確認画面で登録するを押した場合'do 
     it '登録完了画面に移動する' do
       click_on 'アカウント登録'
       click_on '登録する'
       expect(page).to have_content('登録が完了しました') #レイアウト変更時修正必要
       end
     end
-
+    context '新規会員登録確認画面で修正するを押した場合' do
+      it '新規登録画面に移動する' do 
+        click_on 'アカウント登録'
+        click_on '修正する'
+        expect(page).to have_content('ログイン') #レイアウト変更時修正必要
+        expect(page).to_not have_content('登録が完了しました')
+      end
+    end
   end
   describe 'ログイン機能' do
 
