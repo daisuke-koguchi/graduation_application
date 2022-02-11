@@ -58,6 +58,16 @@ RSpec.describe 'dvevise機能', type: :system do
         expect(page).to have_content('エラーが発生したため ユーザー は保存されませんでした。')
       end
     end
+    context '新規会員登録実施した後、パスワード再設定ページへ移動し、パスワードの再設定を送信するを押すと' do 
+      it 'パスワードの再設定のメールが送信される' do
+        click_on 'アカウント登録'
+        click_on '登録する'
+        visit new_user_password_path 
+        fill_in 'user[email]',with: user.email 
+        expect { click_on 'パスワードの再設定方法を送信する'}.to change{ ActionMailer::Base.deliveries.size }.by(1)
+        expect(page).to have_content('パスワードの再設定について数分以内にメールでご連絡いたします。')
+      end
+    end
   end
   describe 'ログイン機能' do
     let!(:user){FactoryBot.build(:login_user)}
