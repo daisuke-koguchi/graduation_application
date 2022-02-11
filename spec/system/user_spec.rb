@@ -93,5 +93,34 @@ RSpec.describe 'dvevise機能', type: :system do
         expect(page).to have_content('Eメールまたはパスワードが違います。')
       end
     end
+    context 'ログインした状態でログアウトボタンを押すと' do
+      it 'ログアウトされる' do
+        fill_in 'user[email]',with: user.email
+        fill_in 'user[password]', with: user.password
+        find('input[type="submit"]').click
+        click_on 'ログアウト'
+        expect(page).to have_content('ログアウトしました')
+      end
+    end
+  end
+  describe 'ゲストログイン機能' do
+    context 'ゲストログイン（閲覧用）を押すと' do
+      it 'ログインでき、その後ログアウトを押すとログアウトされる' do 
+        visit root_path
+        click_on 'ゲストログイン（閲覧用）'
+        expect(page).to have_content('ログインしました')
+        click_on 'ログアウト'
+        expect(page).to have_content('ログアウトしました')
+      end
+    end
+    context 'ゲスト管理者ログイン（閲覧用）を押すと' do
+      it 'ログインでき、その後ログアウトを押すとログアウトされる' do 
+        visit root_path
+        click_on 'ゲスト管理者ログイン(閲覧用)'
+        expect(page).to have_content('ログインしました')
+        click_on 'ログアウト'
+        expect(page).to have_content('ログアウトしました')
+      end
+    end
   end
 end
