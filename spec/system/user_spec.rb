@@ -40,26 +40,58 @@ RSpec.describe 'dvevise機能', type: :system do
         expect(page).to have_content('本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。')
       end
     end
-      context '新規会員登録実施した後、アカウント確認メール再送画面で、アカウント確認メール再送ボタンを押すと' do 
-        it 'アカウント確認メールが再送される' do 
-          click_on 'アカウント登録'
-          click_on '登録する'
-          visit new_user_confirmation_path 
-          fill_in 'user[email]',with: user.email
-          expect { click_on 'アカウント確認メール再送'}.to change{ ActionMailer::Base.deliveries.size }.by(1)
-          expect(page).to have_content('アカウントの有効化について数分以内にメールでご連絡します。')
-        end
+    context '新規会員登録実施した後、アカウント確認メール再送画面で、アカウント確認メール再送ボタンを押すと' do 
+      it 'アカウント確認メールが再送される' do 
+        click_on 'アカウント登録'
+        click_on '登録する'
+        visit new_user_confirmation_path 
+        fill_in 'user[email]',with: user.email
+        expect { click_on 'アカウント確認メール再送'}.to change{ ActionMailer::Base.deliveries.size }.by(1)
+        expect(page).to have_content('アカウントの有効化について数分以内にメールでご連絡します。')
       end
-      context '新規会員登録実施せずに、アカウント確認メール再送画面で、アカウント確認メール再送ボタンを押すと' do 
-        it 'アカウント確認メールが再送されない' do 
-          visit new_user_confirmation_path 
-          fill_in 'user[email]',with: user.email
-          expect { click_on 'アカウント確認メール再送'}.to change{ ActionMailer::Base.deliveries.size }.by(0)
-          expect(page).to have_content('エラーが発生したため ユーザー は保存されませんでした。')
-        end
+    end
+    context '新規会員登録実施せずに、アカウント確認メール再送画面で、アカウント確認メール再送ボタンを押すと' do 
+      it 'アカウント確認メールが再送されない' do 
+        visit new_user_confirmation_path 
+        fill_in 'user[email]',with: user.email
+        expect { click_on 'アカウント確認メール再送'}.to change{ ActionMailer::Base.deliveries.size }.by(0)
+        expect(page).to have_content('エラーが発生したため ユーザー は保存されませんでした。')
       end
+    end
   end
   describe 'ログイン機能' do
-
+    let!(:user){FactoryBot.build(:login_user)}
+    before do
+      user = create(:login_user)
+      visit new_user_session_path
+    end
+    context 'ログイン画面でメールアドレスとパスワードを入力して、ログインを押した場合' do
+      it 'ログインすることができる'do
+        fill_in 'user[email]',with: user.email
+        fill_in 'user[password]', with: user.password
+        find('input[type="submit"]').click
+        expect(page).to have_content('ログインしました')
+      end
+    end
+    context 'ログイン画面で何も入力せずに、ログインを押した場合' do
+      it 'ログインできず、エラーメッセージが表示される' do
+        find('input[type="submit"]').click
+        expect(page).to have_content('Eメールまたはパスワードが違います。')
+      end
+    end
+    context 'ログイン画面で誤ったパスワードを入力して、ログインを押した場合' do
+      it 'ログインできず、エラーメッセージが表示される' do
+        fill_in 'user[password]',with: '123456'
+        find('input[type="submit"]').click
+        expect(page).to have_content('Eメールまたはパスワードが違います。')
+      end
+    end
+    context 'ログイン画面で誤ったメールアドレスを入力して、ログインを押した場合'do 
+      it 'ログインできず、エラーメッセージが表示される' do  
+        fill_in 'user[email]',with: 'test@example.com'
+        find('input[type="submit"]').click
+        expect(page).to have_content('Eメールまたはパスワードが違います。')
+      end
+    end
   end
 end
