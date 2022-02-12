@@ -1,7 +1,7 @@
 <div class="container">
 
 
-  <h1><%= @user.first_name%><% @user.last_name %>さんのマイページ</h1>
+  <h1><%= @user.first_name%><%= @user.last_name %>さんのマイページ</h1>
 
 <%# 運動項目のリンク作成%>
 <%= link_to "運動を記録する", exercises_path %>

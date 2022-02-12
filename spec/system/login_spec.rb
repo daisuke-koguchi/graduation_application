@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe 'dvevise機能', type: :system do
   describe '新規会員登録機能' do
-    let!(:user){FactoryBot.build(:user)}
+    let!(:user){FactoryBot.build(:model_user)}
     before do 
       visit new_user_registration_path
         fill_in 'user[first_name]', with: user.first_name
