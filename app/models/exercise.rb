@@ -12,4 +12,7 @@ class Exercise < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     []
   end
+  def self.default_timezone
+    :utc
+  end
 end

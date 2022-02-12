@@ -2,7 +2,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length:{in: 1..20}
   validates :last_name, presence: true, length:{in: 1..20}
   validates :introduction, length: { maximum: 2000}
-
+  
   has_many :exercises, dependent: :destroy
   has_many :messages, dependent: :destroy
   
