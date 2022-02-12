@@ -1,135 +1,103 @@
 require 'rails_helper'
-RSpec.describe 'dvevise機能', type: :system do
-  describe '新規会員登録機能' do
-    let!(:user){FactoryBot.build(:user)}
-    before do 
-      visit new_user_registration_path
-        fill_in 'user[first_name]', with: user.first_name
-        fill_in 'user[last_name]', with: user.last_name
-        attach_file 'user[avatar_image]', "#{Rails.root}/spec/fixtures/test.png"
-        fill_in 'user[introduction]', with: user.introduction
-        fill_in 'user[email]',with: user.email
-        fill_in 'user[password]',with: user.password
-        fill_in 'user[password_confirmation]',with:user.password_confirmation
-    end
-    context '新規会員登録画面でユーザが入力した場合' do 
-      it '確認画面にユーザーの登録情報が表示される' do
-        click_on 'アカウント登録'
-      expect(page).to have_content('Confirm') #レイアウト変更時修正必要
-      end
-    end
-    context '新規会員登録確認画面で登録するを押した場合'do 
-    it '登録完了画面に移動する' do
-      click_on 'アカウント登録'
-      click_on '登録する'
-      expect(page).to have_content('登録が完了しました') #レイアウト変更時修正必要
-      end
-    end
-    context '新規会員登録確認画面で修正するを押した場合' do
-      it '新規登録画面に移動する' do 
-        click_on 'アカウント登録'
-        click_on '修正する'
-        expect(page).to have_content('ログイン') #レイアウト変更時修正必要
-        expect(page).to_not have_content('登録が完了しました')
-      end
-    end
-    context '新規会員登録確認画面で登録するを押した場合' do 
-      it '本人確認用のメールアドレスが送信される。' do
-        click_on 'アカウント登録'
-        expect {click_on '登録する'}.to change { ActionMailer::Base.deliveries.size }.by(1)
-        expect(page).to have_content('本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。')
-      end
-    end
-    context '新規会員登録実施した後、アカウント確認メール再送画面で、アカウント確認メール再送ボタンを押すと' do 
-      it 'アカウント確認メールが再送される' do 
-        click_on 'アカウント登録'
-        click_on '登録する'
-        visit new_user_confirmation_path 
-        fill_in 'user[email]',with: user.email
-        expect { click_on 'アカウント確認メール再送'}.to change{ ActionMailer::Base.deliveries.size }.by(1)
-        expect(page).to have_content('アカウントの有効化について数分以内にメールでご連絡します。')
-      end
-    end
-    context '新規会員登録実施せずに、アカウント確認メール再送画面で、アカウント確認メール再送ボタンを押すと' do 
-      it 'アカウント確認メールが再送されない' do 
-        visit new_user_confirmation_path 
-        fill_in 'user[email]',with: user.email
-        expect { click_on 'アカウント確認メール再送'}.to change{ ActionMailer::Base.deliveries.size }.by(0)
-        expect(page).to have_content('エラーが発生したため ユーザー は保存されませんでした。')
-      end
-    end
-    context '新規会員登録実施した後、パスワード再設定ページへ移動し、パスワードの再設定を送信するを押すと' do 
-      it 'パスワードの再設定のメールが送信される' do
-        click_on 'アカウント登録'
-        click_on '登録する'
-        visit new_user_password_path 
-        fill_in 'user[email]',with: user.email 
-        expect { click_on 'パスワードの再設定方法を送信する'}.to change{ ActionMailer::Base.deliveries.size }.by(1)
-        expect(page).to have_content('パスワードの再設定について数分以内にメールでご連絡いたします。')
-      end
-    end
-  end
-  describe 'ログイン機能' do
-    let!(:user){FactoryBot.build(:login_user)}
+RSpec.describe 'ユーザー機能', type: :system do
+  describe '会員表示機能' do
+    let!(:login_user){build(:user)}
     before do
-      user = create(:login_user)
+      @login_user = create(:login_user)
       visit new_user_session_path
+      fill_in 'user[email]',with: @login_user.email
+      fill_in 'user[password]', with: @login_user.password
+      find('input[type="submit"]').click
     end
-    context 'ログイン画面でメールアドレスとパスワードを入力して、ログインを押した場合' do
-      it 'ログインすることができる'do
-        fill_in 'user[email]',with: user.email
-        fill_in 'user[password]', with: user.password
-        find('input[type="submit"]').click
-        expect(page).to have_content('ログインしました')
+    context 'トップページから、マイページへ移動するをクリックすると' do 
+      it '自分の名前が表示されるマイページへ移動する' do 
+        click_on 'マイページへ移動する'
+        expect(page).to have_content("テスト2ユーザー2さんのマイページ")
       end
     end
-    context 'ログイン画面で何も入力せずに、ログインを押した場合' do
-      it 'ログインできず、エラーメッセージが表示される' do
-        find('input[type="submit"]').click
-        expect(page).to have_content('Eメールまたはパスワードが違います。')
+    context 'マイページから、プロフィールの編集/確認するを押すと' do
+      it '自分のプロフィールが表示される' do
+        click_on 'マイページへ移動する'
+        click_on 'プロフィールの編集/確認する'
+        expect(page).to have_content("テスト2ユーザー2さんのプロフィール")
       end
     end
-    context 'ログイン画面で誤ったパスワードを入力して、ログインを押した場合' do
-      it 'ログインできず、エラーメッセージが表示される' do
-        fill_in 'user[password]',with: '123456'
-        find('input[type="submit"]').click
-        expect(page).to have_content('Eメールまたはパスワードが違います。')
-      end
-    end
-    context 'ログイン画面で誤ったメールアドレスを入力して、ログインを押した場合'do 
-      it 'ログインできず、エラーメッセージが表示される' do  
-        fill_in 'user[email]',with: 'test@example.com'
-        find('input[type="submit"]').click
-        expect(page).to have_content('Eメールまたはパスワードが違います。')
-      end
-    end
-    context 'ログインした状態でログアウトボタンを押すと' do
-      it 'ログアウトされる' do
-        fill_in 'user[email]',with: user.email
-        fill_in 'user[password]', with: user.password
-        find('input[type="submit"]').click
-        click_on 'ログアウト'
-        expect(page).to have_content('ログアウトしました')
+    context 'マイページから、他のユーザーのページにアクセスすると' do 
+      it 'マイページにリダイレクトされ、アクセス権限がありませんと表示される' do
+        click_on 'マイページへ移動する'
+        @user = FactoryBot.create(:user, email:"testA@example.com")
+        visit users_mypage_path(id: @user.id)
+        expect(page).to have_content("アクセス権限がありません")
       end
     end
   end
-  describe 'ゲストログイン機能' do
-    context 'ゲストログイン（閲覧用）を押すと' do
-      it 'ログインでき、その後ログアウトを押すとログアウトされる' do 
-        visit root_path
-        click_on 'ゲストログイン（閲覧用）'
-        expect(page).to have_content('ログインしました')
-        click_on 'ログアウト'
-        expect(page).to have_content('ログアウトしました')
+  describe '会員一覧表示機能' do
+    let!(:login_user){build(:user)}
+    before do
+      @user = FactoryBot.build(:user)
+      @login_test_user = FactoryBot.build(:login_test_user)
+      @login_user = create(:login_user)
+      visit new_user_session_path
+      fill_in 'user[email]',with: @login_user.email
+      fill_in 'user[password]', with: @login_user.password
+      find('input[type="submit"]').click
+    end
+    context 'マイページから、仲間と交流するをクリックすると' do 
+      it '新規登録したユーザーが表示される' do 
+        click_on 'マイページへ移動する'
+        click_on '仲間と交流する'
+        expect(page).to_not have_content("テスト2ユーザーさんのコミュニティ")
       end
     end
-    context 'ゲスト管理者ログイン（閲覧用）を押すと' do
-      it 'ログインでき、その後ログアウトを押すとログアウトされる' do 
-        visit root_path
-        click_on 'ゲスト管理者ログイン(閲覧用)'
-        expect(page).to have_content('ログインしました')
-        click_on 'ログアウト'
-        expect(page).to have_content('ログアウトしました')
+    context 'マイページでユーザーの検索フォームにて姓で検索を行うと' do
+      it '入力した姓に一致するユーザーが表示される' do 
+        click_on 'マイページへ移動する'
+        click_on '仲間と交流する'
+        fill_in 'q[first_name_or_last_name_cont]', with: @user.first_name
+        click_on '検索'
+        sleep 0.5
+        expect(page).to have_content("テスト1")
+        expect(page).to_not have_content("テスト3")
+      end
+    end
+      context 'マイページでユーザーの検索フォームにて名で検索を行うと' do
+        it '入力した姓に一致するユーザーが表示される' do 
+          click_on 'マイページへ移動する'
+          click_on '仲間と交流する'
+          fill_in 'q[first_name_or_last_name_cont]', with: @user.last_name
+          click_on '検索'
+          expect(page).to have_content("ユーザー1")
+          expect(page).to_not have_content("ユーザー3")
+        end
+      end
+  end
+  describe '会員編集・削除機能' do 
+    before do
+      @login_user = create(:login_user)
+      visit new_user_session_path
+      fill_in 'user[email]',with: @login_user.email
+      fill_in 'user[password]', with: @login_user.password
+      find('input[type="submit"]').click
+    end
+    context 'プロフィールページからプロフィールを編集するをクリックすると'do
+      it '自分の名前が表示されるマイページへ移動する' do 
+        click_on 'マイページへ移動する'
+        click_on 'プロフィールの編集/確認する'
+        click_on 'プロフィールを編集する'
+        fill_in 'user[first_name]', with: "テスト4"
+        fill_in 'user[last_name]', with: "テスト４"
+        click_on "更新"
+        expect(page).to have_content("アカウント情報を変更しました。")
+      end
+    end 
+    context 'プロフィールページから退会するをクリックすると'do 
+      it '退会され、トップページにリダイレクトされる' do 
+        sleep 0.5
+        click_on 'マイページへ移動する'
+        click_on 'プロフィールの編集/確認する'
+        click_on '退会する'
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to have_content("アカウントを削除しました。またのご利用をお待ちしております。")
       end
     end
   end
