@@ -1,8 +1,26 @@
 <div class="container">
-  <h1>トップページ</h1>
+  <h1>Rehamo</h1>
+    
+    <div>
+      <h4>Rehamoへようこそ</h4>
+      <ul>
+        <li>Rehamoはリハビリに対するモチベーションを維持できることを目的として、</li>
+        <li>リハビリに励まれている利用者様を支援するためのアプリケーションです。</li>
 
-  <% if user_signed_in? %>
-    <%= link_to "マイページへ移動する",users_mypage_path(id: current_user.id)%> 
-  <% end %>
+        <li>リハビリを頑張っている仲間やセラピストと励まし合いながら運動をすることが出来ます。</li>
+        <li>運動メニューを写真と動画で確認しながら実施することが出来ます。</li>
+        <li>運動の記録を保存しすることができます。記録をグラフで確認することが出来るので、変化を確認できます。</li>
+
+        <li>ぜひ、ご参加ください！</li>
+      </ul>
+    </div>
+    <div>
+      <% if user_signed_in? %>
+        <%= link_to "マイページへ移動する",users_mypage_path(id: current_user.id)%> 
+      <% else  %>
+        <%= link_to "新規会員登録", new_user_registration_path ,class:'nav-link' %>
+        <%= link_to "ログイン", new_user_session_path ,class:'nav-link' %>
+      <% end %>
+    </div>
 </div>
 
