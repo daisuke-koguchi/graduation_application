@@ -6,9 +6,9 @@
     <div class="col-12 col-md-6 form-group">
       <%= search_form_for @q do |f|%>
         <%= f.label :first_name_or_last_name %>
-        <small class="form-text">登録されたご利用者さまを姓また名で検索できます。</small>
         <%= f.search_field :first_name_or_last_name_cont, class: "form-control form-control-lg ",placeholder: "姓 または 名 を入力" %>
-        <%= f.submit "検索"%>
+        <small class="form-text">登録されたご利用者さまを姓また名で検索できます。</small>
+        <%= f.submit "検索",class:'btn btn-secondary btn-lg'%>
       <% end %>
     </div>
     <div class="col-12">
@@ -19,7 +19,8 @@
         <h6 class="card-text">相手のプロフィールを確認するときは、プロフィールを確認するボタンを押してみましょう。</h6>
         <h6 class="dard-text">プロフィールを確認するボタンを押すとメッセージを送信することができます。</h6>
         <h6 class="dard-text">姓名ボタンを押すと名前を（昇順▲ 降順▼）で並び替えられます。</h6>
-          <table class="table">
+        <div class="table-responsive-md">
+          <table class="table text-nowrap">
             <thead>
               <tr>
                 <th style="width: 30%">プロフィール画像</th>
@@ -39,14 +40,15 @@
                   <% end %>
                     <td><%= user.first_name %><%= user.last_name %>さん</td>
                   <% if user.id != current_user.id %>
-                    <td><%= link_to "プロフィールを確認する ", user ,class:'btn btn-info'%></td>
-                    <td><%= link_to 'メッセージを確認する', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post ,class:'btn btn-primary'%></td>
+                    <td><%= link_to "プロフィールを確認する ", user ,class:'btn btn-info btn-lg '%></td>
+                    <td><%= link_to 'メッセージを確認する', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post ,class:'btn btn-primary  btn-lg'%></td>
                   <% end%>
                 </tr>
                 <% end %>
               <% end %>
             </tbody>
           </table>
+          </div>
         </div>
       </div>
       <%= paginate @users %>

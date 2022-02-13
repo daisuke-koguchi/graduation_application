@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
       @messages.where.not(user_id: current_user.id).update_all(read: true)
     end
 
-    @messages = @messages.order(:created_at)
+    @messages = @messages.order(created_at: :desc).page(params[:page]).per(11)
     @message = @conversation.messages.build
   end
 
