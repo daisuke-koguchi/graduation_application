@@ -15,7 +15,7 @@ RSpec.describe 'dvevise機能', type: :system do
     context '新規会員登録画面でユーザが入力した場合' do 
       it '確認画面にユーザーの登録情報が表示される' do
         click_on 'アカウント登録'
-      expect(page).to have_content('Confirm') #レイアウト変更時修正必要
+      expect(page).to have_content('プロフィール確認画面') #レイアウト変更時修正必要
       end
     end
     context '新規会員登録確認画面で登録するを押した場合'do 

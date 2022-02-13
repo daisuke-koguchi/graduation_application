@@ -1,43 +1,49 @@
-<div class="box">
-  <h2>Confirm</h2>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <div class="field">
-      <%= f.label :first_name %>
-      <%= f.hidden_field :first_name%>
-      <%= @user.first_name%>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>プロフィール確認画面</h2>
+    </div>
+    <div class="col-12">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="form-group ">
+          <%= f.label :first_name %>
+          <%= f.hidden_field :first_name, class:"form-control-plaintext " %>
+          <%= @user.first_name%>
+      </div>
+    
+      <div class="form-group ">
+          <%= f.label :last_name %>
+          <%= f.hidden_field :last_name, class:"form-control-plaintext "%>
+          <%= @user.last_name%>
+      </div>
+    
+      <div class="form-group ">
+          <%= f.label :avatar_image %>
+          <%= f.hidden_field :avatar_image_cache %>
+          <%= image_tag(@user.avatar_image.url) if @user.avatar_image && @user.avatar_image.url %>
+      </div>
+    
+      <div class="form-group ">
+          <%= f.label :introduction %>
+          <%= f.hidden_field :introduction,class:"form-control-plaintext "%>
+          <%= @user.introduction%>
+      </div>
+    
+      <div class="form-group ">
+          <%= f.label :email %>
+          <%= f.hidden_field :email, class:"form-control-plaintext "%>
+          <%= @user.email %>
+      </div>
+    
+      <div class="form-group ">
+          <%= f.label :password %>
+          <%= f.hidden_field :password, class:"form-control-plaintext "%>
+          <%= @user.password %>
+      </div>
+    
+      <%= f.submit "修正する", name: :back %>
+      <%= f.submit "登録する" %>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-      <%= f.label :last_name %>
-      <%= f.hidden_field :last_name%>
-      <%= @user.last_name%>
-  </div>
-
-  <div class="field">
-      <%= f.label :avatar_image %>
-      <%= f.hidden_field :avatar_image_cache %>
-      <%= image_tag(@user.avatar_image.url) if @user.avatar_image && @user.avatar_image.url %>
-  </div>
-
-  <div class="field">
-      <%= f.label :introduction %>
-      <%= f.hidden_field :introduction %>
-      <%= @user.introduction%>
-  </div>
-
-  <div class="field">
-      <%= f.label :email %>
-      <%= f.hidden_field :email%>
-      <%= @user.email %>
-  </div>
-
-  <div class="field">
-      <%= f.label :password %>
-      <%= f.hidden_field :password%>
-      <%= @user.password %>
-  </div>
-
-  <%= f.submit "修正する", name: :back %>
-  <%= f.submit "登録する" %>
-  <% end %>
 </div>
