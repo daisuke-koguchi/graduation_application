@@ -64,7 +64,7 @@ RSpec.describe 'dvevise機能', type: :system do
         click_on '登録する'
         visit new_user_password_path 
         fill_in 'user[email]',with: user.email 
-        expect { click_on 'パスワードの再設定方法を送信する'}.to change{ ActionMailer::Base.deliveries.size }.by(1)
+        expect { click_on 'パスワードの再設定方法をメールで送信する'}.to change{ ActionMailer::Base.deliveries.size }.by(1)
         expect(page).to have_content('パスワードの再設定について数分以内にメールでご連絡いたします。')
       end
     end

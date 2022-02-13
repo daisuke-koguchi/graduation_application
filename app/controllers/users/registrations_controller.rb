@@ -19,6 +19,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     users_sign_up_complete_path(resource)
   end
 
+  def after_update_path_for(resource)
+    user_path(resource)
+  end
+
   def destroy
       resource.soft_delete
       Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
@@ -28,15 +32,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def ensure_normal_or_admin_user 
-      if resource.email == 'guest@example.com' || resource.email == 'admin_guest@example.com'
-          redirect_to root_path, alert: "ゲストユーザーは編集・削除できません"
-      end
+    if resource.email == 'guest@example.com' || resource.email == 'admin_guest@example.com'
+        redirect_to root_path, alert: "ゲストユーザーは編集・削除できません"
+    end
   end
 
   protected
-
   def update_resource(resource, params)
     resource.update_without_current_password(params)
   end
-
 end
