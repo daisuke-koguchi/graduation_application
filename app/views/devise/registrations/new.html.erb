@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-12">
       <h2><%= t('.sign_up') %></h2>
@@ -34,13 +34,13 @@
         <div class="form-group">
           <%= f.label :email %>
           <small class="form-text">ご利用されているメールアドレスをご入力ください。</small>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg",placeholder: "rehamo@example.com" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg", placeholder: "例) rehamo@example.com" %>
         </div>
           <br>
         <div class="form-group">
           <%= f.label :password %>
           <small class="form-text">パスワードは半角英数字6文字以上でご登録できます。</small>  
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-lg" ,placeholder: "AbcDef0123"%>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-lg" ,placeholder: "例) AbcDef0123"%>
         </div>
           <br>
         <div class="form-group">
@@ -50,7 +50,7 @@
         </div>
           <br>
         <div class="actions">
-          <%= f.submit t('.sign_up') %>
+          <%= f.submit t('.sign_up') ,class:'btn btn-primary'%>
         </div>
       <% end %>
       <%= render "devise/shared/links" %>
