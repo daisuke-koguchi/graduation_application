@@ -50,14 +50,14 @@ class ExercisesController < ApplicationController
   def exercise_params
     params.require(:exercise).permit(:name, :description, :image,:video,
                                     :minute, :second, :count, :set_count,
-                                    schedules_attributes: [
+                                    :nick_name,schedules_attributes: [
                                       :fixed_day, :is_done, :id])
   end
 
   def update_exercise_params
     params.require(:exercise).permit(:name, :description, :image,:video,
                                     :minute, :second, :count, :set_count,
-                                    schedules_attributes: [
+                                    :nick_name,schedules_attributes: [
                                       :fixed_day, :is_done, :_destroy, :id])
   end
 

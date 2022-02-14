@@ -60,7 +60,7 @@ class User < ApplicationRecord
   mount_uploader :avatar_image, AvaterImageUploader
 
   def self.ransackable_attributes(auth_object = nil)
-    %w(first_name last_name)
+    %w(nick_name)
   end
 
   def self.ransackable_associations(auth_object = nil)

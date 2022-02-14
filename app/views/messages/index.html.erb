@@ -4,7 +4,7 @@
         <%= form_with(model: [@conversation, @message]) do |f| %><br>
           <div class="form-group">
             <%= f.text_area :body, class: "form-control form-control-lg ", placeholder: "メッセージを入力してください。"%>
-            <small class="form-text">メッセージ入力後、ボタンを押すと送信されます</small>
+            <small class="form-text">メッセージ入力後、ボタンを押すとメッセージが送信されます。</small>
             <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
           </div>
           <div class="action">
@@ -30,7 +30,7 @@
                     <% else %>
                       <%= image_tag('noimage.png',width:'40%',height: '40%')%>
                     <% end %>
-                    <%= message.user.first_name %>さん
+                    <%= message.user.nick_name %>さん
                     <%= message.message_time %>
                 </div>
                 <div class="list">
