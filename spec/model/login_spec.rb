@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe 'dvevise機能', type: :model do
   describe '新規会員登録機能' do
-    context '姓、名、インストラクションがある場合' do 
+    context '姓、名、ニックネーム、インストラクションがある場合' do 
       it 'バリデーションに引っかからない' do
         user = FactoryBot.build(:model_user)
         expect(user).to be_valid
@@ -44,6 +44,27 @@ RSpec.describe 'dvevise機能', type: :model do
     context '名が20文字以内の場合' do
       it 'バリデーションにかからない' do
         user = FactoryBot.build(:model_user, last_name: "a" * 20 )
+        expect(user).to be_valid
+      end
+    end
+    
+    context 'ニックネームが空欄の場合' do 
+      it 'バリデーションに引っかかる' do 
+        user = FactoryBot.build(:model_user, nick_name: nil)
+        user.valid?
+        expect(user.errors[:nick_name]).to include("を入力してください", "は1文字以上で入力してください")
+      end
+    end
+    context 'ニックネームが20文字以上の場合' do
+      it 'バリデーションに引っかかる' do
+        user = FactoryBot.build(:model_user, nick_name: "a" * 21 )
+        user.valid?
+        expect(user.errors[:nick_name]).to include("は20文字以内で入力してください")
+      end
+    end
+    context '名が20文字以内の場合' do
+      it 'バリデーションにかからない' do
+        user = FactoryBot.build(:model_user, nick_name: "a" * 20 )
         expect(user).to be_valid
       end
     end

@@ -10,16 +10,16 @@ RSpec.describe 'ユーザー機能', type: :system do
       find('input[type="submit"]').click
     end
     context 'トップページから、マイページへ移動するをクリックすると' do 
-      it '自分の名前が表示されるマイページへ移動する' do 
+      it '自分のニックネームが表示されるマイページへ移動する' do 
         click_on 'マイページへ移動する'
-        expect(page).to have_content("テスト2ユーザー2さんのマイページ")
+        expect(page).to have_content("マイケルさんのマイページ")
       end
     end
     context 'マイページから、プロフィールの編集/確認するを押すと' do
       it '自分のプロフィールが表示される' do
         click_on 'マイページへ移動する'
         click_on 'プロフィールの編集/確認する'
-        expect(page).to have_content("テスト2ユーザー2さんのプロフィール")
+        expect(page).to have_content("マイケルさんのプロフィール")
       end
     end
     context 'マイページから、他のユーザーのページにアクセスすると' do 
@@ -46,30 +46,19 @@ RSpec.describe 'ユーザー機能', type: :system do
       it '新規登録したユーザーが表示される' do 
         click_on 'マイページへ移動する'
         click_on '仲間と交流する'
-        expect(page).to_not have_content("テスト2ユーザーさんのコミュニティ")
+        expect(page).to have_content("マイケルさんのコミュニティ")
       end
     end
-    context 'マイページでユーザーの検索フォームにて姓で検索を行うと' do
-      it '入力した姓に一致するユーザーが表示される' do 
+    context 'マイページでユーザーの検索フォームにてニックネーム検索を行うと' do
+      it '入力したニックネームに一致するユーザーが表示される' do 
         click_on 'マイページへ移動する'
         click_on '仲間と交流する'
-        fill_in 'q[first_name_or_last_name_cont]', with: @user.first_name
+        fill_in 'q[nick_name_cont]', with: @login_user.nick_name
         click_on '検索'
         sleep 0.5
-        expect(page).to have_content("テスト1")
-        expect(page).to_not have_content("テスト3")
+        expect(page).to have_content("マイケル")
       end
     end
-      context 'マイページでユーザーの検索フォームにて名で検索を行うと' do
-        it '入力した姓に一致するユーザーが表示される' do 
-          click_on 'マイページへ移動する'
-          click_on '仲間と交流する'
-          fill_in 'q[first_name_or_last_name_cont]', with: @user.last_name
-          click_on '検索'
-          expect(page).to have_content("ユーザー1")
-          expect(page).to_not have_content("ユーザー3")
-        end
-      end
   end
   describe '会員編集・削除機能' do 
     before do

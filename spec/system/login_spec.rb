@@ -6,6 +6,7 @@ RSpec.describe 'dvevise機能', type: :system do
       visit new_user_registration_path
         fill_in 'user[first_name]', with: user.first_name
         fill_in 'user[last_name]', with: user.last_name
+        fill_in 'user[nick_name]', with: user.nick_name
         attach_file 'user[avatar_image]', "#{Rails.root}/spec/fixtures/test.png"
         fill_in 'user[introduction]', with: user.introduction
         fill_in 'user[email]',with: user.email

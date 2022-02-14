@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   validates :first_name, presence: true, length:{in: 1..20}
   validates :last_name, presence: true, length:{in: 1..20}
+  validates :nick_name, presence: true, length:{in: 1..20}
   validates :introduction, length: { maximum: 2000}
   
   has_many :exercises, dependent: :destroy
@@ -39,7 +40,8 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.confirmed_at = Time.now 
       user.first_name = "ゲスト"
-      user.last_name = "太郎"
+      user.last_name = "ユーザー"
+      user.nick_name = "ボブ"
       user.avatar_image = nil 
       user.introduction = "ゲストでログインします"
       user.admin = false 
@@ -51,7 +53,8 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.confirmed_at = Time.now 
       user.first_name = "管理者ゲスト"
-      user.last_name = "二郎"
+      user.last_name = "ユーザー"
+      user.nick_name = "アリス"
       user.avatar_image = nil
       user.introduction = "管理者ゲストでログインします"
       user.admin = true 
@@ -60,7 +63,7 @@ class User < ApplicationRecord
   mount_uploader :avatar_image, AvaterImageUploader
 
   def self.ransackable_attributes(auth_object = nil)
-    %w(first_name last_name)
+    %w(nick_name)
   end
 
   def self.ransackable_associations(auth_object = nil)
