@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :model_user ,class: User do 
     first_name {"モデル"}
     last_name {"ユーザー"}
+    nick_name {"トム"}
     avatar_image{Rack::Test::UploadedFile.new(File.join(Rails.root,'spec/fixtures/test.png'))}
     introduction{"テストを開始します。よろしくお願いします。"}
     email {"model@example.rb"}
@@ -12,6 +13,7 @@ FactoryBot.define do
   factory :user ,class: User do 
     first_name {"テスト1"}
     last_name {"ユーザー1"}
+    nick_name {"デニス"}
     avatar_image{Rack::Test::UploadedFile.new(File.join(Rails.root,'spec/fixtures/test.png'))}
     introduction{"テストを開始します。よろしくお願いします。"}
     email {"test@example.rb"}
@@ -24,6 +26,7 @@ FactoryBot.define do
   factory :login_user ,class: User do 
     first_name {"テスト2"}
     last_name {"ユーザー2"}
+    nick_name {"マイケル"}
     avatar_image{Rack::Test::UploadedFile.new(File.join(Rails.root,'spec/fixtures/test.png'))}
     introduction{"テストを開始します。よろしくお願いします。"}
     email {"login@example.rb"}
@@ -36,6 +39,7 @@ FactoryBot.define do
   factory :login_test_user ,class: User do 
     first_name {"テスト3"}
     last_name {"ユーザー3"}
+    nick_name {"アリス"}
     avatar_image{Rack::Test::UploadedFile.new(File.join(Rails.root,'spec/fixtures/test.png'))}
     introduction{"テストを開始します。よろしくお願いします。"}
     email {"logintest@example.rb"}
