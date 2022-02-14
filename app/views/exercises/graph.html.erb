@@ -1,10 +1,29 @@
-<div class="container">
-<h1>今週の運動</h1>
-	<%= column_chart @this_week_data.group_by_day(:fixed_day).count %>
-<h1>先週の運動</h1>
-	<%= column_chart @last_week_data.group_by_day(:fixed_day).count %>
-<h1>今月の運動</h1>
-	<% column_chart @this_month_data.group_by_week(:fixed_day).count%>
-	<%= link_to "戻る", :back %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12 col-lg-5 offset-1">
+			<div class="card" style="width:500px;">
+				<h4 class="card-header">今週の運動回数</h4>
+				<div class="card-body">
+					<%= column_chart @this_week_data.group_by_day(:fixed_day).count, min: 0, max:10, xtitle:'日付(日)', ytitle: "運動回数", empty: "値がありません" ,discrete: true, width: "400px", height: "400px"%>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-lg-5">
+			<div class="card" style="width:500px;">
+				<h4 class="card-header">先週の運動回数</h4>
+				<div class="card-body" >
+					<%= column_chart @last_week_data.group_by_day(:fixed_day).count, min: 0, max:10, xtitle:'日付（日）', ytitle: "運動回数", empty: "値がありません" ,discrete: true, width: "400px", height: "400px" %>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-lg-12 offset-1 mt-2">
+			<div class="card" style="width:500px;">
+				<h4 class="card-header">今月の運動回数</h4>
+				<div class="card-body">
+					<%= column_chart @this_month_data.group_by_week(:fixed_day).count, min: 0, max:10, xtitle:'日付（週）', ytitle: "運動回数", empty: "値がありません" ,discrete: true, width: "400px", height: "400px" %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 

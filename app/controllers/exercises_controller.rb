@@ -38,8 +38,6 @@ class ExercisesController < ApplicationController
   def destroy
     @exercise.destroy 
     redirect_to exercises_path, notice: "運動内容を削除しました"
-    
-
   end
 
   def graph
