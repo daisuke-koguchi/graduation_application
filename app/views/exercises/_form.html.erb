@@ -1,44 +1,51 @@
-<%= form_with(model:@exercise,local: true) do |f|%>
-  <table class="table">
-    <tbody>
-      <tr>
-        <th><%= f.label :name %></th>
-        <td><%= f.text_field :name %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :description %></th>
-        <td><%= f.text_area :description %></td>
-      </tr>
-      <tr>
-        <th>運動負荷</th>
-        <td>
-          運動回数: <%= f.number_field :count %>
-          セット数: <%= f.number_field :set_count %>
-          分: <%= f.number_field :minute %>
-          秒: <%= f.number_field :second %>        
-        </td>
-      </tr>
-      <tr>
-        <th><%= f.label :image %></th>
-        <td><%= f.file_field :image %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :video %></th>
-        <td><%= f.file_field :video, :accept => 'video/*'%></td>
-      </tr>
-      <tr>
-        <th>日付</th>
-        <td>
-          <%= f.fields_for :schedules do |s| %>
-            <%= render 'schedule_fields', f: s %>
-          <% end %> 
-          <div class="links">
-            <%= link_to_add_association "日付を追加", f, :schedules %>
-          </div>  
-        <td>
-      </tr>
-    </tbody>
-  </table>
-  <%= f.submit %>
-  <%= link_to "戻る", :back %>
+<div class="col-12 ">
+  <%= form_with(model:@exercise,local: true) do |f|%>
+<table class="table form-group">
+  <tbody>
+    <tr>
+      <th><%= f.label :name %></th>
+      <td><%= f.text_field :name, class: "form-control form-control-lg",placeholder: "例) スクワット" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :description %></th>
+      <td><%= f.text_area :description, class: "form-control form-control-lg",placeholder: "例) スクワットをする際は、①両足を肩幅まで広げること。
+      ②お尻を落としながら、膝を指先より出ない程度までを曲げること。
+      この２点に注意してやってみましょう!!"%></td>
+    </tr>
+    <tr>
+      <th>運動負荷</th>
+      <td>
+        運動回数: <%= f.number_field :count %>
+        セット数: <%= f.number_field :set_count %>
+        分: <%= f.number_field :minute %>
+        秒: <%= f.number_field :second %>        
+      </td>
+    </tr>
+    <tr>
+      <th><%= f.label :image %></th>
+      <td><%= f.file_field :image %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :video %></th>
+      <td><%= f.file_field :video, :accept => 'video/*'%></td>
+    </tr>
+    <tr>
+      <th>日付</th>
+      <td>
+        <%= f.fields_for :schedules do |s| %>
+          <%= render 'schedule_fields', f: s %>
+        <% end %> 
+        <div class="links">
+          <%= link_to_add_association "日付を追加", f, :schedules %>
+        </div>  
+      <td>
+    </tr>
+  </tbody>
+</table>
+<%= f.submit "登録する", class: 'btn btn-primary'%>
+<%= link_to "戻る", :back , class: 'btn btn-success'%>
 <% end %>
+
+
+
+

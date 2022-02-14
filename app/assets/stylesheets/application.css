@@ -17,7 +17,7 @@
   min-height: 1000px;
 }
 .container-fluid{
-  min-height: 1000px !important;
+  min-height: 1000px;
 }
 input[value="未実施"]{
   background-color:aqua;
