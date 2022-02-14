@@ -17,6 +17,12 @@
           <small class="form-text">20文字以内でご登録できます。</small>
           <%= f.text_field :last_name, autofocus: true, class: "form-control form-control-lg",placeholder: "名" %>
         <div><br>
+        
+        <div class="form-group">
+          <%= f.label :nick_name %>
+          <small class="form-text">好きなニックネームを20文字以内でご登録できます。</small>
+          <%= f.text_field :nick_name, autofocus: true, class: "form-control form-control-lg",placeholder: "ニックネーム"%>
+        <div><br>
 
         <div class="form-group ">
           <%= f.label :avatar_image %>
