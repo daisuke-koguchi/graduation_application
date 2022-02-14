@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <%= render 'schedules/index',local:{ schedules: @schedules} %>
     
@@ -10,7 +10,7 @@
         <%= f.label :name_cont %>
         <%= f.search_field :name_cont, class: "form-control form-control-lg ",placeholder: "例) スクワット"%>
         <small class="form-text">登録された運動内容を名前で検索することが出来ます。</small>
-      <%= f.submit "検索",class:'btn btn-secondary btn-lg'%>
+      <%= f.submit "検索する",class:'btn btn-secondary btn-lg'%>
     <% end %>
     </div>
     <div class="col-12">
