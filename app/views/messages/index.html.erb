@@ -1,37 +1,53 @@
 <div class="container">
-  <% if @over_ten %>
-    <%= link_to '以前のメッセージ', '?m=all' %>
-  <% end %>
-
-  <div class="ui segment">
-    <% @messages.each do |message| %>
-      <% if message.body.present? %>
-        <div class="item">
-          <div class="content">
-            <div class="header"><strong><%= message.user.first_name %></strong> <%= message.message_time %></div>
-            <div class="list">
-              <div class="item">
-                <i class="right triangle icon"></i>
-                <%= message.body %> /
-                <% if message.user == current_user %>
-                  <%= message.read ? '既読' : '未読' %>
-                <% end %>
+  <div class="row">
+    <div class="col-10" >
+        <%= form_with(model: [@conversation, @message]) do |f| %><br>
+          <div class="form-group">
+            <%= f.text_area :body, class: "form-control form-control-lg ", placeholder: "メッセージを入力してください。"%>
+            <small class="form-text">メッセージ入力後、ボタンを押すと送信されます</small>
+            <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+          </div>
+          <div class="action">
+            <%= f.submit "メッセージを送る", class:"btn btn-primary btn-lg"%>
+          </div>
+        <% end %>
+    </div>
+    <div class="col-2"><br>
+      <%= link_to "戻る", users_path, class:'btn btn-success btn-lg'%>
+    </div>
+    <div class="col-12">
+      <% if @over_ten %>
+        <%= link_to '以前のメッセージを表示する', '?m=all' %>
+      <% end %>
+      <div class="ui segment">
+        <% @messages.each do |message| %>
+          <% if message.body.present? %>
+            <div class="item">
+              <div class="content">
+                <div class="header">
+                    <% if message.user.avatar_image?%>
+                      <%= image_tag(message.user.avatar_image.thumb.url) %>
+                    <% else %>
+                      <%= image_tag('noimage.png',width:'40%',height: '40%')%>
+                    <% end %>
+                    <%= message.user.first_name %>さん
+                    <%= message.message_time %>
+                </div>
+                <div class="list">
+                  <div class="item">
+                    <i class="right triangle icon"></i>
+                    <%= message.body %> /
+                    <% if message.user == current_user %>
+                      <%= message.read ? '既読' : '未読' %>
+                    <% end %>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= paginate @messages %>
+    </div>
   </div>
-
-  <%= form_with(model: [@conversation, @message]) do |f| %>
-    <div class="field">
-      <%= f.text_area :body, class: "form-control" %>
-    </div>
-      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-    <div>
-      <%= f.submit "メッセージを送る" %>
-    </div>
-  <% end %>
-  <%= link_to "戻る", :back %>
 </div>

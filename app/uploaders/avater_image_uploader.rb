@@ -23,7 +23,7 @@ class AvaterImageUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   
   version :thumb do 
-    process resize_to_fit: [50,50]
+    process resize_to_fit: [150,150]
   end
   # def scale(width, height)
   #   # do something

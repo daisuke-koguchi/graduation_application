@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
   def index
     @q = Schedule.ransack(params[:q])
-    @schedules = @q.result(distinct: true).order(fixed_day: :asc).page(params[:schedule_page]).per(10)
+    @schedules = @q.result(distinct: true).order(fixed_day: :asc).page(params[:schedule_page]).per(5)
   end
 
   def create

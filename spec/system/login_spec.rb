@@ -15,7 +15,7 @@ RSpec.describe 'dvevise機能', type: :system do
     context '新規会員登録画面でユーザが入力した場合' do 
       it '確認画面にユーザーの登録情報が表示される' do
         click_on 'アカウント登録'
-      expect(page).to have_content('Confirm') #レイアウト変更時修正必要
+      expect(page).to have_content('プロフィール確認画面') #レイアウト変更時修正必要
       end
     end
     context '新規会員登録確認画面で登録するを押した場合'do 
@@ -64,7 +64,7 @@ RSpec.describe 'dvevise機能', type: :system do
         click_on '登録する'
         visit new_user_password_path 
         fill_in 'user[email]',with: user.email 
-        expect { click_on 'パスワードの再設定方法を送信する'}.to change{ ActionMailer::Base.deliveries.size }.by(1)
+        expect { click_on 'パスワードの再設定方法をメールで送信する'}.to change{ ActionMailer::Base.deliveries.size }.by(1)
         expect(page).to have_content('パスワードの再設定について数分以内にメールでご連絡いたします。')
       end
     end

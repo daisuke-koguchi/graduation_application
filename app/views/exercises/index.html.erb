@@ -1,57 +1,61 @@
 <div class="container">
-  <%= render 'schedules/index',local:{ schedules: @schedules} %>
-  <%= link_to "その他の日の運動内容を確認する",schedules_path%>
-  <h1>今週実施するメニュー一覧</h1>
-
-  <%= search_form_for @q do |f| %>
-    <%= f.label :name_cont %>
-    <%= f.search_field :name_cont %>
-    <%= f.submit "検索"%>
-  <% end %>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>写真</th>
-        <th><%= sort_link(@q, :name ,"運動項目")%></th>
-        <th>運動負荷</th>
-        <th>運動内容/動画を確認する</th>
-        <th>編集する</th>
-        <th>削除する</th>          
-      </tr>
-    </thead>
-    <tbody>
-    <% @exercises.each do |exercise|%>
-      <tr>
-        <% if exercise.image? %>
-          <th><%= image_tag(exercise.image.thumb.url)%></th>
-        <% else %>
-          <th><%= image_tag('noimage.png',width:'40%',height: '40%')%></th>
-        <% end%>
-        <th><%= exercise.name%></th>
-        <th>
-          <% if exercise.count != "0" %>
-            運動回数:<%= exercise.count %>回
-          <% end %>
-          <% if exercise.set_count != "0" %>
-            セット数:<%= exercise.set_count %>セット
-          <% end %>
-          <% if exercise.minute != "0" %>
-            時間:<%= exercise.minute %>分
-          <% end %>
-          <% if exercise.second != "0" %>
-            <%= exercise.second %>秒
-          <% end %>
-        </th>
-        <th><%= link_to "動画内容/動画を確認する", exercise_path(exercise.id) %></th> 
-        <th><%= link_to "編集する", edit_exercise_path(exercise.id)%></th>
-        <th><%= link_to "削除する", exercise_path(exercise.id), method: :delete, data: {confirm: "運動内容を削除しますか？"}%></th>
-      </tr>
-    <% end %>    
-    </tbody>
-  </table>
-  <%= link_to "運動記録を見る", graph_exercises_path %>
-  <%= link_to "運動内容を登録する",new_exercise_path %>
-  <%= link_to "戻る",users_mypage_path(id: current_user.id) %>
-  <%= paginate @exercises %>
+  <div class="row">
+    <%= render 'schedules/index',local:{ schedules: @schedules} %>
+    
+    <div class="col-12 col-md-6">
+      <h5>運動内容の確認</h5>
+    </div>
+    <div class="col-12 col-md-6"> 
+      <%= search_form_for @q do |f| %>
+        <%= f.label :name_cont %>
+        <%= f.search_field :name_cont, class: "form-control form-control-lg ",placeholder: "例) スクワット"%>
+        <small class="form-text">登録された運動内容を名前で検索することが出来ます。</small>
+      <%= f.submit "検索する",class:'btn btn-secondary btn-lg'%>
+    <% end %>
+    </div>
+    <div class="col-12 mt-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">運動内容の確認</h5>
+          <h6 class="cord-text">運動内容/動画内容を確認するボタンを押すと内容を確認できます。</h6>
+          <h6 class="cord-text">運動内容の編集・削除ボタンで運動を編集・削除できます。</h6>
+          <h6 class="dard-text">運動内容のリンクを押すと名前を（昇順▲ 降順▼）で並び替えられます。</h6>
+          <div class="table-responsive-md">
+            <table class="table text-nowrap">
+              <thead>
+                <tr>
+                  <th>写真</th>
+                  <th><%= sort_link(@q, :name ,"運動項目")%></th>
+                  <th>運動内容/動画を確認する</th>
+                  <th>編集する</th>
+                  <th>削除する</th>          
+                </tr>
+              </thead>
+              <tbody>
+                <% @exercises.each do |exercise|%>
+                  <tr>
+                    <% if exercise.image? %>
+                      <th><%= image_tag(exercise.image.thumb.url)%></th>
+                    <% else %>
+                      <th><%= image_tag('noimage.png',width:'40%',height: '40%')%></th>
+                    <% end%>
+                    <th><%= exercise.name%></th>
+                    <th><%= link_to "動画内容/動画を確認する", exercise_path(exercise.id) %></th> 
+                    <th><%= link_to "編集する", edit_exercise_path(exercise.id)%></th>
+                    <th><%= link_to "削除する", exercise_path(exercise.id), method: :delete, data: {confirm: "運動内容を削除しますか？"}%></th>
+                  </tr>
+                <% end %>    
+              </tbody>
+            </table>
+            <%= paginate @exercises %>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-2 ">
+      <%= link_to "運動内容を登録する",new_exercise_path, class:'btn btn-info btn-lg' %> &nbsp;
+      <%= link_to "戻る",users_mypage_path(id: current_user.id), class:'btn btn-success btn-lg'%>
+    </div>
+  </div>
 </div>
