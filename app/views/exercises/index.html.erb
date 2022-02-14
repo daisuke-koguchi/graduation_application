@@ -13,7 +13,7 @@
       <%= f.submit "検索する",class:'btn btn-secondary btn-lg'%>
     <% end %>
     </div>
-    <div class="col-12">
+    <div class="col-12 mt-2">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">運動内容の確認</h5>
@@ -48,11 +48,14 @@
               </tbody>
             </table>
             <%= paginate @exercises %>
-              <%= link_to "運動内容を登録する",new_exercise_path, class:'btn btn-info btn-lg' %> &nbsp;
-              <%= link_to "戻る",users_mypage_path(id: current_user.id), class:'btn btn-success btn-lg'%>
+              
           </div>
         </div>
       </div>
+    </div>
+    <div class="col-12 mt-2 ">
+      <%= link_to "運動内容を登録する",new_exercise_path, class:'btn btn-info btn-lg' %> &nbsp;
+      <%= link_to "戻る",users_mypage_path(id: current_user.id), class:'btn btn-success btn-lg'%>
     </div>
   </div>
 </div>
