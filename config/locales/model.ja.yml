@@ -1,0 +1,47 @@
+ja:
+  activerecord:
+    models:
+      user: 利用者
+      exercise: 運動
+      conversation: 会話
+      message: 内容
+      schedule: 予定
+    attributes:
+      user:
+        id: 利用者ID
+        first_name: 姓
+        last_name: 名
+        nick_name: ニックネーム
+        avatar_image: プロフィール画像
+        introduction: 自己紹介文
+        deleted_at: 論理削除
+        admin: 管理者権限
+      exercise:
+        id: 運動項目ID
+        name: 運動項目名
+        description: 運動方法の説明
+        image: 運動方法画像
+        video: 運動方法動画
+        minute: 運動時間(分）
+        second: 運動時間(秒)
+        count: 運動回数
+        set_count: 運動セット数
+        user_id: 利用者ID情報
+      conversation:
+        id: 会話情報ID
+        sender_id: 送信者ID
+        recipient_id: 受信者ID
+      message:
+        id: 内容ID
+        body: 内容 
+        read: 既読情報
+        conversation_id: 会話情報ID
+        user_id: ユーザーID情報
+      schedule: 
+        id: スケジュールid
+        fixed_date: 運動実施日時
+        exercise_id: 運動ID情報
+  attributes:
+    created_at: 作成年月日
+    updated_at: 更新年月日
+
