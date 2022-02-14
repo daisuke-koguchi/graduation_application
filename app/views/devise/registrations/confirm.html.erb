@@ -11,11 +11,15 @@
           <td><%= f.hidden_field :first_name, class:"form-control-plaintext " %>
           <%= @user.first_name%></td>
       </tr>
-    
       <tr>
           <th><%= f.label :last_name %></th>
           <td><%= f.hidden_field :last_name, class:"form-control-plaintext "%>
           <%= @user.last_name%></td>
+      </tr>
+      <tr>
+          <th><%= f.label :nick_name %></th>
+          <td><%= f.hidden_field :nick_name, class:"form-control-plaintext "%>
+          <%= @user.nick_name%></td>
       </tr>
       <tr>
           <th><%= f.label :avatar_image %></th>

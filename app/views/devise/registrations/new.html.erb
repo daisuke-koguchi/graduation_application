@@ -19,6 +19,12 @@
         <div><br>
 
         <div class="form-group">
+          <%= f.label :nick_name %>
+          <small class="form-text">好きなニックネームを20文字以内でご登録できます。</small>
+          <%= f.text_field :nick_name, autofocus: true, class: "form-control form-control-lg",placeholder: "ニックネーム"%>
+        <div><br>
+
+        <div class="form-group">
           <%= f.label :avatar_image %>
           <small class="form-text">写真は下記のボタンを押して選択してください。</small>
           <%= f.file_field :avatar_image %>
