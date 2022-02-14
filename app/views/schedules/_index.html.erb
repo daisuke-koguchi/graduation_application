@@ -1,46 +1,58 @@
-<h1>本日<%= DateTime.now.strftime("%Y年%m月%d日")%>の運動内容</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>写真</th>
-      <th>運動項目</th>
-      <th>運動負荷</th>
-      <th>実施/未実施</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @schedules.each do |schedule|%>
-    <% if current_user.id == schedule.exercise.user.id%>
-      <tr>
-      <% if schedule.exercise.image? %>
-        <th><%= image_tag(schedule.exercise.image.thumb.url)%></th>
-      <% else %>
-        <th><%= image_tag('noimage.png',width:'40%',height: '40%')%></th>
-      <% end%>
-        <th><%= schedule.exercise.name %></th>
-        <th>
-          <% if schedule.exercise.count != "0" %>
-            運動回数:<%= schedule.exercise.count %>回
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+    <h5 class="card-title">本日<%= DateTime.now.strftime("%Y年%m月%d日")%>の運動内容</h5>
+    <h6 class="cord-text">本日の運動内容を実施されましたら、未実施ボタンを押してください。</h6>
+    <h6 class="cord-text">実施ボタンに切り替わると運動が登録されます。</h6>
+    <%= link_to "その他の日の運動内容を確認する",schedules_path, class:'card-link',class:'btn btn-outline-primary btn-lg'%>
+    <%= link_to "運動記録を見る", graph_exercises_path ,class:'btn btn-outline-info btn-lg'%> &nbsp;
+    <div class="table-responsive-md">
+      <table class="table text-nowrap">
+        <thead>
+          <tr>
+            <th>写真</th>
+            <th>運動内容</th>
+            <th>運動負荷</th>
+            <th>実施/未実施</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @schedules.each do |schedule|%>
+          <% if current_user.id == schedule.exercise.user.id%>
+            <tr>
+            <% if schedule.exercise.image? %>
+              <th><%= image_tag(schedule.exercise.image.thumb.url)%></th>
+            <% else %>
+              <th><%= image_tag('noimage.png',width:'40%',height: '40%')%></th>
+            <% end%>
+              <th><%= schedule.exercise.name %></th>
+              <th>
+                <% if schedule.exercise.count != "0" %>
+                  運動回数:<%= schedule.exercise.count %>回&nbsp;
+                <% end %>
+                <% if schedule.exercise.set_count != "0" %>
+                  セット数:<%= schedule.exercise.set_count %>セット&nbsp;
+                <% end %>
+                <% if schedule.exercise.minute != "0" %>
+                  時間:<%= schedule.exercise.minute %>分&nbsp;
+                <% end %>
+                <% if schedule.exercise.second != "0" %>
+                  <%= schedule.exercise.second %>秒
+                <% end %>
+              </th>
+              <th>
+                <div id="button_<%= schedule.id %>">
+                  <%= render 'schedules/both', {schedule: schedule} %>
+                </div>
+              </th>
+            </tr>
+            <% end %>
           <% end %>
-          <% if schedule.exercise.set_count != "0" %>
-            セット数:<%= schedule.exercise.set_count %>セット
-          <% end %>
-          <% if schedule.exercise.minute != "0" %>
-            時間:<%= schedule.exercise.minute %>分
-          <% end %>
-          <% if schedule.exercise.second != "0" %>
-            <%= schedule.exercise.second %>秒
-          <% end %>
-        </th>
-        <th>
-          <div id="button_<%= schedule.id %>">
-            <%= render 'schedules/both', {schedule: schedule} %>
-          </div>
-        </th>
-      </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @schedules, param_name: 'schedule_page'%>
+        </tbody>
+      </table>
+    </div>
+    <%= paginate @schedules, param_name: 'schedule_page'%>
+    </div>
+  </div>
+</div>    
 
