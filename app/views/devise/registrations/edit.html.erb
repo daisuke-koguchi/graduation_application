@@ -3,72 +3,101 @@
     <div class="col-12">    
       <h2><%= t('.title', resource: resource.model_name.human) %></h2>
     </div>
-    <div class="col-6 offset-3 ">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="form-group ">
-          <%= f.label :first_name %>
-          <small class="form-text">20文字以内でご登録できます。</small>
-          <%= f.text_field :first_name, autofocus: true, class: "form-control form-control-lg ",placeholder: "姓" %>
-        <div><br>
+      <div class="col-12 col-lg-9 offset-lg-1">
+        <div class="card">
+          <div class="card-body">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="form-group ">
-          <%= f.label :last_name %>
-          <small class="form-text">20文字以内でご登録できます。</small>
-          <%= f.text_field :last_name, autofocus: true, class: "form-control form-control-lg",placeholder: "名" %>
-        <div><br>
-        
-        <div class="form-group">
-          <%= f.label :nick_name %>
-          <small class="form-text">好きなニックネームを20文字以内でご登録できます。</small>
-          <%= f.text_field :nick_name, autofocus: true, class: "form-control form-control-lg",placeholder: "ニックネーム"%>
-        <div><br>
+            <div class="form-group mt-2">
+            <div>
+              <%= f.label :first_name  %>
+              <span class="badge badge-danger">必須<span>
+            </div>
+            <%= f.text_field :first_name, autofocus: true, class: "form-control form-control-lg ",placeholder: "姓"%>
+            <small class="form-text">20文字以内でご登録できます。</small>
+          </div>
 
-        <div class="form-group ">
-          <%= f.label :avatar_image %>
-          <small class="form-text">写真は下記のボタンを押して選択してください。</small>
-          <%= f.file_field :avatar_image %>
-          <%= f.hidden_field :avatar_image_cache %>
-        <div><br>
+            <div class="form-group mt-2">
+            <div>
+              <%= f.label :last_name %>
+              <span class="badge badge-danger">必須<span>
+            </div>
+            <%= f.text_field :last_name, autofocus: true, class: "form-control form-control-lg",placeholder: "名"%>
+            <small class="form-text">20文字以内でご登録できます。</small>
+          </div>
 
-        <div class="form-group ">
-          <%= f.label :introduction %>
-          <small class="form-text">自己紹介は4000字まで入力することができます。</small>
-          <%= f.text_area :introduction, autofocus: true, class: "form-control form-control-lg" ,placeholder: "自由記入欄" %>
-        <div><br>
+            <div class="form-group mt-2">
+            <div>
+              <%= f.label :nick_name %>
+              <span class="badge badge-danger">必須<span>
+            </div>
+            <%= f.text_field :nick_name, autofocus: true, class: "form-control form-control-lg",placeholder: "ニックネーム"%>
+            <small class="form-text">好きなニックネームを20文字以内でご登録できます。</small>
+          </div>
 
-        <div class="form-group ">
-          <%= f.label :email %>
-          <small class="form-text">ご利用されているメールアドレスをご入力ください。</small>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg", placeholder: "例) rehamo@example.com" %>
-        </div><br>
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
-        <% end %>
+            <div class="form-group mt-2">
+            <div>
+              <%= f.label :avatar_image %>
+              <span class="badge badge-secondary">任意<span>
+            </div>
+            <%= f.file_field :avatar_image %>
+            <%= f.hidden_field :avatar_image_cache %>
+            <small class="form-text">ボタンを押して写真を選択してください。</small>
+          </div>
 
-        <div class="form-group ">
-          <%= f.label :password %>
-          <small class="form-text">空欄時は、パスワードを変更しません。半角英数字6文字以上で変更できます。</small>  
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-lg"%>
-        </div><br>
+            <div class="form-group mt-2">
+            <div>
+              <%= f.label :introduction %>
+              <span class="badge badge-secondary">任意<span>
+            </div>
+            <%= f.text_area :introduction, autofocus: true, class: "form-control form-control-lg" ,placeholder: "自由記入欄"%>
+            <small class="form-text">自己紹介は4000字まで入力することができます。</small>
+          </div>
 
-        <div class="form-group ">
-          <%= f.label :password_confirmation %><br />
-          <small class="form-text">空欄時は、パスワードを変更しません。変更する場合は、同じパスワードをご入力ください。</small>  
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" , class: "form-control form-control-lg"%>
-        </div><br>
+            <div class="form-group mt-2">
+            <div>
+              <%= f.label :email %>
+            <span class="badge badge-danger">必須<span>
+            </div> 
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg", placeholder: "例) rehamo@example.com" %>
+            <small class="form-text">ご利用されているメールアドレスをご入力ください。</small>
+          </div>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
+            <% end %>
 
-      <%if false %>
-        <div class="form-group ">
-          <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
-          <%= f.password_field :current_password, autocomplete: "current-password" %>
+            <div class="form-group mt-2">
+            <div>
+              <%= f.label :email %>
+            <span class="badge badge-danger">必須<span>
+            </div>  
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-lg"%>
+              <small class="form-text">空欄時は、パスワードを変更しません。半角英数字6文字以上で変更できます。</small> 
+            </div>
+
+            <div class="form-group mt-2">
+            <div>
+              <%= f.label :password_confirmation %>
+              <span class="badge badge-danger">必須<span>
+            </div>  
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" , class: "form-control form-control-lg"%>
+              <small class="form-text">空欄時は、パスワードを変更しません。変更する場合は、同じパスワードをご入力ください。</small>
+            </div>
+
+          <%if false %>
+            <div class="form-group ">
+              <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
+              <%= f.password_field :current_password, autocomplete: "current-password" %>
+            </div>
+          <% end %>
+          </div>
         </div>
+      </div>
+      <div class="col-12 col-lg-9 offset-lg-1 mt-2">
+        <%= f.submit t('.update'), class:'btn btn-primary btn-lg' %>
+        <%= link_to "戻る", :back, class:'btn btn-success btn-lg' %>
+      </div>  
       <% end %>
-      <div class="d-inline- flex">
-          <%= f.submit t('.update'), class:'btn btn-primary' %>
-          <%= link_to "戻る", :back, class:'btn btn-success' %>
-      </div><br>     
-      <% end %>
-    </div>
   </div>
 </div>
