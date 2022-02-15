@@ -27,6 +27,10 @@ ja:
         count: 運動回数
         set_count: 運動セット数
         user_id: 利用者ID情報
+      exercise/schedules:
+        id: スケジュールid
+        exercise_id: 運動ID情報
+        fixed_day: 運動実施日 
       conversation:
         id: 会話情報ID
         sender_id: 送信者ID
@@ -37,10 +41,6 @@ ja:
         read: 既読情報
         conversation_id: 会話情報ID
         user_id: ユーザーID情報
-      schedule: 
-        id: スケジュールid
-        fixed_date: 運動実施日時
-        exercise_id: 運動ID情報
   attributes:
     created_at: 作成年月日
     updated_at: 更新年月日
