@@ -31,35 +31,6 @@
 #       end
 #     end
 #   end
-#   describe '会員一覧表示機能' do
-#     let!(:login_user){build(:user)}
-#     before do
-#       @user = FactoryBot.build(:user)
-#       @login_test_user = FactoryBot.build(:login_test_user)
-#       @login_user = create(:login_user)
-#       visit new_user_session_path
-#       fill_in 'user[email]',with: @login_user.email
-#       fill_in 'user[password]', with: @login_user.password
-#       find('input[type="submit"]').click
-#     end
-#     context 'マイページから、仲間と交流するをクリックすると' do 
-#       it '新規登録したユーザーが表示される' do 
-#         click_on 'マイページへ移動する'
-#         click_on '仲間と交流する'
-#         expect(page).to have_content("マイケルさんのコミュニティ")
-#       end
-#     end
-#     context 'マイページでユーザーの検索フォームにてニックネーム検索を行うと' do
-#       it '入力したニックネームに一致するユーザーが表示される' do 
-#         click_on 'マイページへ移動する'
-#         click_on '仲間と交流する'
-#         fill_in 'q[nick_name_cont]', with: @login_user.nick_name
-#         click_on '検索'
-#         sleep 0.5
-#         expect(page).to have_content("マイケル")
-#       end
-#     end
-#   end
 #   describe '会員編集・削除機能' do 
 #     before do
 #       @login_user = create(:login_user)
