@@ -14,14 +14,17 @@
  *= require_self
  */
 .container{
-  min-height: 600px;
+  min-height: 800px;
 }
 .container-fluid{
-  min-height: 600px;
+  min-height: 800px;
 }
 input[value="未実施"]{
   background-color:aqua;
 }
 input[value="実施"]{
   background-color:chartreuse;
+}
+label{
+  font-size: 28px;
 }
