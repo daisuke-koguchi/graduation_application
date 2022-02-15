@@ -12,42 +12,46 @@
   </head>
 
   <body>
-    <script src="https://unpkg.com/vue@3.1.5"></script>
     <div class="header">
-      <nav class="navbar navbar-expand-lg bg-success">
+      <nav class="navbar navbar-expand-md navbar-dark bg-info fixed-top">
       <span class="navbar-brand">Rehamo</span>
-        <ul class="nav">
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#nav1">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav1">
+        <ul class="navbar-nav mr-auto">
           <% unless user_signed_in?%>
-            <li class="nav-item"><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post ,class:'nav-link'%></li>
+            <li class="nav-item"><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post ,class:'nav-item nav-link'%></li>
             <li class="nav-item"><%= link_to "ゲスト管理者ログイン(閲覧用)", users_admin_guest_sign_in_path, method: :post ,class:'nav-link'%></li>
           <% end %>
-          <% if user_signed_in? %>
+        </ul>
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
             <% if current_user.admin? %>
-              <%= link_to "管理者権限", rails_admin_path ,class:'nav-link'%>
+              <li class="nav-item"><%= link_to "管理者権限", rails_admin_path ,class:'nav-link'%></li>
             <% end %>
-            <li class="nav-item nab-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete ,class:'nav-link' %></li>
+            <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete ,class:'nav-link' %></li>
           <% else %>
             <li class="nav-item "><%= link_to "新規会員登録", new_user_registration_path ,class:'nav-link' %></li>
             <li class="nav-item"><%= link_to "ログイン", new_user_session_path ,class:'nav-link' %></li>
           <% end %>
-            <li class="nav-item"></li>
-
-        </ul>
-      </nav>
+          </ul>
+        </nav>
     </div>
-
     <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
+      <div class="alert alert-info"><%= notice %></div>
     <% end %>
     <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
+      <div class="alert alert-danger"><%= alert %></div>
     <% end %>
 
     <%= yield %>
 
-    <div class="footer">
-      <nav class="navbar bg-dark fixed-bottom"></nav>
-    </div>
+      <div class="footer">
+        <nav class="navbar bg-secondary">
+          <span class="navbar-nav ml-auto mr-auto">Copyright ©︎ 2022 Rehamo All Rights Reserved.</span>
+        </nav>
+      </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
