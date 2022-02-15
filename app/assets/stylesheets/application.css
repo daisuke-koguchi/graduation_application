@@ -13,11 +13,14 @@
  *= require_tree .
  *= require_self
  */
+.header{
+  margin-bottom:55px;
+}
 .container{
-  min-height: 800px;
+  min-height: 600px;
 }
 .container-fluid{
-  min-height: 800px;
+  min-height: 600px;
 }
 input[value="未実施"]{
   background-color:aqua;
