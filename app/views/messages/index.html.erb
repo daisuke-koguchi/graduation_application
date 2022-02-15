@@ -1,6 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-10" >
+    <div class="col-12">
+      <h4><%= @recipient_user.nick_name %>さんとののメッセージ画面</h4>
+      <%binding.break%>
+    </div>
+    <div class="col-12 col-md-10" >
         <%= form_with(model: [@conversation, @message]) do |f| %><br>
           <div class="form-group">
             <%= f.text_area :body, class: "form-control form-control-lg ", placeholder: "メッセージを入力してください。"%>
@@ -12,10 +16,10 @@
           </div>
         <% end %>
     </div>
-    <div class="col-2"><br>
+    <div class="col-12 col-md-2"><br>
       <%= link_to "戻る", users_path, class:'btn btn-success btn-lg'%>
     </div>
-    <div class="col-12">
+    <div class="col-10 col-md-10">
       <% if @over_ten %>
         <%= link_to '以前のメッセージを表示する', '?m=all' %>
       <% end %>

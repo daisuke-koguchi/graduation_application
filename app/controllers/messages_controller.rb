@@ -5,7 +5,6 @@ class MessagesController < ApplicationController
 
   def index 
     @messages = @conversation.messages
-
     if @messages.length > 10
       @over_ten = true
       @messages = Message.where(id: @messages[-10..-1].pluck(:id))
@@ -22,6 +21,7 @@ class MessagesController < ApplicationController
 
     @messages = @messages.order(created_at: :desc).page(params[:page]).per(11)
     @message = @conversation.messages.build
+    @recipient_user = User.find_by(id: @conversation.recipient_id)
   end
 
   def create
