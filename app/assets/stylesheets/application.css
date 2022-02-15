@@ -14,10 +14,10 @@
  *= require_self
  */
 .container{
-  min-height: 1000px;
+  min-height: 600px;
 }
 .container-fluid{
-  min-height: 1000px;
+  min-height: 600px;
 }
 input[value="未実施"]{
   background-color:aqua;

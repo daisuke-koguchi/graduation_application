@@ -28,7 +28,7 @@
                     <% if message.user.avatar_image?%>
                       <%= image_tag(message.user.avatar_image.thumb.url) %>
                     <% else %>
-                      <%= image_tag('noimage.png',width:'40%',height: '40%')%>
+                      <%= image_tag('noimage.png',width:'20%',height: '20%')%>
                     <% end %>
                     <%= message.user.nick_name %>さん
                     <%= message.message_time %>
