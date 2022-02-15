@@ -1,6 +1,8 @@
 class Schedule < ApplicationRecord
   belongs_to :exercise
 
+  validates :fixed_day, presence: true
+
   def self.ransackable_attributes(auth_object = nil)
     %w(fixed_day is_done)
   end
