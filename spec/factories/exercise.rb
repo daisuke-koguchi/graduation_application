@@ -25,9 +25,5 @@ FactoryBot.define do
     count {"10"}
     set_count {"2"}
     association :user 
-
-    after(:build) do |exercise|
-      exercise.schedules << FactoryBot.build(:schedule)
-    end
   end
 end

@@ -6,6 +6,7 @@ FactoryBot.define do
 
   factory :second_schedule ,class: Schedule do
     is_done {true}
-    fixed_day {nil}
+    fixed_day {"2020-02-02"}
+    association :exercise
   end
 end
