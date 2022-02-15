@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-10" >
+    <div class="col-12">
+      <h4><%= @recipient_user.nick_name %>さんとのメッセージ画面</h4>
+    </div>
+    <div class="col-12 col-md-10" >
         <%= form_with(model: [@conversation, @message]) do |f| %><br>
           <div class="form-group">
             <%= f.text_area :body, class: "form-control form-control-lg ", placeholder: "メッセージを入力してください。"%>
@@ -12,10 +15,10 @@
           </div>
         <% end %>
     </div>
-    <div class="col-2"><br>
+    <div class="col-12 col-md-2"><br>
       <%= link_to "戻る", users_path, class:'btn btn-success btn-lg'%>
     </div>
-    <div class="col-12">
+    <div class="col-10 col-md-10">
       <% if @over_ten %>
         <%= link_to '以前のメッセージを表示する', '?m=all' %>
       <% end %>
@@ -28,7 +31,7 @@
                     <% if message.user.avatar_image?%>
                       <%= image_tag(message.user.avatar_image.thumb.url) %>
                     <% else %>
-                      <%= image_tag('noimage.png',width:'40%',height: '40%')%>
+                      <%= image_tag('noimage.png',width:'20%',height: '20%')%>
                     <% end %>
                     <%= message.user.nick_name %>さん
                     <%= message.message_time %>

@@ -56,7 +56,7 @@ RSpec.describe 'dvevise機能', type: :system do
         visit new_user_confirmation_path 
         fill_in 'user[email]',with: user.email
         expect { click_on 'アカウント確認メール再送'}.to change{ ActionMailer::Base.deliveries.size }.by(0)
-        expect(page).to have_content('エラーが発生したため ユーザー は保存されませんでした。')
+        expect(page).to have_content('エラーが発生したため 利用者 は保存されませんでした。')
       end
     end
     context '新規会員登録実施した後、パスワード再設定ページへ移動し、パスワードの再設定を送信するを押すと' do 
@@ -87,21 +87,21 @@ RSpec.describe 'dvevise機能', type: :system do
     context 'ログイン画面で何も入力せずに、ログインを押した場合' do
       it 'ログインできず、エラーメッセージが表示される' do
         find('input[type="submit"]').click
-        expect(page).to have_content('Eメールまたはパスワードが違います。')
+        expect(page).to have_content('メールアドレスまたはパスワードが違います。')
       end
     end
     context 'ログイン画面で誤ったパスワードを入力して、ログインを押した場合' do
       it 'ログインできず、エラーメッセージが表示される' do
         fill_in 'user[password]',with: '123456'
         find('input[type="submit"]').click
-        expect(page).to have_content('Eメールまたはパスワードが違います。')
+        expect(page).to have_content('メールアドレスまたはパスワードが違います。')
       end
     end
     context 'ログイン画面で誤ったメールアドレスを入力して、ログインを押した場合'do 
       it 'ログインできず、エラーメッセージが表示される' do  
         fill_in 'user[email]',with: 'test@example.com'
         find('input[type="submit"]').click
-        expect(page).to have_content('Eメールまたはパスワードが違います。')
+        expect(page).to have_content('メールアドレスまたはパスワードが違います。')
       end
     end
     context 'ログインした状態でログアウトボタンを押すと' do
