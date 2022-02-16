@@ -16,6 +16,9 @@
 .header{
   margin-bottom:55px;
 }
+.footer{
+  margin-top: 50px;
+}
 .container{
   min-height: 600px;
 }

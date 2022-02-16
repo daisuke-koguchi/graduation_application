@@ -3,32 +3,32 @@
     <%= render 'schedules/index',local:{ schedules: @schedules} %>
     
     <div class="col-12 col-md-6">
-      <h5>運動内容の確認</h5>
+      <h5>運動方法の確認</h5>
     </div>
     <div class="col-12 col-md-6"> 
       <%= search_form_for @q do |f| %>
-        <%= f.label :nick_name %>
-        <%= f.search_field :nick_name_cont, class: "form-control form-control-lg ",placeholder: "例) スクワット"%>
-        <small class="form-text">登録された運動内容を名前で検索することが出来ます。</small>
+        <h4>運動の名前検索</h4>
+        <%= f.search_field :name_cont, class: "form-control form-control-lg ",placeholder: "例) スクワット"%>
+        <small class="form-text">登録された運動の名前で検索することが出来ます。</small>
       <%= f.submit "検索する",class:'btn btn-secondary btn-lg'%>
     <% end %>
     </div>
     <div class="col-12 mt-2">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">運動内容の確認</h5>
-          <h6 class="cord-text">運動内容/動画内容を確認するボタンを押すと内容を確認できます。</h6>
-          <h6 class="cord-text">運動内容の編集・削除ボタンで運動を編集・削除できます。</h6>
-          <h6 class="dard-text">運動内容のリンクを押すと名前を（昇順▲ 降順▼）で並び替えられます。</h6>
+          <h5 class="card-title">運動方法の確認</h5>
+          <h6 class="cord-text">運動方法を確認するボタンを押すと写真や動画で内容を確認できます。</h6>
+          <h6 class="cord-text">運動方法の編集・削除ボタンで運動の内容を編集・削除できます。</h6>
+          <h6 class="dard-text">運動の名前のリンクを押すと名前を（昇順▲ 降順▼）で並び替えられます。</h6>
           <div class="table-responsive-md">
             <table class="table text-nowrap">
               <thead>
                 <tr>
-                  <th>写真</th>
-                  <th><%= sort_link(@q, :name ,"運動項目")%></th>
-                  <th>運動内容/動画を確認する</th>
-                  <th>編集する</th>
-                  <th>削除する</th>          
+                  <th>運動の写真</th>
+                  <th><%= sort_link(@q, :name ,"運動の名前")%></th>
+                  <th>運動方法を確認する</th>
+                  <th>編集ボタン</th>
+                  <th>削除ボタン</th>          
                 </tr>
               </thead>
               <tbody>
@@ -40,7 +40,7 @@
                       <th><%= image_tag('noimage.png',width:'40%',height: '40%')%></th>
                     <% end%>
                     <th><%= exercise.name%></th>
-                    <th><%= link_to "動画内容/動画を確認する", exercise_path(exercise.id) %></th> 
+                    <th><%= link_to "運動方法を確認する", exercise_path(exercise.id) %></th> 
                     <th><%= link_to "編集する", edit_exercise_path(exercise.id)%></th>
                     <th><%= link_to "削除する", exercise_path(exercise.id), method: :delete, data: {confirm: "運動内容を削除しますか？"}%></th>
                   </tr>
