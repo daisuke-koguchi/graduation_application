@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe 'dvevise機能', type: :system do
+RSpec.describe 'dvevise/ユーザー機能', type: :system do
   describe '新規会員登録機能' do
     let!(:user){FactoryBot.build(:model_user)}
     before do 
@@ -15,35 +15,35 @@ RSpec.describe 'dvevise機能', type: :system do
     end
     context '新規会員登録画面でユーザが入力した場合' do 
       it '確認画面にユーザーの登録情報が表示される' do
-        click_on 'アカウント登録'
-      expect(page).to have_content('プロフィール確認画面') #レイアウト変更時修正必要
+        click_on '新規登録'
+      expect(page).to have_content('プロフィール確認画面') 
       end
     end
     context '新規会員登録確認画面で登録するを押した場合'do 
     it '登録完了画面に移動する' do
-      click_on 'アカウント登録'
+      click_on '新規登録'
       click_on '登録する'
-      expect(page).to have_content('登録が完了しました') #レイアウト変更時修正必要
+      expect(page).to have_content('登録が完了しました') 
       end
     end
     context '新規会員登録確認画面で修正するを押した場合' do
       it '新規登録画面に移動する' do 
-        click_on 'アカウント登録'
+        click_on '新規登録'
         click_on '修正する'
-        expect(page).to have_content('ログイン') #レイアウト変更時修正必要
+        expect(page).to have_content('ログイン') 
         expect(page).to_not have_content('登録が完了しました')
       end
     end
     context '新規会員登録確認画面で登録するを押した場合' do 
       it '本人確認用のメールアドレスが送信される。' do
-        click_on 'アカウント登録'
+        click_on '新規登録'
         expect {click_on '登録する'}.to change { ActionMailer::Base.deliveries.size }.by(1)
         expect(page).to have_content('本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。')
       end
     end
     context '新規会員登録実施した後、アカウント確認メール再送画面で、アカウント確認メール再送ボタンを押すと' do 
       it 'アカウント確認メールが再送される' do 
-        click_on 'アカウント登録'
+        click_on '新規登録'
         click_on '登録する'
         visit new_user_confirmation_path 
         fill_in 'user[email]',with: user.email
@@ -61,7 +61,7 @@ RSpec.describe 'dvevise機能', type: :system do
     end
     context '新規会員登録実施した後、パスワード再設定ページへ移動し、パスワードの再設定を送信するを押すと' do 
       it 'パスワードの再設定のメールが送信される' do
-        click_on 'アカウント登録'
+        click_on '新規登録'
         click_on '登録する'
         visit new_user_password_path 
         fill_in 'user[email]',with: user.email 
@@ -111,6 +111,16 @@ RSpec.describe 'dvevise機能', type: :system do
         find('input[type="submit"]').click
         click_on 'ログアウト'
         expect(page).to have_content('ログアウトしました')
+      end
+    end
+    context 'ログアウトした状態で利用者一覧画面にアクセスしようとすると' do
+      it 'エラーメッセージが表示される' do
+        fill_in 'user[email]',with: user.email
+        fill_in 'user[password]', with: user.password
+        find('input[type="submit"]').click
+        click_on 'ログアウト'
+        visit users_path
+        expect(page).to have_content("ログインもしくはアカウント登録してください。")
       end
     end
   end

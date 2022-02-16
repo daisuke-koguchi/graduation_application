@@ -12,6 +12,7 @@ ja:
         first_name: 姓
         last_name: 名
         nick_name: ニックネーム
+        email: メールアドレス
         avatar_image: プロフィール画像
         introduction: 自己紹介文
         deleted_at: 論理削除
