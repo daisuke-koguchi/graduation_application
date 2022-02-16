@@ -1,18 +1,12 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: %i{ mypage index show }
-  before_action :set_user, only: %i{ mypage show }
+  before_action :authenticate_user!, only: %i{ index show }
+  before_action :set_user, only: %i{ show }
   def top
   end
 
-  def mypage
-    if @user.id !=  current_user.id
-      redirect_to users_mypage_path(id: current_user.id), alert: "アクセス権限がありません" 
-    end
-  end
-  
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true).page(params[:page]).per(4)
+    @users = @q.result(distinct: true).page(params[:page]).per(5)
   end
 
   def show 

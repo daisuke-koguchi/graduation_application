@@ -11,7 +11,6 @@ RSpec.describe 'コミュニティ機能', type: :system do
       fill_in 'user[email]',with: @login_user.email
       fill_in 'user[password]', with: @login_user.password
       find('input[type="submit"]').click
-      click_on 'マイページへ移動する'
       click_on '仲間と交流する'
     end
     context 'マイページから、仲間と交流するをクリックすると' do 

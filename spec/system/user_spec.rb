@@ -9,25 +9,9 @@ RSpec.describe 'ユーザー機能', type: :system do
       fill_in 'user[password]', with: @login_user.password
       find('input[type="submit"]').click
     end
-    context 'トップページから、マイページへ移動するをクリックすると' do 
+    context 'ログインすると' do 
       it '自分のニックネームが表示されるマイページへ移動する' do 
-        click_on 'マイページへ移動する'
         expect(page).to have_content("マイケルさんのマイページ")
-      end
-    end
-    context 'マイページから、プロフィールの編集/確認するを押すと' do
-      it '自分のプロフィールが表示される' do
-        click_on 'マイページへ移動する'
-        click_on 'プロフィールの編集/確認する'
-        expect(page).to have_content("マイケルさんのプロフィール")
-      end
-    end
-    context 'マイページから、他のユーザーのページにアクセスすると' do 
-      it 'マイページにリダイレクトされ、アクセス権限がありませんと表示される' do
-        click_on 'マイページへ移動する'
-        @user = FactoryBot.create(:user, email:"testA@example.com")
-        visit users_mypage_path(id: @user.id)
-        expect(page).to have_content("アクセス権限がありません")
       end
     end
   end
@@ -41,8 +25,6 @@ RSpec.describe 'ユーザー機能', type: :system do
     end
     context 'プロフィールページからプロフィールを編集するをクリックすると'do
       it '自分の名前が表示されるマイページへ移動する' do 
-        click_on 'マイページへ移動する'
-        click_on 'プロフィールの編集/確認する'
         click_on 'プロフィールを編集する'
         fill_in 'user[first_name]', with: "テスト4"
         fill_in 'user[last_name]', with: "テスト４"
@@ -52,9 +34,6 @@ RSpec.describe 'ユーザー機能', type: :system do
     end 
     context 'プロフィールページから退会するをクリックすると'do 
       it '退会され、トップページにリダイレクトされる' do 
-        sleep 0.5
-        click_on 'マイページへ移動する'
-        click_on 'プロフィールの編集/確認する'
         click_on '退会する'
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content("アカウントを削除しました。またのご利用をお待ちしております。")

@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'users#top'
   get 'users/top' => 'users#top'
-  get 'users/mypage' => 'users#mypage'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -20,14 +19,11 @@ Rails.application.routes.draw do
     resources :messages 
   end
   resources :schedules ,only: %i{ index create destroy}
-  #post 'schedules/create/:id' => 'schedules#create'
-  #delete 'schedules/destroy/:id' => 'schedules#destroy'
   resources :exercises do
     collection do 
       get 'graph'
     end
   end
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
