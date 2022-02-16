@@ -16,7 +16,7 @@
       </div>
       <div class="d-flex flex-column col4 offset-4 ">
         <% if user_signed_in? %>
-          <div><%= link_to "マイページへ移動する",users_mypage_path(id: current_user.id)%></div>
+          <div><%= link_to "マイページへ移動する",users_path(id: current_user.id)%></div>
         <% else  %>
           <div><%= link_to "新規会員登録する", new_user_registration_path ,class:'nav-link',class: 'btn btn-primary'%></div>
           <br>  
