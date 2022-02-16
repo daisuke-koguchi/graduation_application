@@ -9,7 +9,7 @@ class Exercise < ApplicationRecord
   validates :description, presence: true, length:{in: 1..1000}
   
   def self.ransackable_attributes(auth_object = nil)
-    %w(nick_name)
+    %w(name)
   end
 
   def self.ransackable_associations(auth_object = nil)

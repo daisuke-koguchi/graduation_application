@@ -1,19 +1,19 @@
 <div class="col-12">
   <div class="card mt-2">
     <div class="card-body">
-    <h5 class="card-title">本日<%= DateTime.now.strftime("%Y年%m月%d日")%>の運動内容</h5>
-    <h6 class="cord-text">本日の運動内容を実施されましたら、未実施ボタンを押してください。</h6>
-    <h6 class="cord-text">実施ボタンに切り替わると運動が登録されます。</h6>
-    <%= link_to "その他の日の運動内容を確認する",schedules_path, class:'card-link',class:'btn btn-outline-primary btn-lg'%>
-    <%= link_to "運動記録を見る", graph_exercises_path ,class:'btn btn-outline-info btn-lg'%> &nbsp;
+    <h5 class="card-title">本日<%= DateTime.now.strftime("%Y年%m月%d日")%>に実施する運動</h5>
+    <h6 class="cord-text">本日の運動を実施されましたら、実施/未実施の欄にあるボタンを押してください。</h6>
+    <h6 class="cord-text">実施ボタンに切り替わると運動が実施で登録されます。</h6>
+    <%= link_to "過去に実施した運動を確認する",schedules_path, class:'card-link',class:'btn btn-outline-primary btn-lg'%>
+    <%= link_to "運動の記録を見る", graph_exercises_path ,class:'btn btn-outline-info btn-lg'%> &nbsp;
     <div class="table-responsive-md">
       <table class="table text-nowrap">
         <thead>
           <tr>
-            <th>写真</th>
-            <th>運動内容</th>
-            <th>運動負荷</th>
-            <th>実施/未実施</th>
+            <th>運動の写真</th>
+            <th>運動の項目</th>
+            <th>運動の負荷量</th>
+            <th>実施/未実施ボタン</th>
           </tr>
         </thead>
         <tbody>

@@ -1,19 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-6">
-      <h4>全ての運動内容</h4>
+      <h4>過去に実施した運動の一覧</h4>
     </div>
     <div class="col-12 col-md-4 offset-2 form-group">
       <%= search_form_for @q do |f| %>
-      <%= f.label :fixed_day %> 
+      <h4>運動を実施した日付の検索</h4>
       <small class="form-text">検索する日付の範囲の開始日を入力してください。</small>
       <%= f.date_field :fixed_day_gteq, class: 'form-control', include_blank: true %>
       <small class="form-text">検索する日付の範囲の終了日を入力してください。</small>
       <%= f.date_field :fixed_day_lteq_end_of_day, class: 'form-control', include_blank: true %>
-      <small class="form-text">セレクトボックスで実施または未実施で検索できます。</small>
-      <%= f.label :is_done %>
+      
+      <h4>実施/未実施検索</h4>
       <%= f.select :is_done_eq, [['実施済',true],['未実施',false]], include_blank: true %>
       <%= f.submit "検索する",class:'btn btn-secondary btn-lg'%>
+      <small class="form-text">セレクトボックスで実施または未実施を選択して検索できます。</small>
       <% end %>
     </div>
     <div class="col-12">
@@ -23,11 +24,11 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th>写真</th>
-                    <th>運動項目</th>
-                    <th>運動負荷</th>
-                    <th>運動実施日</th>
-                    <th>実施/未実施</th>
+                    <th>写真の写真</th>
+                    <th>運動の名前</th>
+                    <th>運動の負荷量</th>
+                    <th>運動を実施した日</th>
+                    <th>実施/未実施ボタン</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -1,12 +1,13 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: %i{show edit update destroy}
+  before_action :current_user_permition, only: %i{edit show}
   def index
     @q = Exercise.ransack(params[:q])
     @exercises = @q.result(distinct: true).page(params[:page]).per(5)
     @schedules = Schedule.where(fixed_day: Date.today).page(params[:schedule_page]).per(5)
   end
 
-  def show 
+  def show
   end
 
   def new
@@ -25,6 +26,7 @@ class ExercisesController < ApplicationController
 
   def edit
     @exercise.schedules.build
+    binding.break
   end
 
   def update
@@ -63,5 +65,11 @@ class ExercisesController < ApplicationController
 
   def set_exercise 
     @exercise = Exercise.find(params[:id])
+  end
+
+  def current_user_permition 
+    if current_user.id != @exercise.user_id 
+      redirect_to exercises_path, alert: 'アクセスできません'
+    end
   end
 end
