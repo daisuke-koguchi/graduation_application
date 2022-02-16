@@ -1,5 +1,8 @@
 <div class="container">
   <div class="row">
+    <div class="col-12">
+      <h5><%= current_user.nick_name%>さんの運動・記録ページ</h5>
+    </div>
     <%= render 'schedules/index',local:{ schedules: @schedules} %>
     
     <div class="col-12 col-md-6">
