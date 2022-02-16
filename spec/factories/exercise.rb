@@ -16,7 +16,7 @@ FactoryBot.define do
   end
 
   factory :second_exercise, class: Exercise do
-    name {"スクワット" }
+    name {"腹筋" }
     description {"ゆっくりと膝を曲げましょう"}
     image {Rack::Test::UploadedFile.new(File.join(Rails.root,'spec/fixtures/test.png'))}
     video {Rack::Test::UploadedFile.new(File.join(Rails.root,'spec/fixtures/test.mp4'))}
@@ -24,6 +24,10 @@ FactoryBot.define do
     second {"1"}
     count {"10"}
     set_count {"2"}
-    association :user 
+    association :user
+
+    after(:build) do |exercise|
+      exercise.schedules << FactoryBot.build(:schedule)
+    end
   end
 end
