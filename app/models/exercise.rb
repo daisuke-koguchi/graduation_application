@@ -6,6 +6,7 @@ class Exercise < ApplicationRecord
   mount_uploader :video, VideoUploader
   
   validates :name, presence: true, length:{in: 1..50}
+  validates :description, presence: true, length:{in: 1..1000}
   
   def self.ransackable_attributes(auth_object = nil)
     %w(nick_name)
