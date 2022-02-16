@@ -3,7 +3,7 @@
     <div class="col-12">    
       <h2><%= t('.title', resource: resource.model_name.human) %></h2>
     </div>
-      <div class="col-12 col-lg-9 offset-lg-1">
+      <div class="col-12 col-lg-9 offset-lg-1 my-4">
         <div class="card">
           <div class="card-body">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -84,7 +84,10 @@
               <%= f.password_field :password_confirmation, autocomplete: "new-password" , class: "form-control form-control-lg"%>
               <small class="form-text">空欄時は、パスワードを変更しません。変更する場合は、同じパスワードをご入力ください。</small>
             </div>
-
+            
+            <div>
+              <%= f.submit t('.update'), class:'btn btn-primary btn-lg' %> 
+            </div>
           <%if false %>
             <div class="form-group ">
               <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
@@ -94,10 +97,13 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-lg-9 offset-lg-1 my-2">
-        <%= f.submit t('.update'), class:'btn btn-primary btn-lg' %>
-        <%= link_to "戻る", :back, class:'btn btn-success btn-lg' %>
+        <div class="col-12 offset-9 mb-1 ">
+          <div class="row">
+            <%= link_to "戻る", :back, class:'btn btn-success btn-lg' %>
+          </div>
+        </div>
       </div>  
       <% end %>
+    </div>
   </div>
 </div>
