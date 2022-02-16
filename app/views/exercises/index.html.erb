@@ -33,6 +33,7 @@
               </thead>
               <tbody>
                 <% @exercises.each do |exercise|%>
+                  <% if current_user.id == exercise.user_id %>
                   <tr>
                     <% if exercise.image? %>
                       <th><%= image_tag(exercise.image.thumb.url)%></th>
@@ -44,7 +45,8 @@
                     <th><%= link_to "編集する", edit_exercise_path(exercise.id)%></th>
                     <th><%= link_to "削除する", exercise_path(exercise.id), method: :delete, data: {confirm: "運動内容を削除しますか？"}%></th>
                   </tr>
-                <% end %>    
+                  <% end %>
+                <% end %>
               </tbody>
             </table>
             <%= paginate @exercises %>
