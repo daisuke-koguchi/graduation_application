@@ -24,7 +24,7 @@ FactoryBot.define do
     second {"1"}
     count {"10"}
     set_count {"2"}
-    association :user
+    association :user, factory: :login_user 
 
     after(:build) do |exercise|
       exercise.schedules << FactoryBot.build(:schedule)

@@ -43,7 +43,7 @@
                     <% else %>
                       <th><%= image_tag('noimage.png',width:'40%',height: '40%')%></th>
                     <% end%>
-                    <th><%= exercise.name%></th>
+                    <th id="exercise_name"><%= exercise.name%></th>
                     <th><%= link_to "運動方法を確認する", exercise_path(exercise.id) %></th> 
                     <th><%= link_to "編集する", edit_exercise_path(exercise.id)%></th>
                     <th><%= link_to "削除する", exercise_path(exercise.id), method: :delete, data: {confirm: "運動内容を削除しますか？"}%></th>

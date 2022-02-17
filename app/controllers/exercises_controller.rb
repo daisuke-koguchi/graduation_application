@@ -26,7 +26,6 @@ class ExercisesController < ApplicationController
 
   def edit
     @exercise.schedules.build
-    binding.break
   end
 
   def update
