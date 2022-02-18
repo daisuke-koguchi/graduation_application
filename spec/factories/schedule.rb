@@ -1,17 +1,17 @@
 FactoryBot.define do
   factory :schedule ,class: Schedule do
-    is_done {true} 
-    fixed_day {"2020-02-02"}
+    is_done {false} 
+    fixed_day {Date.today}
   end
 
   factory :second_schedule ,class: Schedule do
     is_done {true}
-    fixed_day {"2020-02-02"}
+    fixed_day {Date.today}
     association :exercise
   end
 
   factory :third_shcedule ,class: Schedule do
-    is_done {true}
+    is_done {false}
     fixed_day { Date.today}
   end
 

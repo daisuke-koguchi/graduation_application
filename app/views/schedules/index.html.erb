@@ -40,7 +40,7 @@
                       <% else %>
                         <th><%= image_tag('noimage.png',width:'40%',height: '40%')%></th>
                       <% end%>
-                        <th id=""><%= schedule.exercise.name %></th>
+                        <th id="schedule_exercise_name"><%= schedule.exercise.name %></th>
                         <th>
                           <% if schedule.exercise.count != "0" %>
                             運動回数:<%= schedule.exercise.count %>回
