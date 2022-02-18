@@ -1,6 +1,10 @@
 {
   "name": "graduation_application",
   "private": true,
+  "engines": {
+    "node": "14.18.3",
+    "npm": "6.14.15"
+    },
   "dependencies": {
     "@nathanvda/cocoon": "^1.2.14",
     "@rails/actioncable": "^6.0.0",
