@@ -21,12 +21,12 @@
           <% if current_user.id == schedule.exercise.user.id%>
             <tr>
             <% if schedule.exercise.image? %>
-              <th><%= image_tag(schedule.exercise.image.thumb.url)%></th>
+              <td><%= image_tag(schedule.exercise.image.thumb.url)%></td>
             <% else %>
-              <th><%= image_tag('noimage.png',width:'40%',height: '40%')%></th>
+              <td><%= image_tag('noimage.png',width:'40%',height: '40%')%></td>
             <% end%>
-              <th><%= schedule.exercise.name %></th>
-              <th>
+              <td id="schedule_exercise_name"><%= schedule.exercise.name %></td>
+              <td>
                 <% if schedule.exercise.count != "0" %>
                   運動回数:<%= schedule.exercise.count %>回&nbsp;
                 <% end %>
@@ -39,12 +39,12 @@
                 <% if schedule.exercise.second != "0" %>
                   <%= schedule.exercise.second %>秒
                 <% end %>
-              </th>
-              <th>
+              </td>
+              <td id>
                 <div id="button_<%= schedule.id %>">
                   <%= render 'schedules/both', {schedule: schedule} %>
                 </div>
-              </th>
+              </td>
             </tr>
             <% end %>
           <% end %>
