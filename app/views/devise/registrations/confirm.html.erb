@@ -21,7 +21,7 @@
           <td><%= f.hidden_field :nick_name, class:"form-control-plaintext "%>
           <%= @user.nick_name%></td>
       </tr>
-      <tr>
+      <tr id="avatar-image">
           <th><%= f.label :avatar_image %></th>
           <td><%= f.hidden_field :avatar_image_cache %>
           <%= image_tag(@user.avatar_image.url) if @user.avatar_image && @user.avatar_image.url %></td>
@@ -45,8 +45,8 @@
       </tr>
       </table>
       <div class="col-12 my-2">
-      <%= f.submit "修正する", name: :back, class:'btn btn-info btn-lg'%>
-      <%= f.submit "登録する", class: "btn btn-primary btn-lg"%>
+      <%= f.submit "修正する", name: :back, class:'btn btn-info'%>
+      <%= f.submit "登録する", class: "btn btn-primary"%>
       <% end %>
       </div>
     </div>

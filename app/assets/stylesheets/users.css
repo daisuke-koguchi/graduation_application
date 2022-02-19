@@ -24,4 +24,11 @@ p{
   border-width: 2px;
   border-color: gray;
 }
+.sign-up{
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 28px;
+}
+#avatar-image{
+  height: 300px;
+}
 

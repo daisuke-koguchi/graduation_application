@@ -41,3 +41,13 @@ input[value="実施"]{
 label{
   font-size: 28px;
 }
+.form-group{
+  font-family: 'Noto Sans JP', sans-serif;
+}
+th{
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 28px;
+}
+td{
+  font-size: 24px;
+}
