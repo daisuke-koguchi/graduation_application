@@ -1,40 +1,33 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h4>Rehamoへようこそ</h4>
-      <p>Rehamoはリハビリに対するモチベーションを維持できることを目的として、</p>
-      <p>リハビリに励まれている利用者様を支援するためのアプリケーションです。</p>
-      <p>リハビリを頑張っている仲間やセラピストと励まし合いながら運動をすることが出来ます。</p>
-      <p>運動メニューを写真と動画で確認しながら実施することが出来ます。</p>
-      <p>運動の記録を保存しすることができます。記録をグラフで確認することが出来るので、変化を確認できます。</p>
-      <p>ぜひ、ご参加ください！</p>
-  </div>
-  
-</div>
-<div class="container-fluid">
-  
-  <div class">
-    <h4>Rehamoへようこそ</h4>
-      <p>Rehamoはリハビリに対するモチベーションを維持できることを目的として、</p>
-      <p>リハビリに励まれている利用者様を支援するためのアプリケーションです。</p>
-      <p>リハビリを頑張っている仲間やセラピストと励まし合いながら運動をすることが出来ます。</p>
-      <p>運動メニューを写真と動画で確認しながら実施することが出来ます。</p>
-      <p>運動の記録を保存しすることができます。記録をグラフで確認することが出来るので、変化を確認できます。</p>
-      <p>ぜひ、ご参加ください！</p>
-  </div>
-
-  </div>
-    <div class="row">
-      <div class="col-10 offset-1">
-        <div class="d-flex flex-column col4 offset-4 ">
-          <% if user_signed_in? %>
-            <div><%= link_to "マイページへ移動する",users_path(id: current_user.id)%></div>
-          <% else  %>
-            <div><%= link_to "新規会員登録する", new_user_registration_path ,class:'nav-link',class: 'btn btn-primary'%></div>
-            <br>  
-            <div><%= link_to "ログインする", new_user_session_path ,class:'nav-link',class: 'btn btn-info' %></div>
-          <% end %>
-        </div>
+<div class="jumbotron jumbotron-fluid col-12">
+  <div row>
+    <div class="logo col-12">
     </div>
   </div>
 </div>
-
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">Rehamoへようこそ</h3>
+    </div>
+    <div class="top-message col-12">
+      <p class="text-left">　Rehamoはリハビリに対するモチベーションを維持できることを目的として、
+      リハビリに励まれている利用者様を支援するためのアプリケーションです。</p>
+      <p class="text-left">　リハビリを頑張っている仲間やセラピストと励まし合いながら運動をすることが出来ます。</p>
+      <p class="text-left">　運動メニューを写真と動画で確認しながら実施することが出来ます。</p>
+      <p class="text-left">　運動の記録を保存しすることができます。記録をグラフで確認することが出来るので、変化を確認できます。</p>
+    </div>
+    <div class="col-12">
+      <p class="text-center">ぜひ、ご参加ください！</p>
+    </div>
+  </div>
+    <% if user_signed_in? %>
+      <div class="d-flex justify-content-center"> 
+        <div class="m-2 p-3"><%= link_to "マイページへ移動する",users_path(id: current_user.id)%></div>
+      </div>
+    <% else  %>
+        <div class="d-flex justify-content-center">
+          <div class="m-2 p-3"><%= link_to "新規会員登録する", new_user_registration_path ,class:'nav-link',class: 'btn btn-primary btn-lg'%></div>
+          <div class="m-2 p-3"><%= link_to "ログインする", new_user_session_path ,class:'nav-link',class: 'btn btn-info btn-lg' %></div>
+        </div>
+    <% end %>
+</div>

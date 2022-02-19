@@ -1,11 +1,27 @@
-.jumbotron{
-  background:url(top2.jpg);
+.jumbotron-fluid{
+  background:url(top2.jpg) center no-repeat;
   background-size:cover;
   height:500px;
-  
+}
+.top-message{
+  background-color: rgb(252, 227, 218);
+}
+.logo{
+  background:url(rehamo-logo.png) center no-repeat;
+  background-size:cover;
+  height:400px;
+  width: 60%;
 }
 p{
+  font-family: 'Noto Sans JP', sans-serif;
   color: black;
   font-size: 24px;
   opacity:1 !important; 
 }
+.sign-up-box{
+  width: 500px;
+  border-style: outset;
+  border-width: 2px;
+  border-color: gray;
+}
+
