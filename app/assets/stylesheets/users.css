@@ -1,0 +1,11 @@
+.jumbotron{
+  background:url(top2.jpg);
+  background-size:cover;
+  height:500px;
+  
+}
+p{
+  color: black;
+  font-size: 24px;
+  opacity:1 !important; 
+}

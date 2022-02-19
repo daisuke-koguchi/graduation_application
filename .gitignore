@@ -37,4 +37,4 @@ yarn-debug.log*
 
 /public/uploads
 #dotenv-rails
-.env
+/.env

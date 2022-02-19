@@ -1,28 +1,40 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h4>Rehamoへようこそ</h4>
+      <p>Rehamoはリハビリに対するモチベーションを維持できることを目的として、</p>
+      <p>リハビリに励まれている利用者様を支援するためのアプリケーションです。</p>
+      <p>リハビリを頑張っている仲間やセラピストと励まし合いながら運動をすることが出来ます。</p>
+      <p>運動メニューを写真と動画で確認しながら実施することが出来ます。</p>
+      <p>運動の記録を保存しすることができます。記録をグラフで確認することが出来るので、変化を確認できます。</p>
+      <p>ぜひ、ご参加ください！</p>
+  </div>
+  
+</div>
 <div class="container-fluid">
-  <h1>Rehamo</h1>
+  
+  <div class">
+    <h4>Rehamoへようこそ</h4>
+      <p>Rehamoはリハビリに対するモチベーションを維持できることを目的として、</p>
+      <p>リハビリに励まれている利用者様を支援するためのアプリケーションです。</p>
+      <p>リハビリを頑張っている仲間やセラピストと励まし合いながら運動をすることが出来ます。</p>
+      <p>運動メニューを写真と動画で確認しながら実施することが出来ます。</p>
+      <p>運動の記録を保存しすることができます。記録をグラフで確認することが出来るので、変化を確認できます。</p>
+      <p>ぜひ、ご参加ください！</p>
+  </div>
+
+  </div>
     <div class="row">
-      <div class="col-10 offset-1 col-sm-12 col-md-12 col-lg-12">
-        <h4>Rehamoへようこそ</h4>
-        <ul class="list-unstyled">
-          <li>Rehamoはリハビリに対するモチベーションを維持できることを目的として、</li>
-          <li>リハビリに励まれている利用者様を支援するためのアプリケーションです。</li>
-
-          <li>リハビリを頑張っている仲間やセラピストと励まし合いながら運動をすることが出来ます。</li>
-          <li>運動メニューを写真と動画で確認しながら実施することが出来ます。</li>
-          <li>運動の記録を保存しすることができます。記録をグラフで確認することが出来るので、変化を確認できます。</li>
-
-          <li>ぜひ、ご参加ください！</li>
-        </ul>
-      </div>
-      <div class="d-flex flex-column col4 offset-4 ">
-        <% if user_signed_in? %>
-          <div><%= link_to "マイページへ移動する",users_path(id: current_user.id)%></div>
-        <% else  %>
-          <div><%= link_to "新規会員登録する", new_user_registration_path ,class:'nav-link',class: 'btn btn-primary'%></div>
-          <br>  
-          <div><%= link_to "ログインする", new_user_session_path ,class:'nav-link',class: 'btn btn-info' %></div>
-        <% end %>
-      </div>
+      <div class="col-10 offset-1">
+        <div class="d-flex flex-column col4 offset-4 ">
+          <% if user_signed_in? %>
+            <div><%= link_to "マイページへ移動する",users_path(id: current_user.id)%></div>
+          <% else  %>
+            <div><%= link_to "新規会員登録する", new_user_registration_path ,class:'nav-link',class: 'btn btn-primary'%></div>
+            <br>  
+            <div><%= link_to "ログインする", new_user_session_path ,class:'nav-link',class: 'btn btn-info' %></div>
+          <% end %>
+        </div>
     </div>
+  </div>
 </div>
 
