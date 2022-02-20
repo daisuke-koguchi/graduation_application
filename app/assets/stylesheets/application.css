@@ -23,6 +23,11 @@
   font-size: 24px;
   font-family: 'Noto Sans JP', sans-serif;
 }
+.navbar-brand{
+  background:url(header-logo.png) center no-repeat;
+  height:50px;
+  width: 150px;
+}
 .footer{
   margin-top: 50px;
 }

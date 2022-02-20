@@ -42,3 +42,8 @@ p{
 .confirm-message{
   background-color: rgb(252, 227, 218);
 }
+.mail.logo{
+  background:url(header-logo.png) center no-repeat;
+  height:50px;
+  width: 150px;
+}
