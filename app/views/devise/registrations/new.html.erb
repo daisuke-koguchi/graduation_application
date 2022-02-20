@@ -1,14 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2><%= t('.sign_up') %></h2>
+      <h2 class="sign-up"><%= t('.sign_up') %></h2>
     </div>
     <div class="col-12 col-lg-9 offset-lg-1 my-2">
       <div class="card">
         <div class="card-body">
           <%= form_with(model: @user, url:  users_sign_up_confirm_path(@user), local: true) do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
-          
+            <%= render "devise/shared/error_messages", resource: resource %>
           <div class="form-group mt-2">
             <div>
               <%= f.label :first_name  %>
@@ -78,20 +77,22 @@
               <%= f.label :password_confirmation %>
               <span class="badge badge-danger">必須<span>
             </div>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-lg",placeholder: "AbcDef0123" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-lg",placeholder: "例) AbcDef0123" %>
             <small class="form-text">確認のため、もう一度同じパスワードをご入力ください。</small>  
           </div>
-          <div>
-            <%= f.submit t('.sign_up') ,class:'btn btn-primary btn-lg'%>
-          <div>
+
+            <div class="mb-1 p-1"><%= f.submit t('.sign_up') ,class:'btn btn-primary'%><div class="mb-1 p-1">
+            <div class="mb-1 p-1">
+              <%= render "devise/shared/links" %>
+            </div>
+            <% end %>
         </div>
       </div>
     </div>
-    <div class="col-12 col-lg-9 offset-lg-1 my-2">
-      <%= render "devise/shared/links" %>
-    </div>
-      </div>
-      <% end %>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-12 mb-5 mt-2 pb-1 pt-1">
+      <%= link_to "戻る",users_top_path, class:'btn btn-success' %>
     </div>
   </div>
 </div>

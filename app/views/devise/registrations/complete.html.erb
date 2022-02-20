@@ -1,9 +1,19 @@
+<div class="jumbotron complete-image">
+</div>
 <div class="container">
   <div class="row">
-    <div class="col-6 offset-2">
-      <p>ご登録が完了しました</p>
-      <%= link_to "トップページへ戻る", users_top_path %>
+    <div class="col-12 mb-5">
+      <h3 class="text-center">Rehamoにご登録、誠にありがとうございます。</h3>
+    </div>
+    <div class="confirm-message col-12">
+      <p class="text-left">　現在はまた仮登録の状態です。</p>
+      <p class="text-left">ご登録されたメールアドレスに、アドレス確認のメール送付いたしました。</p>
+      <p class="text-left">メールアドレスを確認していただき、本登録完了となります。</p>
+      <p class="text-left">本登録後は、トップページよりログインしてください。</p>
     </div>
   </div>
-  
+  <div class="d-flex justify-content-center mt-5 p-3">
+    <%= link_to "トップページに戻る",users_top_path, class:'btn btn-success btn-lg' %>
+  </div>
 </div>
+

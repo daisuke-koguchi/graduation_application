@@ -1,0 +1,64 @@
+.jumbotron-fluid{
+  background:url(top.jpg) center no-repeat;
+  background-size:cover;
+  height:500px;
+}
+.top-message{
+  background-color: rgb(252, 227, 218);
+}
+.logo{
+  background:url(rehamo-logo.png) center no-repeat;
+  background-size:cover;
+  height:400px;
+  width: 60%;
+}
+.sign-up-box{
+  width: 500px;
+  border-style: outset;
+  border-width: 2px;
+  border-color: gray;
+}
+.sign-up{
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 28px;
+}
+#avatar-image{
+  min-height: 300px;
+}
+#avatar-introduction{
+  min-height: 100px;
+}
+.complete-image{
+  background:url(complete.jpg) center no-repeat;
+  background-size:cover;
+  height:300px;
+}
+.confirm-message{
+  background-color: rgb(252, 227, 218);
+}
+.mail-logo{
+  background:url(header-logo.png) center no-repeat;
+  height:50px;
+  width: 150px;
+}
+.exercise{
+  background:url(exercise.jpg) center no-repeat;
+  height: 350px;
+  width: 350px;
+  margin:0 auto;
+}
+.community{
+  background:url(community.jpg) center no-repeat;
+  height: 350px;
+  width: 350px;
+  margin:0 auto;
+}
+p{
+  font-family: 'Noto Sans JP', sans-serif;
+  color: black;
+  font-size: 24px;
+  opacity:1 !important; 
+}
+h4, h6{
+  font-family: 'Noto Sans JP', sans-serif;
+}
