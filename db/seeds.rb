@@ -27,7 +27,7 @@ user2 = User.create!(
   last_name:"ユーザー2",
   nick_name:"ジル",
   avatar_image:File.open(Rails.root + 'public/images/avatar2.jpg'),
-  introduction:"趣味は料理と散歩です。最近は長い距離歩くと疲労感が出てきたため、下肢の運動と有酸素トレーニングを中心に筋力トレーニングを行なっていきたいと思います。。",
+  introduction:"趣味は料理と散歩です。最近は長い距離歩くと疲労感が出てきたため、下肢の運動と有酸素トレーニングを中心に筋力トレーニングを行なっていきたいと思います。",
   email: "jill@example.com",
   password:"111111",
   admin: false,
@@ -71,11 +71,11 @@ user5 = User.create!(
 
 #exercises
 User.all.each do |user|
-  user5.exercises.create!(
+  user.exercises.create!(
     name: "歩行練習",
     description: "痛みや麻痺のある方は動画のように、歩行補助具を使用すると、両手の力で体重を分散することができるようになるので、負担を軽減して歩けるようになります。レンタルすることもできるので、ご自身のケアマネージャーに相談してみましょう。",
     image:File.open(Rails.root + 'public/images/image1.jpg'),
-    # video:File.open(Rails.root + './public/assets/videos/movie1.mp4'),
+    video:File.open(Rails.root + 'app/assets/images/movie1.mp4'),
     minute: 10,
     second: 0,
     count: 0,
@@ -88,7 +88,7 @@ User.all.each do |user|
     name: "広背筋のストレッチ",
     description: "座った姿勢が多いと固く、肩こりや猫背の原因となる筋肉の一つが広背筋です。写真のように片手を上げて体を倒してストレッチしていきます。動画のように肘を曲げて実施すると強くストレッチすることが出来ます。",
     image:File.open(Rails.root + 'public/images/image2.jpg'),
-    # video:File.open(Rails.root + './public/assets/videos/movie2.mp4'),
+    video:File.open(Rails.root + 'app/assets/images/movie2.mp4'),
     minute: 0,
     second: 15,
     count: 1,
@@ -101,7 +101,7 @@ User.all.each do |user|
     name: "ウォーキング",
     description: "少し普段より早歩きで、地面を蹴るように20分程度を目安に歩いてみましょう。病気が少なく健康的な生活を送ることができる歩数の目安は6000歩程度なので、それを目標に歩いていきましょう。",
     image:File.open(Rails.root + 'public/images/image3.jpg'),
-    # video:File.open(Rails.root + './public/assets/videos/movie3.mp4'),
+    video:File.open(Rails.root + 'app/assets/images/movie3.mp4'),
     minute: 20,
     second: 0,
     count: 1,
@@ -114,7 +114,7 @@ User.all.each do |user|
     name: "スクワット",
     description: "腰を真下に下ろすように、両膝を曲げていきましょう。膝を曲げる角度は、両膝がつま先より出ない程度まで行います。太ももと殿部の筋肉を意識して行なっていきましょう。",
     image:File.open(Rails.root + 'public/images/image4.jpg'),
-    # video:File.open(Rails.root + './public/assets/videos/movie4.mp4'),
+    video:File.open(Rails.root + 'app/assets/images/movie4.mp4'),
     minute: 0,
     second: 0,
     count: 10,
@@ -127,7 +127,7 @@ User.all.each do |user|
     name: "股関節の外転運動",
     description: "歩行や階段昇降動作の安定や、膝関節の痛みの緩和に働く殿部の筋肉（中殿筋・大殿筋）を鍛えていきましょう。",
     image:File.open(Rails.root + 'public/images/image5.jpg'),
-    # video:File.open(Rails.root + './public/assets/videos/movie5.mp4'),
+    video:File.open(Rails.root + 'app/assets/images/movie5.mp4'),
     minute: 0,
     second: 0,
     count: 10,

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @q = User.ransack(params[:q])
+    @q = User.where.not(id: current_user.id).ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(5)
   end
 

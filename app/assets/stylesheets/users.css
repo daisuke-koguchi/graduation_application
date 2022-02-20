@@ -53,12 +53,3 @@
   width: 350px;
   margin:0 auto;
 }
-p{
-  font-family: 'Noto Sans JP', sans-serif;
-  color: black;
-  font-size: 24px;
-  opacity:1 !important; 
-}
-h4, h6{
-  font-family: 'Noto Sans JP', sans-serif;
-}
