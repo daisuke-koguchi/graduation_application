@@ -7,6 +7,6 @@ class Message < ApplicationRecord
   def message_time
     weeks = ["日", "月", "火", "水", "木","金", "土"]
     week = weeks[created_at.wday]
-    created_at.strftime("%m年%d月%y日 (#{week}) %l:%M")
+    created_at.strftime("%Y年%m月%-d日 (#{week}) %k:%M")
   end
 end
