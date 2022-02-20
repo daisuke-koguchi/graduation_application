@@ -80,17 +80,19 @@
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-lg",placeholder: "AbcDef0123" %>
             <small class="form-text">確認のため、もう一度同じパスワードをご入力ください。</small>  
           </div>
+
+            <div class="mb-1 p-1"><%= f.submit t('.sign_up') ,class:'btn btn-primary'%><div class="mb-1 p-1">
+            <div class="mb-1 p-1">
+              <%= render "devise/shared/links" %>
+            </div>
+            <% end %>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12 offset-md-1 mb-3 mt-3">
-      <%= f.submit t('.sign_up') ,class:'btn btn-primary'%>
-              <% end %>
-    </div>
-    <div class="col-md-12 offset-md-1 mb-3 mt-3 ">
-      <%= render "devise/shared/links" %>
+    <div class="col-12 col-lg-12 mb-5 mt-2 pb-1 pt-1">
+      <%= link_to "戻る",users_top_path, class:'btn btn-success' %>
     </div>
   </div>
 </div>

@@ -46,8 +46,9 @@ label{
 }
 th{
   font-family: 'Noto Sans JP', sans-serif;
-  font-size: 28px;
+  font-size: 24px;
 }
 td{
-  font-size: 24px;
+  font-size: 20px;
+  font-family: 'Noto Sans JP', sans-serif;
 }

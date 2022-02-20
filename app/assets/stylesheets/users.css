@@ -1,5 +1,5 @@
 .jumbotron-fluid{
-  background:url(top2.jpg) center no-repeat;
+  background:url(top.jpg) center no-repeat;
   background-size:cover;
   height:500px;
 }
@@ -29,6 +29,16 @@ p{
   font-size: 28px;
 }
 #avatar-image{
-  height: 300px;
+  min-height: 300px;
 }
-
+#avatar-introduction{
+  min-height: 100px;
+}
+.complete-image{
+  background:url(complete.jpg) center no-repeat;
+  background-size:cover;
+  height:300px;
+}
+.confirm-message{
+  background-color: rgb(252, 227, 218);
+}
