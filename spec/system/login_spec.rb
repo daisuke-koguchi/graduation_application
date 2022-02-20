@@ -19,11 +19,29 @@ RSpec.describe 'dvevise/ユーザー機能', type: :system do
       expect(page).to have_content('プロフィール確認画面') 
       end
     end
+    context '新規会員登録画面で戻るボタンを押した場合' do 
+      it 'トップページ表示される' do
+        click_on '戻る'
+      expect(page).to have_content('Rehamoへようこそ') 
+      end
+    end
+    context '新規会員登録画面でログインを押した場合' do 
+      it 'ログイン画面が表示される' do
+        find("#login").click 
+        expect(page).to have_content('ログイン') 
+      end
+    end
+    context '新規会員登録画面でアカウント確認のメールを受け取っていませんか？を押した場合' do 
+      it 'アカウント確認メール再送画面が表示される' do
+        click_on 'アカウント確認のメールを受け取っていませんか？'
+        expect(page).to have_content('アカウント確認メール再送') 
+      end
+    end
     context '新規会員登録確認画面で登録するを押した場合'do 
     it '登録完了画面に移動する' do
       click_on '新規登録'
       click_on '登録する'
-      expect(page).to have_content('登録が完了しました') 
+      expect(page).to have_content('Rehamoにご登録、誠にありがとうございます。') 
       end
     end
     context '新規会員登録確認画面で修正するを押した場合' do
