@@ -37,12 +37,6 @@
 .container-fluid{
   min-height: 600px;
 }
-input[value="未実施"]{
-  background-color:aqua;
-}
-input[value="実施"]{
-  background-color:chartreuse;
-}
 label{
   font-size: 28px;
 }
