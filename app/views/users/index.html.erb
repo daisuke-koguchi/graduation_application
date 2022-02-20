@@ -6,19 +6,18 @@
         <div class="d-flex justify-content-center" style="height:100px"><h2><%= current_user.nick_name %>さんのコミュニティ</h2></div>
         <div style="col-0 height:50px"></div>
       </div>
-        
     </div>
     <div class="col-12 col-md-6 form-group">
-      <h4>ニックネーム検索</h4>
       <%= search_form_for @q do |f|%>
+        <%= f.label :nick_name %>
         <%= f.search_field :nick_name_cont, class: "form-control form-control-lg ",placeholder: "ニックネームを入力" %>
         <small class="form-text">登録されたニックネームでご利用者さまを検索できます。</small>
         <%= f.submit "検索",class:'btn btn-secondary btn-lg'%>
       <% end %>
     </div>
     <div class="col-12">
-      <div class="card community-card">
-        <div class="card-body">
+      <div class="card">
+        <div class="card community-card">
         <h4 class="card-title">コミュニティ</h4>
         <h5 class="card-text">こちらではご登録されているご利用者さまのプロフィールを確認することができます。</h5>
         <h5 class="card-text">相手のプロフィールを確認するときは、プロフィールを確認するボタンを押してみましょう。</h5>
@@ -36,7 +35,7 @@
             </thead>
             <tbody>
               <% @users.each do |user| %>
-                <%# if current_user.id != user.id %>
+              <% if current_user.id != user.id %>
                 <tr>
                   <td class="d-flex ml-5">
                     <% if user.avatar_image?%>
@@ -45,13 +44,13 @@
                       <%= image_tag('noimage.png',width:'40%',height: '40%')%>
                     <% end %>
                   </td>
-                    <td id="user_nick_name"><%= user.nick_name%>さん</td>
-                  <% if user.id != current_user.id %>
-                    <td><%= link_to "プロフィールを確認する ", user ,class:'btn btn-info btn-lg '%></td>
-                    <td><%= link_to 'メッセージを確認する', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post ,class:'btn btn-primary  btn-lg'%></td>
+                  <td id="user_nick_name"><%= user.nick_name%>さん</td>
+                    <% if user.id != current_user.id %>
+                  <td><%= link_to "プロフィールを確認する ", user ,class:'btn btn-info btn-lg '%></td>
+                  <td><%= link_to 'メッセージを確認する', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post ,class:'btn btn-primary  btn-lg'%></td>
                   <% end%>
                 </tr>
-                <%# end %>
+                <% end %>
               <% end %>
             </tbody>
           </table>
