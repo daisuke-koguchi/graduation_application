@@ -1,10 +1,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <h5><%= current_user.nick_name%>さんの運動・記録ページ</h5>
+      <h1><%= current_user.nick_name%>さんの運動・記録ページ</h1>
     </div>
     <%= render 'schedules/index',local:{ schedules: @schedules} %>
-
     <div class="col-12 col-md-6">
       <div class="d-flex flex-column">
         <div style="height:70px"></div>
@@ -14,22 +13,22 @@
     </div>
     <div class="col-12 col-md-6"> 
       <%= search_form_for @q do |f| %>
-        <h4>運動の名前検索</h4>
+        <h4>運動名の検索</h4>
         <%= f.search_field :name_cont, class: "form-control form-control-lg ",placeholder: "例) スクワット"%>
         <small class="form-text">登録された運動の名前で検索することが出来ます。</small>
       <%= f.submit "検索する",class:'btn btn-secondary btn-lg'%>
       <% end %>
     </div>
-    <div class="col-12 mt-2">
+    <div class="col-12 m-3 p-3">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title"><%= current_user.nick_name%>さんの運動</h4>
+          <h3 class="card-title"><%= current_user.nick_name%>さんの実施する運動一覧</h3>
           <h5 class="cord-text">運動方法を確認するボタンを押すと写真や動画で内容を確認できます。</h5>
           <h5 class="cord-text">運動方法の編集・削除ボタンで運動を編集・削除できます。</h5>
           <h5 class="dard-text">運動の名前のリンクを押すと運動の名前を昇順・降順（昇順▲ 降順▼）で並び替えられます。</h5>
           <h5 class="cord-text">運動内容を登録するボタンで運動をご自分で登録することができます。</h5>
           <div class="table-responsive">
-            <table class="table">
+            <table class="table text-nowrap">
               <thead>
                 <tr>
                   <th style="width: 20%">運動の写真</th>
