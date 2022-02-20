@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h4><%= @recipient_user.nick_name %>さんとのメッセージ画面</h4>
+      <h3><%= @recipient_user.nick_name %>さんとのメッセージ画面</h3>
     </div>
     <div class="col-12 col-md-10" >
         <%= form_with(model: [@conversation, @message]) do |f| %><br>
           <div class="form-group">
             <%= f.text_area :body, class: "form-control form-control-lg ", placeholder: "メッセージを入力してください。"%>
             <small class="form-text">メッセージ入力後、ボタンを押すとメッセージが送信されます。</small>
+            <small class="form-text">最新のメッセージが最も上に表示されます。</small>
             <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
           </div>
           <div class="action">
@@ -27,7 +28,7 @@
           <% if message.body.present? %>
             <div class="item">
               <div class="content">
-                <div class="header">
+                <div class="message-header">
                     <% if message.user.avatar_image?%>
                       <%= image_tag(message.user.avatar_image.thumb.url) %>
                     <% else %>
