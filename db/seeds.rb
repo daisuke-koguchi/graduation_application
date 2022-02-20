@@ -27,7 +27,7 @@ user2 = User.create!(
   last_name:"ユーザー2",
   nick_name:"ジル",
   avatar_image:File.open(Rails.root + 'public/images/avatar2.jpg'),
-  introduction:"趣味は料理と散歩です。最近は長い距離歩くと疲労感が出てきたため、下肢の運動と有酸素トレーニングを中心に筋力トレーニングを行なっていきたいと思います。。",
+  introduction:"趣味は料理と散歩です。最近は長い距離歩くと疲労感が出てきたため、下肢の運動と有酸素トレーニングを中心に筋力トレーニングを行なっていきたいと思います。",
   email: "jill@example.com",
   password:"111111",
   admin: false,
