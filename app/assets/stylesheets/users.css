@@ -12,12 +12,6 @@
   height:400px;
   width: 60%;
 }
-p{
-  font-family: 'Noto Sans JP', sans-serif;
-  color: black;
-  font-size: 24px;
-  opacity:1 !important; 
-}
 .sign-up-box{
   width: 500px;
   border-style: outset;
@@ -42,8 +36,29 @@ p{
 .confirm-message{
   background-color: rgb(252, 227, 218);
 }
-.mail.logo{
+.mail-logo{
   background:url(header-logo.png) center no-repeat;
   height:50px;
   width: 150px;
+}
+.exercise{
+  background:url(exercise.jpg) center no-repeat;
+  height: 350px;
+  width: 350px;
+  margin:0 auto;
+}
+.community{
+  background:url(community.jpg) center no-repeat;
+  height: 350px;
+  width: 350px;
+  margin:0 auto;
+}
+p{
+  font-family: 'Noto Sans JP', sans-serif;
+  color: black;
+  font-size: 24px;
+  opacity:1 !important; 
+}
+h4, h6{
+  font-family: 'Noto Sans JP', sans-serif;
 }
