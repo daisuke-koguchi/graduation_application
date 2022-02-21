@@ -6,7 +6,6 @@ class ExercisesController < ApplicationController
   def index
     @q = Exercise.where(user_id: current_user.id).ransack(params[:q])
     @exercises = @q.result(distinct: true).page(params[:page]).per(5)
-    
     @schedules = Schedule.where(fixed_day: Date.today).includes(:exercise).where(exercises: {user_id: current_user.id}).page(params[:page]).per(5)
   end
 
@@ -48,6 +47,10 @@ class ExercisesController < ApplicationController
     @this_week_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: Date.today.beginning_of_week(:sunday)..Time.now.end_of_week(:sunday)})
     @last_week_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: (Date.today - 1.week).beginning_of_week(:sunday)..(Time.now - 1.week).end_of_week(:sunday)})
     @this_month_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: Time.now.all_month})
+
+    @this_week_count = Schedule.where(schedules: {is_done: true}).where(fixed_day: Date.today.beginning_of_week(:sunday)..Time.now.end_of_week(:sunday)).includes(:exercise).where(exercises: {user_id: current_user.id}).count
+    @last_week_count = Schedule.where(schedules: {is_done: true}).where(fixed_day: (Date.today - 1.week).beginning_of_week(:sunday)..(Time.now - 1.week).end_of_week(:sunday)).includes(:exercise).where(exercises: {user_id: current_user.id}).count
+    @this_month_count = Schedule.where(schedules: {is_done: true}).where(fixed_day: Time.now.all_month).includes(:exercise).where(exercises: {user_id: current_user.id}).count
   end
 
   private 

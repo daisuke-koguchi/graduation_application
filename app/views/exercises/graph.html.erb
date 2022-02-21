@@ -1,68 +1,74 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-12">
-			<h4>運動の記録</h4>
+			<h3>運動の記録</h3>
 		</div>
-		<div class="col-12 col-lg-5 offset-lg-1">
-			<div class="card" style="width:500px;">
+		<div class="jumbotron col-12 col-lg-10 offset-lg-1" id="graph-message">
+			<% if @this_week_count >= @last_week_count %>
+				<p>今週は<%="#{@this_week_count}"%>回、運動を実施することが出来ています！</p>
+				<p>先週よりも運動の回数が多く、素晴らしいです！　このまま継続して頑張っていきましょう!<p>
+			<% else %>
+				<p>今週は<%="#{@this_week_count}"%>回、運動を実施することが出来ています！</p>
+				<p>順調に回数が増えてきています。このまま少しずつ回数を増やせるよう頑張っていきましょう！</p>
+			<% end %>
+		</div>
+		<div class="card-deck col-md-12">
+			<div class="card">
 				<h4 class="card-header">今週の運動回数</h4>
 				<div class="card-body">
-					<%= column_chart @this_week_data.group_by_day(:fixed_day).count, min: 0, max:10, xtitle:'日付(日)', ytitle: "運動回数", empty: "値がありません",colors:["#d14", "#fd0", "#fbb", "#3c3", "#f40", "#28f", "#83c"] ,discrete: true, width: "400px", height: "400px"%>
+					<h5 class="card-text">今週は、合計で<%="#{@this_week_count}"%>回運動されています。</h5>
+					<%= column_chart @this_week_data.group_by_day(:fixed_day).count, min: 0, max:10, xtitle:'日付(日)', ytitle: "運動回数", empty: "値がありません",colors:["#d14", "#fd0", "#fbb", "#3c3", "#f40", "#28f", "#83c"] ,discrete: true, width: "300px", height: "300px"%>
+					<div class="d-flex justify-content-end">
+						<div>日</div>
+						<div class="box sunday mr-1"></div>
+						<div>月</div>
+						<div class="box monday mr-1"></div>
+						<div>火</div>
+						<div class="box tuesday mr-1"></div>
+						<div>水</div>
+						<div class="box wednesday mr-1"></div>
+						<div>木</div>
+						<div class="box thursday mr-1"></div>
+						<div>金</div>
+						<div class="box friday mr-1"></div>
+						<div>土</div>
+						<div class="box saturday mr-1"></div>
+					</div>
 				</div>
-				<div class="d-flex justify-content-end">
-					<div>日</div>
-					<div class="box sunday mr-1"></div>
-					<div>月</div>
-					<div class="box monday mr-1"></div>
-					<div>火</div>
-					<div class="box tuesday mr-1"></div>
-					<div>水</div>
-					<div class="box wednesday mr-1"></div>
-					<div>木</div>
-					<div class="box thursday mr-1"></div>
-					<div>金</div>
-					<div class="box friday mr-1"></div>
-					<div>土</div>
-					<div class="box saturday mr-1"></div>
-				</div>
-				
 			</div>
-		</div>
-		<div class="col-12 col-lg-5 offset-lg-1 mt-2">
-			<div class="card" style="width:500px;">
+			<div class="card">
 				<h4 class="card-header">先週の運動回数</h4>
 				<div class="card-body" >
-					<%= column_chart @last_week_data.group_by_day(:fixed_day).count, min: 0, max:10, xtitle:'日付（日）', ytitle: "運動回数", empty: "値がありません",colors:["#d14", "#fd0", "#fbb", "#3c3", "#f40", "#28f", "#83c"],discrete: true, width: "400px", height: "400px" %>
-				</div>
-				<div class="d-flex justify-content-end">
-					<div>日</div>
-					<div class="box sunday mr-1"></div>
-					<div>月</div>
-					<div class="box monday mr-1"></div>
-					<div>火</div>
-					<div class="box tuesday mr-1"></div>
-					<div>水</div>
-					<div class="box wednesday mr-1"></div>
-					<div>木</div>
-					<div class="box thursday mr-1"></div>
-					<div>金</div>
-					<div class="box friday mr-1"></div>
-					<div>土</div>
-					<div class="box saturday mr-1"></div>
+				<h5>先週は運動を合計<%="#{@last_week_count}"%>回頑張りました！</h5>
+					<%= column_chart @last_week_data.group_by_day(:fixed_day).count, min: 0, max:10, xtitle:'日付（日）', ytitle: "運動回数", empty: "値がありません",colors:["#d14", "#fd0", "#fbb", "#3c3", "#f40", "#28f", "#83c"],discrete: true, width: "300px", height: "300px" %>
+					<div class="d-flex justify-content-end">
+						<div>日</div>
+						<div class="box sunday mr-1"></div>
+						<div>月</div>
+						<div class="box monday mr-1"></div>
+						<div>火</div>
+						<div class="box tuesday mr-1"></div>
+						<div>水</div>
+						<div class="box wednesday mr-1"></div>
+						<div>木</div>
+						<div class="box thursday mr-1"></div>
+						<div>金</div>
+						<div class="box friday mr-1"></div>
+						<div>土</div>
+						<div class="box saturday mr-1"></div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-12 col-lg-12 offset-lg-1 mt-2">
-			<div class="card" style="width:500px;">
+			<div class="card">
 				<h4 class="card-header">今月の運動回数</h4>
 				<div class="card-body">
-					<%= column_chart @this_month_data.group_by_week(:fixed_day).count, min: 0, max:100, xtitle:'日付（週）', ytitle: "運動回数", empty: "値がありません" ,colors:["#4dc", "#69e", "#76e", "00f", "008"],discrete: true, width: "400px", height: "400px" %>
+				<h5 class="card-text">今月は、合計で<%="#{@this_month_count}"%>回運動されています。</h5>
+					<%= column_chart @this_month_data.group_by_week(:fixed_day).count, min: 0, max:100, xtitle:'日付（週）', ytitle: "運動回数", empty: "値がありません" ,colors:["#4dc", "#69e", "#76e", "00f", "008"],discrete: true, width: "300px", height: "300px" %>
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-lg-12 ">
+		<div class="col-12 col-lg-12 mt-2 pt-2">
 			<%= link_to "戻る",:back , class:'btn btn-success btn-lg' %>
 		</div>
 	</div>
 </div>
-

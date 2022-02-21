@@ -48,3 +48,6 @@ input[value="実施"] {
 .saturday{
   background-color: #8a2be2;
 }
+#graph-message{
+  background-color: rgb(252, 227, 218);
+}
