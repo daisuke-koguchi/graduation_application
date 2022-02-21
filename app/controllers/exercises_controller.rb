@@ -1,6 +1,8 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: %i{show edit update destroy}
   before_action :current_user_permition, only: %i{edit show}
+  before_action :authenticate_user!
+
   def index
     @q = Exercise.where(user_id: current_user.id).ransack(params[:q])
     @exercises = @q.result(distinct: true).page(params[:page]).per(5)

@@ -37,13 +37,11 @@
               <% @users.each do |user| %>
               <% if current_user.id != user.id %>
                 <tr>
-                  <td class="d-flex ml-5">
                     <% if user.avatar_image?%>
-                      <%= image_tag(user.avatar_image.thumb.url) %>
+                      <td class="d-flex ml-lg-4 pl-lg-5"><%= image_tag(user.avatar_image.thumb.url) %></td>
                     <% else %>
-                      <%= image_tag('noimage.png',width:'40%',height: '40%')%>
+                      <td class="d-flex"><%= image_tag('noimage.png',width:'50%',height: '50%')%></td>
                     <% end %>
-                  </td>
                   <td id="user_nick_name"><%= user.nick_name%>さん</td>
                     <% if user.id != current_user.id %>
                   <td><%= link_to "プロフィールを確認する ", user ,class:'btn btn-info btn-lg '%></td>
