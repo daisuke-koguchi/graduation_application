@@ -7,7 +7,7 @@
 			<% if @this_week_count >= @last_week_count %>
 				<p>今週は<%="#{@this_week_count}"%>回、運動を実施することが出来ています！</p>
 				<p>先週よりも運動の回数が多く、素晴らしいです！　このまま継続して頑張っていきましょう!<p>
-			<% else %>
+			<% elsif @this_week_count < @last_week_count || @this_week_count == 0%>
 				<p>今週は<%="#{@this_week_count}"%>回、運動を実施することが出来ています！</p>
 				<p>このまま少しずつ回数を増やせるよう頑張っていきましょう！</p>
 			<% end %>
