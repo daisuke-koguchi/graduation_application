@@ -9,6 +9,23 @@
 				<div class="card-body">
 					<%= column_chart @this_week_data.group_by_day(:fixed_day).count, min: 0, max:10, xtitle:'日付(日)', ytitle: "運動回数", empty: "値がありません",colors:["#d14", "#fd0", "#fbb", "#3c3", "#f40", "#28f", "#83c"] ,discrete: true, width: "400px", height: "400px"%>
 				</div>
+				<div class="d-flex justify-content-end">
+					<div>日</div>
+					<div class="box sunday mr-1"></div>
+					<div>月</div>
+					<div class="box monday mr-1"></div>
+					<div>火</div>
+					<div class="box tuesday mr-1"></div>
+					<div>水</div>
+					<div class="box wednesday mr-1"></div>
+					<div>木</div>
+					<div class="box thursday mr-1"></div>
+					<div>金</div>
+					<div class="box friday mr-1"></div>
+					<div>土</div>
+					<div class="box saturday mr-1"></div>
+				</div>
+				
 			</div>
 		</div>
 		<div class="col-12 col-lg-5 offset-lg-1 mt-2">
@@ -16,6 +33,22 @@
 				<h4 class="card-header">先週の運動回数</h4>
 				<div class="card-body" >
 					<%= column_chart @last_week_data.group_by_day(:fixed_day).count, min: 0, max:10, xtitle:'日付（日）', ytitle: "運動回数", empty: "値がありません",colors:["#d14", "#fd0", "#fbb", "#3c3", "#f40", "#28f", "#83c"],discrete: true, width: "400px", height: "400px" %>
+				</div>
+				<div class="d-flex justify-content-end">
+					<div>日</div>
+					<div class="box sunday mr-1"></div>
+					<div>月</div>
+					<div class="box monday mr-1"></div>
+					<div>火</div>
+					<div class="box tuesday mr-1"></div>
+					<div>水</div>
+					<div class="box wednesday mr-1"></div>
+					<div>木</div>
+					<div class="box thursday mr-1"></div>
+					<div>金</div>
+					<div class="box friday mr-1"></div>
+					<div>土</div>
+					<div class="box saturday mr-1"></div>
 				</div>
 			</div>
 		</div>
