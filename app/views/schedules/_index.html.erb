@@ -1,57 +1,57 @@
 <div class="col-12">
   <div class="card mt-2">
     <div class="card-body">
-    <h5 class="card-title">本日<%= DateTime.now.strftime("%Y年%m月%d日")%>に実施する運動</h5>
-    <h6 class="cord-text">本日の運動を実施されましたら、実施/未実施の欄にあるボタンを押してください。</h6>
-    <h6 class="cord-text">実施ボタンに切り替わると運動が実施で登録されます。</h6>
-    <%= link_to "過去に実施した運動を確認する",schedules_path, class:'card-link',class:'btn btn-outline-primary btn-lg'%>
-    <%= link_to "運動の記録を見る", graph_exercises_path ,class:'btn btn-outline-info btn-lg'%> &nbsp;
-    <div class="table-responsive-md">
-      <table class="table text-nowrap">
-        <thead>
-          <tr>
-            <th>運動の写真</th>
-            <th>運動の項目</th>
-            <th>運動の負荷量</th>
-            <th>実施/未実施ボタン</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @schedules.each do |schedule|%>
-          <% if current_user.id == schedule.exercise.user.id%>
-            <tr>
-            <% if schedule.exercise.image? %>
-              <td><%= image_tag(schedule.exercise.image.thumb.url)%></td>
-            <% else %>
-              <td><%= image_tag('noimage.png',width:'40%',height: '40%')%></td>
-            <% end%>
-              <td id="schedule_exercise_name"><%= schedule.exercise.name %></td>
-              <td>
-                <% if schedule.exercise.count != "0" %>
-                  運動回数:<%= schedule.exercise.count %>回&nbsp;
-                <% end %>
-                <% if schedule.exercise.set_count != "0" %>
-                  セット数:<%= schedule.exercise.set_count %>セット&nbsp;
-                <% end %>
-                <% if schedule.exercise.minute != "0" %>
-                  時間:<%= schedule.exercise.minute %>分&nbsp;
-                <% end %>
-                <% if schedule.exercise.second != "0" %>
-                  <%= schedule.exercise.second %>秒
-                <% end %>
-              </td>
-              <td id>
-                <div id="button_<%= schedule.id %>">
-                  <%= render 'schedules/both', {schedule: schedule} %>
-                </div>
-              </td>
-            </tr>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
+    <h3 class="card-title">本日<%= DateTime.now.strftime("%Y年%-m月%d日")%>に実施する運動</h3>
+    <h5 class="cord-text">本日の運動を実施されましたら、実施/未実施の欄にあるボタンを押してください。</h5>
+    <h5 class="cord-text">実施ボタンに切り替わると運動が実施で登録されます。</h5>
+    <div class="m-3 p-3">
+      <%= link_to "過去に実施した運動を確認する",schedules_path, class:'card-link',class:'btn btn-primary btn-lg'%>&nbsp;
+      <%= link_to "運動の記録を見る", graph_exercises_path ,class:'btn btn-info btn-lg'%>
     </div>
-    <%= paginate @schedules, param_name: 'schedule_page'%>
+      <div class="table-responsive-md">
+        <table class="table text-nowrap">
+          <thead>
+            <tr>
+              <th style="width: 20%"%>運動の写真</th>
+              <th style="width: 30%">運動の項目</th>
+              <th style="width: 30%">運動の負荷量</th>
+              <th style="width: 20%">実施/未実施ボタン</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @schedules.each do |schedule|%>
+              <tr>
+              <% if schedule.exercise.image? %>
+                <td><%= image_tag(schedule.exercise.image.thumb.url)%></td>
+              <% else %>
+                <td><%= image_tag('noimage.png',width:'40%',height: '40%')%></td>
+              <% end%>
+                <td id="schedule_exercise_name"><%= schedule.exercise.name %></td>
+                <td>
+                  <% if schedule.exercise.count != "0" %>
+                    運動回数：<%= schedule.exercise.count %>回　
+                  <% end %>
+                  <% if schedule.exercise.set_count != "0" %>
+                    セット数：<%= schedule.exercise.set_count %>セット　
+                  <% end %>
+                  <% if schedule.exercise.minute != "0" %>
+                    時間：<%= schedule.exercise.minute %>分　
+                  <% end %>
+                  <% if schedule.exercise.second != "0" %>
+                    <%= schedule.exercise.second %>秒　
+                  <% end %>
+                </td>
+                <td id>
+                  <div id="button_<%= schedule.id %>">
+                    <%= render 'schedules/both', {schedule: schedule} %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= paginate @schedules %>
+      </div>
     </div>
   </div>
 </div>    

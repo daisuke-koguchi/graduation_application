@@ -3,7 +3,7 @@
     <div class="col-12">
       <h2><%= t('.resend_confirmation_instructions') %></h2>
     </div>
-    <div class="col-6 offset-3 ">
+    <div class="col-12 col-md-6 offset-md-3 ">
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -21,6 +21,11 @@
         </div>
       </div>
     <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 offset-md-3 mt-2 pt-2">
+    <%= link_to "戻る", :back ,class:'btn btn-success btn-lg'%>
     </div>
   </div>
 </div>

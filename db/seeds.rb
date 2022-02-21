@@ -192,48 +192,138 @@ end
 Exercise.all.each do |exercise|
   exercise.schedules.create!(
   fixed_day: Date.today - 1, 
-  is_done: false
+  is_done: true
 )
 end
 
 Exercise.all.each do |exercise|
   exercise.schedules.create!(
   fixed_day: Date.today - 2, 
-  is_done: false
+  is_done: true
 )
 end
 
 Exercise.all.each do |exercise|
   exercise.schedules.create!(
   fixed_day: Date.today - 3, 
-  is_done: false
+  is_done: true
 )
 end
 
 Exercise.all.each do |exercise|
   exercise.schedules.create!(
   fixed_day: Date.today - 4, 
-  is_done: false
+  is_done: true
 )
 end
 
 Exercise.all.each do |exercise|
   exercise.schedules.create!(
   fixed_day: Date.today - 5, 
-  is_done: false
+  is_done: true
 )
 end
 
 Exercise.all.each do |exercise|
   exercise.schedules.create!(
   fixed_day: Date.today - 6, 
-  is_done: false
+  is_done: true
 )
 end
 
 Exercise.all.each do |exercise|
   exercise.schedules.create!(
   fixed_day: Date.today - 7, 
+  is_done: true
+)
+end
+
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 8, 
+  is_done: false
+)
+end
+
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 9, 
+  is_done: false
+)
+end
+
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 10, 
+  is_done: false
+)
+end
+
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 11, 
+  is_done: false
+)
+end
+
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 12, 
+  is_done: false
+)
+end
+
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 13, 
+  is_done: false
+)
+end
+
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 14, 
+  is_done: false
+)
+end
+
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 15, 
+  is_done: false
+)
+end
+
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 16, 
+  is_done: false
+)
+end
+
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 17, 
+  is_done: false
+)
+end
+
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 18, 
+  is_done: false
+)
+end
+
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 19, 
+  is_done: false
+)
+end
+Exercise.all.each do |exercise|
+  exercise.schedules.create!(
+  fixed_day: Date.today - 20, 
   is_done: false
 )
 end

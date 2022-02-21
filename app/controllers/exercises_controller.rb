@@ -1,10 +1,12 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: %i{show edit update destroy}
   before_action :current_user_permition, only: %i{edit show}
+  before_action :authenticate_user!
+
   def index
-    @q = Exercise.ransack(params[:q])
+    @q = Exercise.where(user_id: current_user.id).ransack(params[:q])
     @exercises = @q.result(distinct: true).page(params[:page]).per(5)
-    @schedules = Schedule.where(fixed_day: Date.today).page(params[:schedule_page]).per(5)
+    @schedules = Schedule.where(fixed_day: Date.today).includes(:exercise).where(exercises: {user_id: current_user.id}).page(params[:page]).per(5)
   end
 
   def show
@@ -42,9 +44,13 @@ class ExercisesController < ApplicationController
   end
 
   def graph
-    @this_week_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: Date.today.beginning_of_week..Time.now.end_of_week})
-    @last_week_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: (Date.today - 1.week).beginning_of_week..(Time.now - 1.week).end_of_week})
+    @this_week_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: Date.today.beginning_of_week(:sunday)..Time.now.end_of_week(:sunday)})
+    @last_week_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: (Date.today - 1.week).beginning_of_week(:sunday)..(Time.now - 1.week).end_of_week(:sunday)})
     @this_month_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: Time.now.all_month})
+
+    @this_week_count = Schedule.where(schedules: {is_done: true}).where(fixed_day: Date.today.beginning_of_week(:sunday)..Time.now.end_of_week(:sunday)).includes(:exercise).where(exercises: {user_id: current_user.id}).count
+    @last_week_count = Schedule.where(schedules: {is_done: true}).where(fixed_day: (Date.today - 1.week).beginning_of_week(:sunday)..(Time.now - 1.week).end_of_week(:sunday)).includes(:exercise).where(exercises: {user_id: current_user.id}).count
+    @this_month_count = Schedule.where(schedules: {is_done: true}).where(fixed_day: Time.now.all_month).includes(:exercise).where(exercises: {user_id: current_user.id}).count
   end
 
   private 

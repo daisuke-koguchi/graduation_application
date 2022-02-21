@@ -1,0 +1,7 @@
+.description, #exercise_description{
+  height:150px;
+}
+#exercise_count,#exercise_set_count,#exercise_minute,#exercise_second{
+  width: 100px;
+  display: table-cell;
+}

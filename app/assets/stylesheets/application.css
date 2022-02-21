@@ -14,13 +14,10 @@
  *= require_self
  */
 .header{
-  margin-bottom:70px;
-}
-.header .navbar{
-  height: 70px;
+  margin-bottom:60px;
 }
 .nav-item{
-  font-size: 24px;
+  font-size: 20px;
   font-family: 'Noto Sans JP', sans-serif;
 }
 .navbar-brand{
@@ -36,12 +33,6 @@
 }
 .container-fluid{
   min-height: 600px;
-}
-input[value="未実施"]{
-  background-color:aqua;
-}
-input[value="実施"]{
-  background-color:chartreuse;
 }
 label{
   font-size: 28px;
@@ -65,4 +56,7 @@ p{
 }
 h1,h2,h3,h4,h5,h6{
   font-family: 'Noto Sans JP', sans-serif;
+}
+.pagination{
+  justify-content: center;
 }

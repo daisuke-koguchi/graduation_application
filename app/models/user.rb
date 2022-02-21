@@ -54,7 +54,7 @@ class User < ApplicationRecord
       user.confirmed_at = Time.now 
       user.first_name = "管理者ゲスト"
       user.last_name = "ユーザー"
-      user.nick_name = "アリス"
+      user.nick_name = "クリス"
       user.avatar_image = nil
       user.introduction = "管理者ゲストでログインします"
       user.admin = true 

@@ -2,8 +2,9 @@ require 'rails_helper'
 RSpec.describe 'dvevise/ユーザー機能', type: :system do
   describe '新規会員登録機能' do
     let!(:user){FactoryBot.build(:model_user)}
-    before do 
-      visit new_user_registration_path
+    before do
+        visit root_path
+        visit new_user_registration_path
         fill_in 'user[first_name]', with: user.first_name
         fill_in 'user[last_name]', with: user.last_name
         fill_in 'user[nick_name]', with: user.nick_name
@@ -20,7 +21,7 @@ RSpec.describe 'dvevise/ユーザー機能', type: :system do
       end
     end
     context '新規会員登録画面で戻るボタンを押した場合' do 
-      it 'トップページ表示される' do
+      it 'ログイン画面に移動します' do
         click_on '戻る'
       expect(page).to have_content('Rehamoへようこそ') 
       end
