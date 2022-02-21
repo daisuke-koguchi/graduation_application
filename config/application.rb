@@ -26,6 +26,14 @@ module GraduationApplication
                   controller_specs: false,
                   request_specs: false
     end
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      if instance.kind_of?(ActionView::Helpers::Tags::Label)
+        # skip when label
+        html_tag.html_safe
+      else
+        "<div class=\"has-error\">#{html_tag}<span class=\"help-block\">#{instance.error_message.first}</span></div>".html_safe
+      end
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
