@@ -22,9 +22,9 @@
             <% @schedules.each do |schedule|%>
               <tr>
               <% if schedule.exercise.image? %>
-                <td><%= image_tag(schedule.exercise.image.thumb.url)%></td>
+                <td class="d-flex justify-content-center"><%= image_tag(schedule.exercise.image.thumb.url)%></td>
               <% else %>
-                <td><%= image_tag('noimage.png',width:'40%',height: '40%')%></td>
+                <td class="d-flex justify-content-center"><%= image_tag('noimage.png',width:'100%',height: '100%')%></td>
               <% end%>
                 <td id="schedule_exercise_name"><%= schedule.exercise.name %></td>
                 <td>

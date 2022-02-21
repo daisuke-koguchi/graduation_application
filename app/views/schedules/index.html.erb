@@ -40,9 +40,9 @@
                   <% if current_user.id == schedule.exercise.user.id%>
                     <tr>
                     <% if schedule.exercise.image? %>
-                      <td><%= image_tag(schedule.exercise.image.thumb.url)%></td>
+                      <td class="d-flex justify-content-center"><%= image_tag(schedule.exercise.image.thumb.url)%></td>
                     <% else %>
-                      <td><%= image_tag('noimage.png',width:'40%',height: '40%')%></td>
+                      <td class="d-flex justify-content-center"><%= image_tag('noimage.png',width:'90%',height: '90%')%></td>
                     <% end%>
                       <th id="schedule_exercise_name"><%= schedule.exercise.name %></td>
                       <td>
