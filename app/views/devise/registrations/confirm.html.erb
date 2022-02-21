@@ -41,7 +41,13 @@
       <tr>
           <th><%= f.label :password %></th>
           <td><%= f.hidden_field :password, class:"form-control-plaintext "%>
-          <%= @user.password %></td>
+          <% i = 0 %>
+          <% password = "" %>
+          <% while i < @user.password.length %>
+          <% password += "*"%>
+          <% i += 1%>
+          <% end %>
+          <%= @user.password = password %></td>
       </tr>
       </table>
       <div class="col-12 my-2">
