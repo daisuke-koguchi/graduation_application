@@ -2,7 +2,7 @@
   <%= form_with(model:@exercise,local: true) do |f|%>
   <%= render 'layouts/error_messages', model: f.object %>
   <div class="table-responsive">
-    <table class="table form-group text-nowrap">
+    <table class="table form-group">
       <tbody>
         <tr>
           <th style="width: 30%"><%= f.label :name %></th>

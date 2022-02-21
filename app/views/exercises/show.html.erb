@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1>運動の方法確認画面</h1>
       <div class="table-responsive">
-        <table class="table text-nowrap">
+        <table class="table">
         <tbody>
           <tr>
             <th style="width: 30%">運動の名前</th>
@@ -22,7 +22,7 @@
           <tr>
             <th>運動の動画確認する</th>
             <% if @exercise.video? %>
-              <td><%= video_tag(@exercise.video.url,autobuffer: true, controls: true, height: "50%", width:"50%") %></td>
+              <td><%= video_tag(@exercise.video.url,autobuffer: true, controls: true, height: "100%", width:"100%") %></td>
             <% end %>
           </tr>
           <tr>
