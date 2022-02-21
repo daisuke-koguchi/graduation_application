@@ -14,10 +14,7 @@
  *= require_self
  */
 .header{
-  margin-bottom:70px;
-}
-.header .navbar{
-  height: 70px;
+  margin-bottom:60px;
 }
 .nav-item{
   font-size: 20px;
