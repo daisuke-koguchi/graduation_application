@@ -45,8 +45,8 @@ class ExercisesController < ApplicationController
   end
 
   def graph
-    @this_week_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: Date.today.beginning_of_week..Time.now.end_of_week})
-    @last_week_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: (Date.today - 1.week).beginning_of_week..(Time.now - 1.week).end_of_week})
+    @this_week_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: Date.today.beginning_of_week(:sunday)..Time.now.end_of_week(:sunday)})
+    @last_week_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: (Date.today - 1.week).beginning_of_week(:sunday)..(Time.now - 1.week).end_of_week(:sunday)})
     @this_month_data = current_user.exercises.left_joins(:schedules).includes(:schedules).where(schedules: {is_done: true}).where(schedules: {fixed_day: Time.now.all_month})
   end
 
