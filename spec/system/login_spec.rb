@@ -22,7 +22,7 @@ RSpec.describe 'dvevise/ユーザー機能', type: :system do
     end
     context '新規会員登録画面で戻るボタンを押した場合' do 
       it 'ログイン画面に移動します' do
-        click_on '戻る'
+        click_on 'トップページへ戻る'
       expect(page).to have_content('Rehamoへようこそ') 
       end
     end
