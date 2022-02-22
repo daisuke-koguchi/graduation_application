@@ -1,12 +1,14 @@
 <div class="col-12">
-  <div class="card mt-2">
+  <div class="card mt-2 ">
     <div class="card-body">
-    <h3 class="card-title">本日<%= DateTime.now.strftime("%Y年%-m月%d日")%>に実施する運動</h3>
-    <h5 class="cord-text">本日の運動を実施されましたら、実施/未実施の欄にあるボタンを押してください。</h5>
-    <h5 class="cord-text">実施ボタンに切り替わると運動が実施で登録されます。</h5>
-    <div class="m-3 p-3">
-      <%= link_to "過去に実施した運動を確認する",schedules_path, class:'card-link',class:'btn btn-primary btn-lg'%>&nbsp;
-      <%= link_to "運動の記録を見る", graph_exercises_path ,class:'btn btn-info btn-lg'%>
+    <h3 class="card-title pb-4">本日<%= DateTime.now.strftime("%Y年%-m月%d日")%>に実施する運動</h3>
+    <h5 class="cord-text pb-2">本日の運動を実施されましたら、実施/未実施の欄にあるボタンを押してください。</h5>
+    <h5 class="cord-text pb-2">実施ボタンに切り替わると運動が実施で登録されます。</h5>
+    <h5 class="cord-text pb-2">過去に実施した運動を確認するボタンで内容を確認することができます。</h5>
+    <h5 class="cord-text pb-2">運動の記録を見るボタンで日々の運動の記録を確認することが出来ます。</h5>
+    <div class="d-flex justify-content-start m-3 p-3">
+      <div class="mr-3"><%= link_to "過去に実施した運動を確認する",schedules_path, class:'card-link',class:'btn btn-primary btn-lg'%></div>
+      <div><%= link_to "運動の記録を見る", graph_exercises_path ,class:'btn btn-info btn-lg'%></div>
     </div>
       <div class="table-responsive-md">
         <table class="table text-nowrap">

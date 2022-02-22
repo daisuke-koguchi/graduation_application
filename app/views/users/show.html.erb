@@ -10,7 +10,7 @@
   </div>
   <br>  
   <div class="row">
-    <div class="col-12 col-md-7 mb-2">
+    <div class="col-7 col-md-7 mb-2">
       <div class="d-flex justify-content-center">
         <% if @user.avatar_image? %>
           <%= image_tag(@user.avatar_image.url) if @user.avatar_image && @user.avatar_image.url %>
@@ -19,7 +19,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-12 col-md-5 mb-2">
+    <div class="col-5 col-md-5 mb-2">
       <% if @user.id  == current_user.id %>
         <div class="d-flex flex-column"><br>
           <div>
@@ -57,12 +57,12 @@
   </div>
   <% if @user.id  == current_user.id %>
     <div class="row">
-      <div class="card-group">
+      <div class="card-group mb-5">
         <div class="col-lg-12 card">
         <h4 class="card-header">運動する・記録する</h4>
           <div class="card-body">
             <div class="exercise"></div>
-            <h6>　運動をするとき、運動の記録をするときは、「運動する・記録する」ボタンを押してください。運動ページへ移動します。</h6>
+            <h5>　運動をするとき、運動の記録をするときは、「運動する・記録する」ボタンを押してください。運動ページへ移動します。</h5>
             <div class="d-flex justify-content-center">
             <%= link_to "運動する・記録する", exercises_path, class:'btn btn-info btn-lg'%>
             </div>
@@ -72,7 +72,7 @@
           <h4 class="card-header">仲間と交流する</h4>
           <div class="card-body">
           <div class="community"></div>
-          <h6>　仲間とメッセージをするときは、「仲間と交流する」ボタンを押してください。コミュニティページへ移動します。</h6>
+          <h5>　仲間とメッセージをするときは、「仲間と交流する」ボタンを押してください。コミュニティページへ移動します。</h5>
           <div class="d-flex justify-content-center">
             <%= link_to "仲間と交流する" , users_path, class:'btn btn-primary btn-lg'%>
           </div>
