@@ -4,14 +4,14 @@
       <h1><%= current_user.nick_name%>さんの運動・記録ページ</h1>
     </div>
     <%= render 'schedules/index',local:{ schedules: @schedules} %>
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-6  mt-5">
       <div class="d-flex flex-column">
         <div style="height:70px"></div>
         <div class="d-flex justify-content-center" style="height:100px"><h1>運動方法の確認</h1></div>
         <div style="col-0 height:50px"></div>
       </div>
     </div>
-    <div class="col-12 col-md-6"> 
+    <div class="col-12 col-md-6 mt-5"> 
       <%= search_form_for @q do |f| %>
         <h4>運動名の検索</h4>
         <%= f.search_field :name_cont, class: "form-control form-control-lg ",placeholder: "例) スクワット"%>
@@ -19,7 +19,7 @@
       <%= f.submit "検索する",class:'btn btn-secondary btn-lg'%>
       <% end %>
     </div>
-    <div class="col-12 m-3 p-3">
+    <div class="col-12 mt-5">
       <div class="card">
         <div class="card-body">
           <h3 class="card-title"><%= current_user.nick_name%>さんの実施する運動一覧</h3>

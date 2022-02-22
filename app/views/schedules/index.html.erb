@@ -7,8 +7,8 @@
         <div style="col-0 height:50px"></div>
       </div>
     </div>
-    <div class="col-12 col-md-4 offset-2 form-group">
-      <%= search_form_for @q do |f| %>
+    <div class="col-12 col-md-4 form-group">
+      <%= search_form_for @q do |f|%>
       <h4>運動を実施した日付の検索</h4>
       <small class="form-text">検索する日付の範囲の開始日を入力してください。</small>
       <%= f.date_field :fixed_day_gteq, class: 'form-control', include_blank: true %>
