@@ -41,17 +41,15 @@
               <tbody>
                 <% @exercises.each do |exercise|%>
                   <tr>
-                    <th>
-                      <% if exercise.image? %>
-                        <%= image_tag(exercise.image.thumb.url)%>
-                      <% else %>
-                        <%= image_tag('noimage.png',width:'40%',height: '40%')%>
-                      <% end%>
-                    </th>
-                    <th id="exercise_name"><%= exercise.name%></th>
-                    <th><%= link_to "運動方法を確認する", exercise_path(exercise.id) ,class:'btn btn-primary btn-lg'%></th> 
-                    <th><%= link_to "編集する", edit_exercise_path(exercise.id) ,class:'btn btn-warning btn-lg'%></th>
-                    <th><%= link_to "削除する", exercise_path(exercise.id), method: :delete, data: {confirm: "運動内容を削除しますか？"}, class:"btn btn-outline-danger btn-lg"%></th>
+                    <% if exercise.image? %>
+                      <td class="d-flex justify-content-center"><%= image_tag(exercise.image.thumb.url)%></td>
+                    <% else %>
+                      <td class="d-flex justify-content-center"><%= image_tag('noimage.png',width:'90%',height: '90%')%></td>
+                    <% end%>
+                    <td id="exercise_name"><%= exercise.name%></td>
+                    <td><%= link_to "運動方法を確認する", exercise_path(exercise.id) ,class:'btn btn-primary btn-lg'%></td> 
+                    <td><%= link_to "編集する", edit_exercise_path(exercise.id) ,class:'btn btn-warning btn-lg'%></td>
+                    <td><%= link_to "削除する", exercise_path(exercise.id), method: :delete, data: {confirm: "運動内容を削除しますか？"}, class:"btn btn-outline-danger btn-lg"%></td>
                   </tr>
                 <% end %>
               </tbody>
@@ -62,8 +60,8 @@
       </div>
     </div>
     <div class="d-flex justify-content-start">
-      <div class="m2 p-3"><%= link_to "運動内容を登録する",new_exercise_path, class:'btn btn-info btn-lg' %></div>
       <div class="m2 p-3"><%= link_to "戻る",user_path(id: current_user.id), class:'btn btn-success btn-lg'%></div>
+      <div class="m2 p-3"><%= link_to "運動内容を登録する",new_exercise_path, class:'btn btn-info btn-lg' %></div>
     </div>
   </div>
 </div>

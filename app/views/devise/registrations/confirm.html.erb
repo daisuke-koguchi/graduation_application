@@ -6,6 +6,7 @@
     <div class="col-12">
       <table class="table">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
       <tr>
           <th style="width: 40%"><%= f.label :first_name %></th>
           <td style="width: 60%"><%= f.hidden_field :first_name, class:"form-control-plaintext " %>
@@ -41,12 +42,20 @@
       <tr>
           <th><%= f.label :password %></th>
           <td><%= f.hidden_field :password, class:"form-control-plaintext "%>
-          <%= @user.password %></td>
+          <% i = 0 %>
+          <% password = "" %>
+          <% while i < @user.password.length %>
+          <% password += "*"%>
+          <% i += 1%>
+          <% end %>
+          <%= @user.password = password %></td>
       </tr>
       </table>
       <div class="col-12 my-2">
         <%= f.submit "修正する", name: :back, class:'confirm-btn btn btn-info btn-lg'%>
-        <%= f.submit "登録する", class: "confirm-btn btn btn-primary btn-lg"%>
+        <% unless @user.errors.present?%>
+          <%= f.submit "登録する", class: "confirm-btn btn btn-primary btn-lg"%>
+        <% end %>
       <% end %>
       </div>
     </div>

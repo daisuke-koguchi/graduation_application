@@ -7,7 +7,7 @@
       <div class="card">
         <div class="card-body">
           <%= form_with(model: @user, url:  users_sign_up_confirm_path(@user), local: true) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
+          
           <div class="form-group mt-2">
             <div>
               <%= f.label :first_name  %>
@@ -92,7 +92,7 @@
   </div>
   <div class="row">
     <div class="col-12 col-lg-12 mb-5 mt-2 pb-1 pt-1">
-      <%= link_to "戻る", :back ,class:'btn btn-success btn-lg'%>
+      <%= link_to "トップページへ戻る", root_path ,class:'btn btn-success btn-lg'%>
     </div>
   </div>
 </div>

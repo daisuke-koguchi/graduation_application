@@ -34,6 +34,7 @@
                 <li class="nav-item"><%= link_to "管理者権限", rails_admin_path ,class:'nav-link'%></li>
               <% end %>
               <li class="nav-item "><%= link_to "トップページへ", root_path ,class:'nav-link' %></li>
+              <li class="nav-item "><%= link_to "マイページへ", user_path(id: current_user.id) ,class:'nav-link' %></li>
               <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete ,class:'nav-link' %></li>
             <% else %>
               <li class="nav-item "><%= link_to "トップページへ", root_path ,class:'nav-link' %></li>
