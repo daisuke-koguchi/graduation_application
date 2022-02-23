@@ -12,16 +12,6 @@
   height:400px;
   width: 60%;
 }
-.sign-up-box{
-  width: 500px;
-  border-style: outset;
-  border-width: 2px;
-  border-color: gray;
-}
-.sign-up{
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 28px;
-}
 #avatar-image{
   min-height: 300px;
 }
