@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 col-md-6 mt-5">
+    <div class="col-12 mt-5 mb-3">
       <h2 class="schedule_title">過去に実施した運動の一覧</h2>
     </div>
     </div>
@@ -13,11 +13,9 @@
       <%= f.date_field :fixed_day_lteq_end_of_day, class: 'form-control', include_blank: true %>
       <h4 class="mt-5">実施/未実施検索</h4>
       <small class="form-text">セレクトボックスで実施/未実施を選択して検索できます。</small>
-      <%= f.select :is_done_eq, [['実施済',true],['未実施',false]], include_blank: true %>
-    </div> 
-    <div class=" col-sm-11 d-inline-flex justify-content-end mr-5">
+      <%= f.select :is_done_eq, [['実施済',true],['未実施',false]], include_blank: true %><br><br>
       <%= f.submit "検索する",class:'btn btn-secondary btn-lg'%>
-    </div>
+    </div> 
       <% end %>
     <div class="col-12 mt-5">
       <div class="card">

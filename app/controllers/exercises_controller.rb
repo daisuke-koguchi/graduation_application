@@ -20,7 +20,7 @@ class ExercisesController < ApplicationController
   def create 
     @exercise = current_user.exercises.build(exercise_params)
     if @exercise.save 
-      redirect_to exercises_path, notice: "運動内容を登録しました"
+      redirect_to exercises_path, notice: "運動方法を登録しました"
     else
       render :new 
     end 
@@ -32,7 +32,7 @@ class ExercisesController < ApplicationController
 
   def update
     if @exercise.update(update_exercise_params)
-      redirect_to exercises_path, notice: "運動内容を更新しました"
+      redirect_to exercises_path, notice: "運動方法を更新しました"
     else
       render :edit 
     end
@@ -40,7 +40,7 @@ class ExercisesController < ApplicationController
 
   def destroy
     @exercise.destroy 
-    redirect_to exercises_path, notice: "運動内容を削除しました"
+    redirect_to exercises_path, notice: "運動方法を削除しました"
   end
 
   def graph
