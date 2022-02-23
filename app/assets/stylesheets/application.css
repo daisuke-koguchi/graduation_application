@@ -63,3 +63,6 @@ h1,h2,h3,h4,h5,h6{
 .form-text{
   font-size: 18px;
 }
+.under{
+  background: linear-gradient(transparent 70%,#FFC7AF 70%);;
+}

@@ -11,14 +11,13 @@
         <%= f.submit "検索",class:'btn btn-secondary btn-lg'%>
       <% end %>
     </div>
-
     <div class="card">
       <div class="card-body m-1">
         <h3 class="card-title pb-4">コミュニティ</h3>
-        <h4 class="card-text pb-2">こちらではご登録されているご利用者さまのプロフィールを確認することができます。</h4>
-        <h4 class="card-text pb-2">相手のプロフィールを確認するときは、プロフィールを確認するボタンを押してみましょう。</h4>
-        <h4 class="dard-text pb-2">メッセージを確認するボタンを押すと、相手とメッセージをやりとりすることができます。</h4>
-        <h4 class="dard-text pb-2">ニックネームのリンクを押すとをニックネームを昇順・降順（昇順▲ /降順▼）で並び替えられます。</h4>
+        <h4 class="card-text pb-2">こちらではご登録されているご利用者さまの<span class="under">プロフィール</span>を確認することができます。</h4>
+        <h4 class="card-text pb-2"><span class="under">相手のプロフィールを確認する</span>ときは、<span class="under">「プロフィールを確認するボタン」</span>を押してみましょう。</h4>
+        <h4 class="dard-text pb-2"><span class="under">「メッセージを確認するボタン」</span>を押すと、相手とメッセージをやりとりすることができます。</h4>
+        <h4 class="dard-text pb-5"><span class="under">「ニックネーム」のリンク</span>を押すとをニックネームを<span class="under">昇順・降順（昇順▲ /降順▼）</span>で並び替えられます。</h4>
         <div class="table-responsive">
           <table class="table text-nowrap">
             <thead>
@@ -52,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div class="col-12 d-flex pt-3 pb-3">
+    <div class="d-flex pt-3 pb-3">
       <%= link_to "戻る",user_path(id: current_user.id),class:'btn btn-success btn-lg' %>
     </div>
   </div>

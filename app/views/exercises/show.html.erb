@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12 p-5">
-      <h1>運動の方法確認画面</h1>
+      <h1 class="exercise_method_title" >運動の方法確認画面</h1>
     </div>
     <div class="col-12">
       <div class="table-responsive-xl">
@@ -23,6 +23,8 @@
             <th>運動の動画確認する</th>
             <% if @exercise.video? %>
               <td><%= video_tag(@exercise.video.url,autobuffer: true, controls: true, height: "100%", width:"100%") %></td>
+            <% else %>
+              <td class="d-flex justify-content-center"><%= image_tag('noimage.png',width:'40%',height:'40%')%></td>
             <% end %>
           </tr>
           <tr>
