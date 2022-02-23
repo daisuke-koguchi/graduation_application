@@ -1,13 +1,15 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-12">
+		<div class="col-12 p-5">
 			<h1>運動の記録</h1>
 		</div>
 		<div class="jumbotron col-12 col-lg-10 offset-lg-1" id="graph-message">
-			<% if @this_week_count >= @last_week_count %>
+			<% if @this_week_count == 0 && @last_week_count == 0 %>
+				<p>Rehamoへようこそ！　これから少しずつ運動頑張っていきましょう！<p>
+			<% elsif @this_week_count >= @last_week_count %>
 				<p>今週は<%="#{@this_week_count}"%>回、運動を実施することが出来ています！</p>
 				<p>先週よりも運動の回数が多く、素晴らしいです！　このまま継続して頑張っていきましょう!<p>
-			<% elsif @this_week_count < @last_week_count || @this_week_count == 0%>
+			<% elsif @this_week_count == 0 || @this_week_count < @last_week_count %>
 				<p>今週は<%="#{@this_week_count}"%>回、運動を実施することが出来ています！</p>
 				<p>このまま少しずつ回数を増やせるよう頑張っていきましょう！</p>
 			<% end %>

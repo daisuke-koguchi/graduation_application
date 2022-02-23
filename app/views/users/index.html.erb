@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 col-md-6 comunity-logo">
+    <div class="col-12 col-md-6 comunity-logo mt-md-5">
       <div class="d-flex flex-column">
         <div style="height:70px"></div>
-        <div class="d-flex justify-content-center" style="height:100px"><h1><%= current_user.nick_name %>さんのコミュニティ</h1></div>
+        <div class="d-flex justify-content-center" style="height:100px"><h2><%= current_user.nick_name %>さんのコミュニティ</h2></div>
         <div style="col-0 height:50px"></div>
       </div>
     </div>
-    <div class="col-12 col-md-6 form-group">
+    <div class="col-12 col-md-6 form-group mt-md-5">
       <%= search_form_for @q do |f|%>
         <h3>ニックネーム検索</h3>
         <%= f.search_field :nick_name_cont, class: "form-control form-control-lg ",placeholder: "ニックネームを入力" %>
@@ -17,42 +17,43 @@
     </div>
     <div class="col-12">
       <div class="card">
-        <div class="card community-card">
-        <h4 class="card-title">コミュニティ</h4>
-        <h5 class="card-text">こちらではご登録されているご利用者さまのプロフィールを確認することができます。</h5>
-        <h5 class="card-text">相手のプロフィールを確認するときは、プロフィールを確認するボタンを押してみましょう。</h5>
-        <h5 class="dard-text">メッセージを確認するボタンを押すと、相手とメッセージをやりとりすることができます。</h5>
-        <h5 class="dard-text">ニックネームのリンクを押すとをニックネームを昇順・降順（昇順▲ /降順▼）で並び替えられます。</h5>
-        <div class="table-responsive-md">
-          <table class="table text-nowrap">
-            <thead>
-              <tr>
-                <th style="width: 25%">プロフィール画像</th>
-                <th style="width: 25%"><%= sort_link(@q, :nick_name,"ニックネーム") %></th>
-                <th style="width: 25%">プロフィールを確認する</th>
-                <th style="width: 25%" >メッセージを確認する</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @users.each do |user| %>
-              <% if current_user.id != user.id %>
+        <div class="card-body m-1">
+          <h3 class="card-title pb-4">コミュニティ</h3>
+          <h4 class="card-text pb-2">こちらではご登録されているご利用者さまのプロフィールを確認することができます。</h4>
+          <h4 class="card-text pb-2">相手のプロフィールを確認するときは、プロフィールを確認するボタンを押してみましょう。</h4>
+          <h4 class="dard-text pb-2">メッセージを確認するボタンを押すと、相手とメッセージをやりとりすることができます。</h4>
+          <h4 class="dard-text pb-2">ニックネームのリンクを押すとをニックネームを昇順・降順（昇順▲ /降順▼）で並び替えられます。</h4>
+          <div class="table-responsive-xl">
+            <table class="table text-nowrap">
+              <thead>
                 <tr>
-                  <% if user.avatar_image?%>
-                    <td class="d-flex justify-content-center"><%= image_tag(user.avatar_image.thumb.url) %></td>
-                  <% else %>
-                    <td class="d-flex justify-content-center"><%= image_tag('noimage.png',width:'90%',height: '90%')%></td>
-                  <% end %>
-                    <td id="user_nick_name"><%= user.nick_name%>さん</td>
-                    <% if user.id != current_user.id %>
-                    <td><%= link_to "プロフィールを確認する ", user ,class:'btn btn-info btn-lg '%></td>
-                    <td><%= link_to 'メッセージを確認する', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post ,class:'btn btn-primary  btn-lg'%></td>
-                  <% end%>
+                  <th style="width: 25%">プロフィール画像</th>
+                  <th style="width: 25%"><%= sort_link(@q, :nick_name,"ニックネーム") %></th>
+                  <th style="width: 25%">プロフィールを確認する</th>
+                  <th style="width: 25%" >メッセージを確認する</th>
                 </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                <% if current_user.id != user.id %>
+                  <tr>
+                    <% if user.avatar_image?%>
+                      <td class="d-flex justify-content-center"><%= image_tag(user.avatar_image.thumb.url) %></td>
+                    <% else %>
+                      <td class="d-flex justify-content-center"><%= image_tag('noimage.png',width:'90%',height: '90%')%></td>
+                    <% end %>
+                      <td id="user_nick_name"><%= user.nick_name%>さん</td>
+                      <% if user.id != current_user.id %>
+                      <td><%= link_to "プロフィールを確認する ", user ,class:'btn btn-info btn-lg '%></td>
+                      <td><%= link_to 'メッセージを確認する', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post ,class:'btn btn-primary  btn-lg'%></td>
+                    <% end%>
+                  </tr>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </tbody>
-          </table>
-          <%= paginate @users %>
+              </tbody>
+            </table>
+            <%= paginate @users %>
+            </div>
           </div>
         </div>
       </div>

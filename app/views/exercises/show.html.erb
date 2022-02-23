@@ -1,8 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 p-5">
       <h1>運動の方法確認画面</h1>
-      <div class="table-responsive">
+    </div>
+    <div class="col-12">
+      <div class="table-responsive-xl">
         <table class="table">
         <tbody>
           <tr>
@@ -11,13 +13,11 @@
           </tr>
           <tr>
             <th>運動の写真</th>
-            <td>
-              <% if @exercise.image? %>
-                <%= image_tag(@exercise.image.url) %>
-              <% else %>
-                <%= image_tag('noimage.png',width:'40%',height:'40%')%>
-              <% end %>
-            </td>
+          <% if @exercise.image? %>
+            <td class="d-flex justify-content-center" ><%= image_tag(@exercise.image.url) %></td>
+          <% else %>
+            <td class="d-flex justify-content-center"><%= image_tag('noimage.png',width:'40%',height:'40%')%></td>
+          <% end %>
           </tr>
           <tr>
             <th>運動の動画確認する</th>
