@@ -31,13 +31,13 @@
             <th>運動の負荷量</th>
             <td>
               <% if @exercise.count != "0" %>
-                運動回数：<%= @exercise.count %>回　
+                運動回数：<%= @exercise.count %>回<br>
               <% end %>
               <% if @exercise.set_count != "0" %>
-                セット数：<%= @exercise.set_count %>セット　
+                セット数：<%= @exercise.set_count %>セット<br>
               <% end %>
-                時間：<% if @exercise.minute != "0" %>
-                <%= @exercise.minute %>分　
+              <% if @exercise.minute != "0" %>
+                時間：<%= @exercise.minute %>分　
               <% end %>
               <% if @exercise.second != "0" %>
                 <%= @exercise.second %>秒　<br>
