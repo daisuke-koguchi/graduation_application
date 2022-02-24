@@ -1,14 +1,38 @@
+guest = User.create!(
+  first_name:"ゲスト",
+  last_name:"ユーザー",
+  nick_name:"オリビア",
+  avatar_image:File.open(Rails.root + 'app/assets/images/guest.jpg'),
+  introduction:"ゲストでログインします",
+  email: "guest@example.com",
+  password:SecureRandom.urlsafe_base64,
+  admin: false,
+  confirmed_at: Time.now
+)
+
+guest_admin = User.create!(
+  first_name:"管理者ゲスト",
+  last_name:"ユーザー",
+  nick_name:"シャーロット",
+  avatar_image:File.open(Rails.root + 'app/assets/images/admin_guest.jpg'),
+  introduction:"管理者ゲストでログインします",
+  email: "admin_guest@example.com",
+  password:SecureRandom.urlsafe_base64,
+  admin: true,
+  confirmed_at: Time.now
+)
+
 admin = User.create!(
-    first_name:"テスト",
-    last_name:"管理者",
-    nick_name:"リハモ",
-    avatar_image:File.open(Rails.root + 'public/images/avatar.jpg'),
-    introduction:"管理者をしています。みなさんと一緒に運動をして心身ともに健康な体を目指したと思います。相談があればメッセージをいただければと思います。よろしくお願いします。",
-    email: "test@example.com",
-    password:"111111",
-    admin: true,
-    confirmed_at: Time.now
-  )
+  first_name:"テスト",
+  last_name:"管理者",
+  nick_name:"リハモ",
+  avatar_image:File.open(Rails.root + 'public/images/avatar.jpg'),
+  introduction:"管理者をしています。みなさんと一緒に運動をして心身ともに健康な体を目指したと思います。相談があればメッセージをいただければと思います。よろしくお願いします。",
+  email: "test@example.com",
+  password:"111111",
+  admin: true,
+  confirmed_at: Time.now
+)
 
 user1 = User.create!(
   first_name:"テスト1",
@@ -76,7 +100,7 @@ User.all.each do |user|
     description: "痛みや麻痺のある方は動画のように、歩行補助具を使用すると、両手の力で体重を分散することができるようになるので、負担を軽減して歩けるようになります。レンタルすることもできるので、ご自身のケアマネージャーに相談してみましょう。",
     image:File.open(Rails.root + 'public/images/image1.jpg'),
     video:File.open(Rails.root + 'app/assets/images/movie1.mp4'),
-    minute: 10,
+    minute: 1,
     second: 0,
     count: 0,
     set_count:0

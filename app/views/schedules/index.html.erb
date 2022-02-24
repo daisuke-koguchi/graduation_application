@@ -1,30 +1,26 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 col-md-6 mt-md-5 ">
-      <div class="d-flex flex-column">
-        <div style="height:100px"></div>
-        <div class="d-flex justify-content-center" style="height:100px"><h2>過去に実施した運動の一覧</h2></div>
-        <div style="col-0 height:50px"></div>
-      </div>
+    <div class="col-12 mt-5 mb-3">
+      <h2 class="schedule_title">過去に実施した運動の一覧</h2>
     </div>
-    <div class="col-12 col-md-4 mt-md-5 form-group">
+    </div>
+    <div class="form-group col-sm-12 offset-md-6 col-md-5">
       <%= search_form_for @q do |f|%>
       <h4>運動を実施した日付の検索</h4>
       <small class="form-text">検索する日付の範囲の開始日を入力してください。</small>
       <%= f.date_field :fixed_day_gteq, class: 'form-control', include_blank: true %>
       <small class="form-text">検索する日付の範囲の終了日を入力してください。</small>
       <%= f.date_field :fixed_day_lteq_end_of_day, class: 'form-control', include_blank: true %>
-      
-      <h4>実施/未実施検索</h4>
-      <%= f.select :is_done_eq, [['実施済',true],['未実施',false]], include_blank: true %>
+      <h4 class="mt-5">実施/未実施検索</h4>
+      <small class="form-text">セレクトボックスで実施/未実施を選択して検索できます。</small>
+      <%= f.select :is_done_eq, [['実施済',true],['未実施',false]], include_blank: true %><br><br>
       <%= f.submit "検索する",class:'btn btn-secondary btn-lg'%>
-      <small class="form-text">セレクトボックスで実施または未実施を選択して検索できます。</small>
+    </div> 
       <% end %>
-    </div>
-    <div class="col-12">
+    <div class="col-12 mt-5">
       <div class="card">
         <div class="card-body">
-          <div class="table-responsive-md">
+          <div class="table-responsive-xl mt-5">
             <table class="table text-nowrap">
               <thead>
                 <tr>

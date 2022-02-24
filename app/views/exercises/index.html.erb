@@ -1,17 +1,16 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 p-5">
-      <h1><%= current_user.nick_name%>さんの運動・記録ページ</h1>
+    <div class="col-12 p-4">
+      <h2 class="exercise_title"><%= current_user.nick_name%>さんの運動・記録ページ</h2>
     </div>
     <%= render 'schedules/index',local:{ schedules: @schedules} %>
-    <div class="col-12 col-md-6  mt-5">
-      <div class="d-flex flex-column">
-        <div style="height:70px"></div>
-        <div class="d-flex justify-content-center" style="height:100px"><h1>運動方法の確認</h1></div>
-        <div style="col-0 height:50px"></div>
-      </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 pt-5 mt-5">
+      <h2 class="exercise_method_title">運動方法の確認</h2>
     </div>
-    <div class="col-12 col-md-6 mt-5"> 
+    </div>
+    <div class="form-group col-sm-12 offset-md-6 col-md-6"> 
       <%= search_form_for @q do |f| %>
         <h4>運動名の検索</h4>
         <%= f.search_field :name_cont, class: "form-control form-control-lg ",placeholder: "例) スクワット"%>
@@ -20,13 +19,13 @@
       <% end %>
     </div>
     <div class="col-12 mt-5">
-      <div class="card">
+      <div class="card p-1">
         <div class="card-body m-1">
           <h2 class="card-title pb-4"><%= current_user.nick_name%>さんの実施する運動一覧</h2>
-          <h4 class="cord-text pb-2">運動方法を確認するボタンを押すと写真や動画で内容を確認できます。</h4>
-          <h4 class="cord-text pb-2">運動方法の編集・削除ボタンで運動を編集・削除できます。</h4>
-          <h4 class="dard-text pb-2">運動の名前のリンクを押すと運動の名前を昇順・降順（昇順▲ 降順▼）で並び替えられます。</h4>
-          <h4 class="cord-text pb-2">運動内容を登録するボタンで運動をご自分で登録することができます。</h4>
+          <h4 class="cord-text pb-2"><span class="under">運動方法を確認するボタン</span>を押すと、写真や動画で<span class="under">運動の方法</span>を確認できます。</h4>
+          <h4 class="cord-text pb-2">運動方法の<span class="under">編集・削除ボタン</span>で運動を<span class="under">編集・削除</span>できます。</h4>
+          <h4 class="dard-text pb-2"><span class="under">運動の名前のリンク</span>を押すと、運動の名前を<span class="under">昇順・降順（昇順▲ 降順▼</span>で並び替えられます。</h4>
+          <h4 class="cord-text pb-2"><span class="under">運動内容を登録するボタン</span>で運動を<span class="under">登録</span>することができます。</h4>
           <div class="table-responsive-xl mt-5">
             <table class="table text-nowrap">
               <thead>
@@ -48,7 +47,7 @@
                   <% end%>
                   <td id="exercise_name"><%= exercise.name%></td>
                   <td><%= link_to "運動方法を確認する", exercise_path(exercise.id) ,class:'btn btn-primary btn-lg'%></td> 
-                  <td><%= link_to "編集する", edit_exercise_path(exercise.id) ,class:'btn btn-warning btn-lg'%></td>
+                  <td><%= link_to "編集する", edit_exercise_path(exercise.id) ,class:'btn btn-secondary btn-lg'%></td>
                   <td><%= link_to "削除する", exercise_path(exercise.id), method: :delete, data: {confirm: "運動内容を削除しますか？"}, class:"btn btn-outline-danger btn-lg"%></td>
                 </tr>
                 <% end %>
@@ -61,7 +60,7 @@
     </div>
     <div class="d-flex justify-content-start">
       <div class="m2 p-3"><%= link_to "戻る",user_path(id: current_user.id), class:'btn btn-success btn-lg'%></div>
-      <div class="m2 p-3"><%= link_to "運動内容を登録する",new_exercise_path, class:'btn btn-info btn-lg' %></div>
+      <div class="m2 p-3"><%= link_to "運動方法を登録する",new_exercise_path, class:'btn btn-info btn-lg' %></div>
     </div>
   </div>
 </div>

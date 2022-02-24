@@ -1,0 +1,76 @@
+.devise_title:before{
+  content:"";
+  display: inline-block;
+  background:url(title_logo.png) center no-repeat;
+  height: 100px;
+  width: 100px;
+  background-size: contain;
+  vertical-align: middle;
+}
+.devise_title{
+  position: relative;
+}
+.devise_title:after{
+  position: absolute;
+  content:"";
+  bottom: 25px;
+  left: 100px;
+  width: 250px;
+  height:3px;
+  background: -webkit-gradient(linear, left top, right top, from(#fa709a), to(#fee140));
+  background: -webkit-linear-gradient(left, #fa709a 0%, #fee140 100%);
+  background: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+}
+.sign-up-box{
+  width: 500px;
+  border-style: outset;
+  border-width: 2px;
+  border-color: gray;
+}
+.devise_confirm_title:before{
+  content:"";
+  display: inline-block;
+  background:url(title_logo.png) center no-repeat;
+  height: 100px;
+  width: 100px;
+  background-size: contain;
+  vertical-align: middle;
+}
+.devise_confirm_title{
+  position: relative;
+}
+.devise_confirm_title:after{
+  position: absolute;
+  content:"";
+  bottom: 25px;
+  left: 100px;
+  width: 450px;
+  height:3px;
+  background: -webkit-gradient(linear, left top, right top, from(#fa709a), to(#fee140));
+  background: -webkit-linear-gradient(left, #fa709a 0%, #fee140 100%);
+  background: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+}
+.devise_password_title:before{
+  content:"";
+  display: inline-block;
+  background:url(title_logo.png) center no-repeat;
+  height: 100px;
+  width: 100px;
+  background-size: contain;
+  vertical-align: middle;
+}
+.devise_password_title{
+  position: relative;
+}
+.devise_password_title:after{
+  position: absolute;
+  content:"";
+  bottom: 25px;
+  left: 100px;
+  width: 300px;
+  height:3px;
+  background: -webkit-gradient(linear, left top, right top, from(#fa709a), to(#fee140));
+  background: -webkit-linear-gradient(left, #fa709a 0%, #fee140 100%);
+  background: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+}
+

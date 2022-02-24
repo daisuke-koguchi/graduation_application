@@ -41,8 +41,8 @@ class User < ApplicationRecord
       user.confirmed_at = Time.now 
       user.first_name = "ゲスト"
       user.last_name = "ユーザー"
-      user.nick_name = "ボブ"
-      user.avatar_image = nil 
+      user.nick_name = "オリビア"
+      user.avatar_image = File.open(Rails.root + 'public/images/guest.jpg')
       user.introduction = "ゲストでログインします"
       user.admin = false 
     end
@@ -54,8 +54,8 @@ class User < ApplicationRecord
       user.confirmed_at = Time.now 
       user.first_name = "管理者ゲスト"
       user.last_name = "ユーザー"
-      user.nick_name = "クリス"
-      user.avatar_image = nil
+      user.nick_name = "シャーロット"
+      user.avatar_image = File.open(Rails.root + 'public/images/admin_guest.jpg')
       user.introduction = "管理者ゲストでログインします"
       user.admin = true 
     end

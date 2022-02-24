@@ -2,24 +2,24 @@
   <%= form_with(model:@exercise,local: true) do |f|%>
   <%= render 'layouts/error_messages', model: f.object %>
   <div class="table-responsive">
-    <table class="table form-group">
+    <table class="table text-nowrap form-group">
       <tbody>
         <tr>
-          <th style="width: 30%"><%= f.label :name %><span class="badge badge-danger" style="font-size: 13px;">必須<span></th>
+          <th class="text-nowrap" style="width: 30%"><%= f.label :name %><span class="badge badge-danger" style="font-size: 13px;">必須<span></th>
           <td><%= f.text_field :name, class: "form-control form-control-lg",placeholder: "例) スクワット" %></td>
         </tr>
         <tr class="dexcription">
-          <th><%= f.label :description %><span class="badge badge-danger" style="font-size: 13px;">必須<span></th>
+          <th class="text-nowrap" ><%= f.label :description %><span class="badge badge-danger" style="font-size: 13px;">必須<span></th>
           <td><%= f.text_area :description, class: "form-control form-control-lg",placeholder: "例) スクワットをする際は、
           ①両足を肩幅まで広げること。
           ②お尻を落としながら、膝を指先より出ない程度までを曲げること。
           この２点に注意してやってみましょう!!"%></td>
         </tr>
         <tr>
-          <th style="font-size: 28px;">運動負荷<span class="badge badge-secondary" style="font-size: 13px;">任意<span></th>
-          <td>運動回数: <%= f.number_field :count, class: "form-control"%>　
-              セット数: <%= f.number_field :set_count, class: "form-control"%>　
-              分: <%= f.number_field :minute, class: "form-control"%>　
+          <th class="text-nowrap" style="font-size: 28px;">運動負荷<span class="badge badge-secondary" style="font-size: 13px;">任意<span></th>
+          <td>運動回数: <%= f.number_field :count, class: "form-control"%>
+              セット数: <%= f.number_field :set_count, class: "form-control"%>
+              分: <%= f.number_field :minute, class: "form-control"%>
               秒: <%= f.number_field :second, class: "form-control" %>
           </td>
         </tr>

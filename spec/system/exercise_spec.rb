@@ -16,10 +16,10 @@ RSpec.describe 'エクササイズ機能', type: :system do
         expect(page).to have_content("#{@login_user.nick_name}さんのマイページ")
       end
     end
-    context '運動一覧画面で運動内容を登録するボタンを押すと'do 
-      it '運動内容の登録画面に遷移する' do 
-        click_on '運動内容を登録する'
-        expect(page).to have_content("運動内容の登録")
+    context '運動一覧画面で運動方法を登録するボタンを押すと'do 
+      it '運動方法の登録画面に遷移する' do 
+        click_on '運動方法を登録する'
+        expect(page).to have_content("運動方法の登録")
       end
     end
   end
@@ -32,7 +32,7 @@ RSpec.describe 'エクササイズ機能', type: :system do
       fill_in 'user[password]', with: @user.password
       find('input[type="submit"]').click
       click_on '運動する・記録する'
-      click_on '運動内容を登録する'
+      click_on '運動方法を登録する'
       fill_in 'exercise[name]',with: "スクワット"
       fill_in 'exercise[description]',with: "ゆっくり膝を曲げてください"
       fill_in 'exercise[count]',with: 10
@@ -46,9 +46,9 @@ RSpec.describe 'エクササイズ機能', type: :system do
       fill_in 'exercise[schedules_attributes][0][fixed_day]',with: "002020/02/02"
       click_on '登録する'
     end
-    context '運動内容登録画面で内容を登録すると' do 
-      it '運動が登録され、運動内容が登録されましたとメッセージが表示される' do
-        expect(page).to have_content("運動内容を登録しました")
+    context '運動方法登録画面で方法を登録すると' do 
+      it '運動が登録され、運動方法が登録されましたとメッセージが表示される' do
+        expect(page).to have_content("運動方法を登録しました")
       end
     end
     context '検索した運動の文字を入力して、検索するボタンを押すと' do
@@ -65,7 +65,7 @@ RSpec.describe 'エクササイズ機能', type: :system do
     end
     context '運動項目のソートボタンを押す' do
       it '1回押すと運動を昇順で並び替え、もう一度押すともう一度押すと降順で並び替える' do
-        click_on '運動内容を登録する'
+        click_on '運動方法を登録する'
         fill_in 'exercise[name]',with: "腹筋"
         fill_in 'exercise[description]',with: "ゆっくり膝を曲げてください"
         fill_in 'exercise[count]',with: 10
@@ -95,7 +95,7 @@ RSpec.describe 'エクササイズ機能', type: :system do
       end
     end
     context '運動方法を確認するボタンを押すと' do
-      it '運動内容確認画面に遷移する' do
+      it '運動方法確認画面に遷移する' do
         exercise = Exercise.find_by(name:"スクワット")
         expect(page).to have_link '運動方法を確認する', href: exercise_path(exercise)
         click_link '運動方法を確認する',href: exercise_path(exercise)
@@ -103,15 +103,15 @@ RSpec.describe 'エクササイズ機能', type: :system do
       end
     end
     context '運動一覧画面で編集するボタンを押すと' do 
-      it '運動内容編集画面に遷移し、値を編集すると' do
+      it '運動方法編集画面に遷移し、値を編集すると' do
         exercise = Exercise.find_by(name:"スクワット")
         expect(page).to have_link '編集する', href: edit_exercise_path(exercise)
         click_link '編集する',href: edit_exercise_path(exercise)
-        expect(page).to have_content '運動内容の編集'
+        expect(page).to have_content '運動方法の編集'
       end
     end
-    context '運動内容の編集画面で運動の内容を変更すると' do
-      it '運動内容が変更される。運動内容が更新しましたとメッセージが表示される' do
+    context '運動方法の編集画面で運動の方法を変更すると' do
+      it '運動方法が変更される。運動方法が更新しましたとメッセージが表示される' do
         exercise = Exercise.find_by(name:"スクワット")
         expect(page).to have_link '編集する', href: edit_exercise_path(exercise)
         click_link '編集する',href: edit_exercise_path(exercise)
@@ -123,7 +123,7 @@ RSpec.describe 'エクササイズ機能', type: :system do
         fill_in 'exercise[second]',with: 0
         fill_in 'exercise[schedules_attributes][1][fixed_day]',with: "002020/02/03"
         click_on '登録する'
-        expect(page).to have_content '運動内容を更新しました'
+        expect(page).to have_content '運動方法を更新しました'
       end
     end
     context '運動一覧画面で削除するボタンを押すと' do
@@ -132,10 +132,10 @@ RSpec.describe 'エクササイズ機能', type: :system do
           expect(page).to have_link '削除する', href: exercise_path(exercise)
           click_link '削除する',href: exercise_path(exercise)
           page.driver.browser.switch_to.alert.accept
-          expect(page).to have_content '運動内容を削除しました'
+          expect(page).to have_content '運動方法を削除しました'
         end
       end
-    context '他人の運動内容確認画面に移動としようとすると' do
+    context '他人の運動方法確認画面に移動としようとすると' do
       it '運動一覧画面に遷移する' do
         click_on '登録する'
         another_user_exercise = FactoryBot.create(:exercise)

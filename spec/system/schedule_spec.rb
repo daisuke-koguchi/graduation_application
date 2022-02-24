@@ -13,8 +13,8 @@ RSpec.describe 'スケジュール機能', type: :system do
       click_on '運動する・記録する'
     end
     context '当日の運動を登録すると' do
-      it '運動内容が表示される' do
-        click_on '運動内容を登録する'
+      it '運動方法が表示される' do
+        click_on '運動方法を登録する'
         fill_in 'exercise[name]',with: "ストレッチ"
         fill_in 'exercise[description]',with: "ゆっくり膝を曲げてください"
         fill_in 'exercise[count]',with: 10
@@ -66,6 +66,7 @@ RSpec.describe 'スケジュール機能', type: :system do
         @yesterday = Date.today - 1
         fill_in 'q[fixed_day_gteq]', with: @yesterday
         fill_in 'q[fixed_day_lteq_end_of_day]', with: @yesterday
+        sleep 0.5
         click_on '検索する'
         schedule_exercise_name = all('#schedule_exercise_name')
         expect(schedule_exercise_name[0]).to have_content("#{@yesterday_exercise.name}")
@@ -76,6 +77,7 @@ RSpec.describe 'スケジュール機能', type: :system do
       it '実施の運動が表示される' do
         click_on '過去に実施した運動を確認する'
         find('#q_is_done_eq').find('option[value="true"]').select_option
+        sleep 0.5
         click_on '検索する'
         expect(page).to have_content(@yesterday_exercise.name)
       end
@@ -84,6 +86,7 @@ RSpec.describe 'スケジュール機能', type: :system do
       it '未実施の運動が表示される' do
         click_on '過去に実施した運動を確認する'
         find('#q_is_done_eq').find('option[value="false"]').select_option
+        sleep 0.5
         click_on '検索する'
         expect(page).to have_content(@exercise.name)
         expect(page).to have_content(@second_exercise.name)
@@ -96,6 +99,7 @@ RSpec.describe 'スケジュール機能', type: :system do
         fill_in 'q[fixed_day_gteq]', with: @today
         fill_in 'q[fixed_day_lteq_end_of_day]', with: @today
         find('#q_is_done_eq').find('option[value="true"]').select_option
+        sleep 0.5
         click_on '検索する'
         expect(page).to_not have_content(@yesterday_exercise.name)
         expect(page).to_not have_content(@exercise.name)
@@ -106,6 +110,7 @@ RSpec.describe 'スケジュール機能', type: :system do
         fill_in 'q[fixed_day_gteq]', with: @yesterday
         fill_in 'q[fixed_day_lteq_end_of_day]', with: @yesterday
         find('#q_is_done_eq').find('option[value="true"]').select_option
+        sleep 0.5
         click_on '検索する'
         expect(page).to have_content(@yesterday_exercise.name)
         expect(page).to_not have_content(@exercise.name)
@@ -117,6 +122,7 @@ RSpec.describe 'スケジュール機能', type: :system do
         fill_in 'q[fixed_day_gteq]', with: @today
         fill_in 'q[fixed_day_lteq_end_of_day]', with: @today
         find('#q_is_done_eq').find('option[value="false"]').select_option
+        sleep 0.5
         click_on '検索する'
         expect(page).to_not have_content(@yesterday_exercise.name)
         expect(page).to have_content(@exercise.name)
@@ -129,6 +135,7 @@ RSpec.describe 'スケジュール機能', type: :system do
         fill_in 'q[fixed_day_gteq]', with: @yesterday
         fill_in 'q[fixed_day_lteq_end_of_day]', with: @yesterday
         find('#q_is_done_eq').find('option[value="false"]').select_option
+        sleep 0.5
         click_on '検索する'
         expect(page).to_not have_content(@yesterday_exercise.name)
         expect(page).to_not have_content(@exercise.name)
