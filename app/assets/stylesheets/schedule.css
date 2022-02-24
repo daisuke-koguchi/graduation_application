@@ -49,3 +49,7 @@ input[value="実施"] {
   background: linear-gradient(to right, #fa709a 0%, #fee140 100%);
   box-sizing: border-box;
 }
+.alert-message{
+  text-align: center;
+  font-size:22px;
+}

@@ -9,6 +9,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
     @schedule.is_done = !@schedule.is_done
     @schedule.save
+    @massage = "運動を登録しました。運動の記録を確認してみましょう！"
   end
 
   def destroy 
