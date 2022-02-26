@@ -26,9 +26,11 @@ https://docs.google.com/spreadsheets/d/1E4ScgbXNM1YYXmu8P1FYFfJ0YoqzJa_mrLY0KA9N
 https://docs.google.com/spreadsheets/d/1E4ScgbXNM1YYXmu8P1FYFfJ0YoqzJa_mrLY0KA9NrXo/edit#gid=950377125
 
 # ER図
-<img width="899" alt="ER図 2022-01-26 10 09 17" src="https://user-images.githubusercontent.com/91811989/151162153-399fed1c-2de5-443f-9789-ac49f81e2177.png">
+<img width="934" alt="ER図修正" src="https://user-images.githubusercontent.com/91811989/151706698-ed356174-1f0f-4571-a617-f160c2c25573.png">　　  
 # 画面遷移図
-
+![画面遷移図](https://user-images.githubusercontent.com/91811989/151331699-27a7352f-0d43-474f-9973-2ebe712f27e4.jpg)  　　
 # ワイヤーフレーム
 https://cacoo.com/diagrams/On25kO05XOD65gBi/97560
+
+
 
