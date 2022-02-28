@@ -13,3 +13,56 @@
  *= require_tree .
  *= require_self
  */
+.header{
+  margin-bottom:60px;
+}
+.nav-item{
+  font-size: 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.navbar-brand{
+  background:url(header-logo.png) center no-repeat;
+  height:50px;
+  width: 150px;
+}
+.footer{
+  margin-top: 50px;
+}
+.container{
+  min-height: 600px;
+}
+.container-fluid{
+  min-height: 600px;
+}
+label{
+  font-size: 28px;
+}
+.form-group{
+  font-family: 'Noto Sans JP', sans-serif;
+}
+th{
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 24px;
+}
+td{
+  font-size: 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+p{
+  font-family: 'Noto Sans JP', sans-serif;
+  color: black;
+  font-size: 24px;
+  opacity:1 !important; 
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.pagination{
+  justify-content: center;
+}
+.form-text{
+  font-size: 18px;
+}
+.under{
+  background: linear-gradient(transparent 70%,#FFC7AF 70%);;
+}

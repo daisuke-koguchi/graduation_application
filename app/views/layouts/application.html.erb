@@ -5,11 +5,62 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
 
   <body>
+    <div class="header">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+        <div class="navbar-brand"></div>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#nav1">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav1">
+        <ul class="navbar-nav mr-auto">
+          <% unless user_signed_in?%>
+            <li class="nav-item"><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post ,class:'nav-item nav-link'%></li>
+            <li class="nav-item"><%= link_to "ゲスト管理者ログイン(閲覧用)", users_admin_guest_sign_in_path, method: :post ,class:'nav-link'%></li>
+          <% end %>
+        </ul>
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <% if current_user.admin? %>
+                <li class="nav-item"><%= link_to "管理者権限", rails_admin_path ,class:'nav-link'%></li>
+              <% end %>
+              <li class="nav-item "><%= link_to "トップページへ", root_path ,class:'nav-link' %></li>
+              <li class="nav-item "><%= link_to "マイページへ", user_path(id: current_user.id) ,class:'nav-link' %></li>
+              <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete ,class:'nav-link' %></li>
+            <% else %>
+              <li class="nav-item "><%= link_to "トップページへ", root_path ,class:'nav-link' %></li>
+              <li class="nav-item "><%= link_to "新規会員登録", new_user_registration_path ,class:'nav-link' %></li>
+              <li class="nav-item"><%= link_to "ログイン", new_user_session_path ,class:'nav-link' %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <% if notice %>
+      <div class="alert alert-info" style="margin:0;"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger" style="margin:0;"><%= alert %></div>
+    <% end %>
+    
     <%= yield %>
+
+    <div class="footer">
+      <nav class="navbar fixed-bottom bg-secondary">
+        <span class="navbar-nav ml-auto mr-auto">Copyright ©︎ 2022 Rehamo All Rights Reserved.</span>
+      </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>

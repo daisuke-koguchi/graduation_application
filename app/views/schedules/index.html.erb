@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 mt-5 mb-3">
+      <h2 class="schedule_title">過去に実施した運動の一覧</h2>
+    </div>
+    </div>
+    <div class="form-group col-sm-12 offset-md-6 col-md-5">
+      <%= search_form_for @q do |f|%>
+      <h4>運動を実施した日付の検索</h4>
+      <small class="form-text">検索する日付の範囲の開始日を入力してください。</small>
+      <%= f.date_field :fixed_day_gteq, class: 'form-control', include_blank: true %>
+      <small class="form-text">検索する日付の範囲の終了日を入力してください。</small>
+      <%= f.date_field :fixed_day_lteq_end_of_day, class: 'form-control', include_blank: true %>
+      <h4 class="mt-5">実施/未実施検索</h4>
+      <small class="form-text">セレクトボックスで実施/未実施を選択して検索できます。</small>
+      <%= f.select :is_done_eq, [['実施済',true],['未実施',false]], include_blank: true %><br><br>
+      <%= f.submit "検索する",class:'btn btn-secondary btn-lg'%>
+    </div> 
+      <% end %>
+    <div class="col-12 mt-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="alert-message" style="height:30px;"> 
+            <div id="alert-message"></div>
+          </div>
+          <div class="table-responsive-xl mt-5">
+            <table class="table text-nowrap">
+              <thead>
+                <tr>
+                  <th style="width: 20%">写真の写真</th>
+                  <th style="width: 20%">運動の名前</th>
+                  <th style="width: 30%">運動の負荷量</th>
+                  <th style="width: 10%">運動実施日</th>
+                  <th style="width: 20%">実施/未実施ボタン</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @schedules.each do |schedule|%>
+                  <% if current_user.id == schedule.exercise.user.id%>
+                    <tr>
+                    <% if schedule.exercise.image? %>
+                      <td class="d-flex justify-content-center"><%= image_tag(schedule.exercise.image.thumb.url)%></td>
+                    <% else %>
+                      <td class="d-flex justify-content-center"><%= image_tag('noimage.png',width:'90%',height: '90%')%></td>
+                    <% end%>
+                      <th id="schedule_exercise_name"><%= schedule.exercise.name %></td>
+                      <td>
+                        <% if schedule.exercise.count != "0" %>
+                          運動回数：<%= schedule.exercise.count %>回　
+                        <% end %>
+                        <% if schedule.exercise.set_count != "0" %>
+                          セット数：<%= schedule.exercise.set_count %>セット　
+                        <% end %>
+                        <% if schedule.exercise.minute != "0" %>
+                          時間：<%= schedule.exercise.minute %>分　
+                        <% end %>
+                        <% if schedule.exercise.second != "0" %>
+                          <%= schedule.exercise.second %>秒　
+                        <% end %>
+                      </td>
+                      <td><%= schedule.fixed_day%></td>
+                      <td>
+                        <div id="button_<%= schedule.id %>">
+                          <%= render 'schedules/both', {schedule: schedule} %>
+                        </div>
+                      </th>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+            <%= paginate @schedules %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12"><br>
+      <%= link_to "戻る",exercises_path, class:'btn btn-success btn-lg' %>
+    </div>
+  </div>
+</div>

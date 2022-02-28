@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-5 mb-2 p-1">
+      <h2 class="devise_password_title"><%= t('.forgot_your_password_page') %></h2>
+    </div>
+    <div class="col-12 col-lg-7 offset-lg-2 my-2">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">ご登録のメールアドレスにパスワードの再設定のメールをご案内いたします。</h4>
+            <p class="card-text">①Rehamoにご登録されているメールアドレスを入力し、パスワードの再設定方法のメールを送信するボタンを押してください。</p>
+            <p class="card-text">②メールに記載されているURLにアクセスして、パスワードの再設定を行なってください。</p>  
+            <div class="form-group">
+              <small class="form-text">ご登録されたメールアドレスをご入力ください。</small>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg", placeholder: "例) rehamo@example.com" %>
+            </div>
+              <p>ご入力されたメールアドレスをご確認の上、ボタンを押してください。</p>
+            <div class="actions">
+              <%= f.submit t('.send_me_reset_password_instructions'), id:"password", class:"btn btn-secondary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-7 offset-lg-2 mt-2 pt-2">
+    <%= link_to "戻る", :back ,class:'btn btn-success btn-lg'%>
+    </div>
+  </div>
+</div>

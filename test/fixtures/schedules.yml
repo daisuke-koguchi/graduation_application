@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exercise_day: 2022-02-06
+  is_done: false
+  exercise: one
+
+two:
+  exercise_day: 2022-02-06
+  is_done: false
+  exercise: two

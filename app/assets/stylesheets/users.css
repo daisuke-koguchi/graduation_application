@@ -1,0 +1,69 @@
+.jumbotron-fluid{
+  background:url(top.jpg) center no-repeat;
+  background-size:cover;
+  height:500px;
+}
+.top-message{
+  background-color: rgb(252, 227, 218);
+}
+.logo{
+  background:url(rehamo-logo.png) center no-repeat;
+  background-size:cover;
+  height:400px;
+  width: 60%;
+}
+#avatar-image{
+  min-height: 300px;
+}
+#avatar-introduction{
+  min-height: 100px;
+}
+.complete-image{
+  background:url(complete.jpg) center no-repeat;
+  background-size:cover;
+  height:300px;
+}
+.confirm-message{
+  background-color: rgb(252, 227, 218);
+}
+.mail-logo{
+  background:url(header-logo.png) center no-repeat;
+  height:50px;
+  width: 150px;
+}
+.exercise{
+  background:url(exercise.jpg) center no-repeat;
+  height: 350px;
+  width: 350px;
+  margin:0 auto;
+}
+.community{
+  background:url(community.jpg) center no-repeat;
+  height: 350px;
+  width: 350px;
+  margin:0 auto;
+}
+.user_title:before{
+  content:"";
+  display: inline-block;
+  background:url(title_logo.png) center no-repeat;
+  height: 100px;
+  width: 100px;
+  background-size: contain;
+  vertical-align: middle;
+}
+.user_title{
+  position: relative;
+}
+.user_title:after{
+  position: absolute;
+  content:"";
+  bottom: 25px;
+  left: 100px;
+  width: 800px;
+  height:3px;
+  background: -webkit-gradient(linear, left top, right top, from(#fa709a), to(#fee140));
+  background: -webkit-linear-gradient(left, #fa709a 0%, #fee140 100%);
+  background: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+  box-sizing: border-box;
+}
